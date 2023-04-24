@@ -15,7 +15,7 @@ struct InputSentences: View {
     var body: some View {
         VStack{
             VStack{
-                Text(Prompt.TwoTruthOneLies.inputTruth)
+                Text(Prompt.TwoTruthsOneLie.inputTruth)
                     .foregroundColor(.white)
                     .fontWeight(.bold)
                 CustomTextField(text: $sentences[0])
@@ -24,7 +24,7 @@ struct InputSentences: View {
             }
             .padding(.vertical, 50)
             VStack{
-                Text(Prompt.TwoTruthOneLies.inputLie)
+                Text(Prompt.TwoTruthsOneLie.inputLie)
                     .foregroundColor(.white)
                     .fontWeight(.bold)
                 CustomTextField(text: $sentences[2])

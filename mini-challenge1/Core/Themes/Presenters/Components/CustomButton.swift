@@ -16,6 +16,7 @@ struct RoundedButton: View {
                 .padding(.horizontal, 70)
                 .foregroundColor(AppColor.white)
                 .fontWeight(.bold)
+                .font(.custom(AppFont.bold, size: 18))
                 .background(
                     RoundedRectangle(cornerRadius: 30)
                         .stroke(AppColor.white, lineWidth: 3)

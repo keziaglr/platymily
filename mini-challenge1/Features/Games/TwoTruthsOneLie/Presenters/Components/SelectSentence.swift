@@ -16,7 +16,7 @@ struct SelectSentence: View {
     
     var body: some View {
         VStack{
-            Text(Prompt.TwoTruthOneLies.chooseLie)
+            Text(Prompt.TwoTruthsOneLie.chooseLie)
                 .foregroundColor(.white)
                 .fontWeight(.bold)
                 .padding(.vertical, 30)

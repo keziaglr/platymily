@@ -20,7 +20,7 @@ struct TwoTruthsOneLie: View {
                     .resizable()
                     .ignoresSafeArea()
                 VStack{
-                    TitleGame(title: Prompt.TwoTruthOneLies.title)
+                    TitleGame(title: Prompt.TwoTruthsOneLie.title)
                     .padding(.bottom, 30)
                     HStack {
                         Button(action: {
@@ -29,7 +29,7 @@ struct TwoTruthsOneLie: View {
                                 selectedC = selectedC ? false : true
                             }
 
-                        }, label:{ RectangleButton(text:Prompt.TwoTruthOneLies.parent, selected: $selectedP)
+                        }, label:{ RectangleButton(text:Prompt.TwoTruthsOneLie.parent, selected: $selectedP)
                         }).disabled(movePage)
                         
                         Button(action: {
@@ -38,7 +38,7 @@ struct TwoTruthsOneLie: View {
                                 selectedP = selectedP ? false : true
                             }
 
-                        }, label:{ RectangleButton(text:Prompt.TwoTruthOneLies.child, selected: $selectedC)
+                        }, label:{ RectangleButton(text:Prompt.TwoTruthsOneLie.child, selected: $selectedC)
                         }).disabled(movePage)
                     }
                     

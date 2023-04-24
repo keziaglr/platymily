@@ -27,6 +27,18 @@
 		AC05332529F2A4BD004AD470 /* TruthLieSentenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC05332429F2A4BD004AD470 /* TruthLieSentenceViewModel.swift */; };
 		AC05332729F2AB18004AD470 /* SelectSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC05332629F2AB18004AD470 /* SelectSentence.swift */; };
 		AC05332929F2B20B004AD470 /* TruthLieSentenceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC05332829F2B20B004AD470 /* TruthLieSentenceRepository.swift */; };
+		AC27AE7C29F5143F005018D1 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE7B29F5143F005018D1 /* Prologue.swift */; };
+		AC27AE8529F51731005018D1 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8029F51731005018D1 /* Quicksand-Light.ttf */; };
+		AC27AE8629F51731005018D1 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8129F51731005018D1 /* Quicksand-Regular.ttf */; };
+		AC27AE8729F51731005018D1 /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8229F51731005018D1 /* Quicksand-SemiBold.ttf */; };
+		AC27AE8829F51731005018D1 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8329F51731005018D1 /* Quicksand-Bold.ttf */; };
+		AC27AE8929F51731005018D1 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8429F51731005018D1 /* Quicksand-Medium.ttf */; };
+		AC27AE8D29F51A17005018D1 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE8C29F51A17005018D1 /* AppFont.swift */; };
+		AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE8E29F51BAE005018D1 /* TextPrologue.swift */; };
+		AC27AE9529F52C27005018D1 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9429F52C27005018D1 /* Map.swift */; };
+		AC27AE9729F5309A005018D1 /* GameButton'.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9629F5309A005018D1 /* GameButton'.swift */; };
+		AC27AE9C29F54925005018D1 /* SwimPlatypus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */; };
+		AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AEA029F66F47005018D1 /* CatchGacha.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +63,19 @@
 		AC05332429F2A4BD004AD470 /* TruthLieSentenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruthLieSentenceViewModel.swift; sourceTree = "<group>"; };
 		AC05332629F2AB18004AD470 /* SelectSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSentence.swift; sourceTree = "<group>"; };
 		AC05332829F2B20B004AD470 /* TruthLieSentenceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruthLieSentenceRepository.swift; sourceTree = "<group>"; };
+		AC27AE7B29F5143F005018D1 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
+		AC27AE8029F51731005018D1 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
+		AC27AE8129F51731005018D1 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		AC27AE8229F51731005018D1 /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
+		AC27AE8329F51731005018D1 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		AC27AE8429F51731005018D1 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Medium.ttf"; sourceTree = "<group>"; };
+		AC27AE8A29F5192F005018D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AC27AE8C29F51A17005018D1 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		AC27AE8E29F51BAE005018D1 /* TextPrologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPrologue.swift; sourceTree = "<group>"; };
+		AC27AE9429F52C27005018D1 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		AC27AE9629F5309A005018D1 /* GameButton'.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameButton'.swift"; sourceTree = "<group>"; };
+		AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimPlatypus.swift; sourceTree = "<group>"; };
+		AC27AEA029F66F47005018D1 /* CatchGacha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchGacha.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +108,7 @@
 		AC0532D529F23F0D004AD470 /* mini-challenge1 */ = {
 			isa = PBXGroup;
 			children = (
+				AC27AE8A29F5192F005018D1 /* Info.plist */,
 				AC0532EB29F24089004AD470 /* Features */,
 				AC0532EA29F24084004AD470 /* Core */,
 				AC0532E929F23F9E004AD470 /* Application */,
@@ -125,6 +151,8 @@
 		AC0532EB29F24089004AD470 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AC27AE9029F52806005018D1 /* Map */,
+				AC27AE7329F510D8005018D1 /* Prologue */,
 				AC05330A29F24545004AD470 /* Games */,
 			);
 			path = Features;
@@ -133,6 +161,7 @@
 		AC0532EC29F240FB004AD470 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
+				AC27AE8B29F51A05005018D1 /* Font */,
 				AC0532F029F24144004AD470 /* Presenters */,
 				AC0532ED29F24107004AD470 /* Colors */,
 			);
@@ -193,6 +222,7 @@
 		AC0532F529F2420C004AD470 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AC27AE7D29F516AA005018D1 /* Font */,
 				AC0532DA29F23F0E004AD470 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -233,6 +263,8 @@
 		AC05330A29F24545004AD470 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				AC27AE9D29F569F5005018D1 /* CatchGacha */,
+				AC27AE9829F548FF005018D1 /* SwimPlatypus */,
 				AC05331629F28087004AD470 /* TwoTruthsOneLie */,
 			);
 			path = Games;
@@ -290,6 +322,140 @@
 				AC05332829F2B20B004AD470 /* TruthLieSentenceRepository.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AC27AE7329F510D8005018D1 /* Prologue */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE7429F5128A005018D1 /* Presenters */,
+			);
+			path = Prologue;
+			sourceTree = "<group>";
+		};
+		AC27AE7429F5128A005018D1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE7729F512AC005018D1 /* Components */,
+				AC27AE7629F512A6005018D1 /* Views */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		AC27AE7629F512A6005018D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE7B29F5143F005018D1 /* Prologue.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AC27AE7729F512AC005018D1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE8E29F51BAE005018D1 /* TextPrologue.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AC27AE7D29F516AA005018D1 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE8329F51731005018D1 /* Quicksand-Bold.ttf */,
+				AC27AE8029F51731005018D1 /* Quicksand-Light.ttf */,
+				AC27AE8429F51731005018D1 /* Quicksand-Medium.ttf */,
+				AC27AE8129F51731005018D1 /* Quicksand-Regular.ttf */,
+				AC27AE8229F51731005018D1 /* Quicksand-SemiBold.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		AC27AE8B29F51A05005018D1 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE8C29F51A17005018D1 /* AppFont.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		AC27AE9029F52806005018D1 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE9129F52818005018D1 /* Presenters */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		AC27AE9129F52818005018D1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE9329F52827005018D1 /* Views */,
+				AC27AE9229F5281E005018D1 /* Components */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		AC27AE9229F5281E005018D1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE9629F5309A005018D1 /* GameButton'.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AC27AE9329F52827005018D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE9429F52C27005018D1 /* Map.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AC27AE9829F548FF005018D1 /* SwimPlatypus */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE9929F54907005018D1 /* Presenters */,
+			);
+			path = SwimPlatypus;
+			sourceTree = "<group>";
+		};
+		AC27AE9929F54907005018D1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE9A29F54913005018D1 /* Views */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		AC27AE9A29F54913005018D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AC27AE9D29F569F5005018D1 /* CatchGacha */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE9E29F66F2F005018D1 /* Presenters */,
+			);
+			path = CatchGacha;
+			sourceTree = "<group>";
+		};
+		AC27AE9E29F66F2F005018D1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AE9F29F66F36005018D1 /* Views */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		AC27AE9F29F66F36005018D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC27AEA029F66F47005018D1 /* CatchGacha.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,8 +516,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC27AE8529F51731005018D1 /* Quicksand-Light.ttf in Resources */,
+				AC27AE8829F51731005018D1 /* Quicksand-Bold.ttf in Resources */,
+				AC27AE8929F51731005018D1 /* Quicksand-Medium.ttf in Resources */,
+				AC27AE8729F51731005018D1 /* Quicksand-SemiBold.ttf in Resources */,
 				AC0532DE29F23F0E004AD470 /* Preview Assets.xcassets in Resources */,
 				AC0532DB29F23F0E004AD470 /* Assets.xcassets in Resources */,
+				AC27AE8629F51731005018D1 /* Quicksand-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,14 +533,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC27AE7C29F5143F005018D1 /* Prologue.swift in Sources */,
 				AC05330329F24311004AD470 /* NetworkManager.swift in Sources */,
 				AC0532E329F23F0E004AD470 /* mini_challenge1.xcdatamodeld in Sources */,
 				AC05332129F2A3E4004AD470 /* TruthLieSentence.swift in Sources */,
+				AC27AE9729F5309A005018D1 /* GameButton'.swift in Sources */,
 				AC0532FA29F2428A004AD470 /* Prompt.swift in Sources */,
 				AC0532EF29F24117004AD470 /* AppColor.swift in Sources */,
 				AC05331129F24692004AD470 /* CustomTextField.swift in Sources */,
 				AC05332929F2B20B004AD470 /* TruthLieSentenceRepository.swift in Sources */,
 				AC0532E029F23F0E004AD470 /* Persistence.swift in Sources */,
+				AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */,
+				AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */,
 				AC05331529F27CD0004AD470 /* TitleGame.swift in Sources */,
 				AC0532D929F23F0D004AD470 /* ContentView.swift in Sources */,
 				AC05332529F2A4BD004AD470 /* TruthLieSentenceViewModel.swift in Sources */,
@@ -377,9 +552,12 @@
 				AC05331E29F2A02C004AD470 /* TwoTruthsOneLie.swift in Sources */,
 				AC05331C29F29F7B004AD470 /* InputSentences.swift in Sources */,
 				AC05331329F24AB6004AD470 /* CustomButton.swift in Sources */,
+				AC27AE8D29F51A17005018D1 /* AppFont.swift in Sources */,
+				AC27AE9529F52C27005018D1 /* Map.swift in Sources */,
 				AC05330729F24385004AD470 /* CoreDataManager.swift in Sources */,
 				AC0532FC29F242AE004AD470 /* Error.swift in Sources */,
 				AC0532D729F23F0D004AD470 /* mini_challenge1App.swift in Sources */,
+				AC27AE9C29F54925005018D1 /* SwimPlatypus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +688,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"mini-challenge1/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mini-challenge1/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -538,6 +717,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"mini-challenge1/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mini-challenge1/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
