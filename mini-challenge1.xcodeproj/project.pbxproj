@@ -27,6 +27,9 @@
 		AC05332529F2A4BD004AD470 /* TruthLieSentenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC05332429F2A4BD004AD470 /* TruthLieSentenceViewModel.swift */; };
 		AC05332729F2AB18004AD470 /* SelectSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC05332629F2AB18004AD470 /* SelectSentence.swift */; };
 		AC05332929F2B20B004AD470 /* TruthLieSentenceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC05332829F2B20B004AD470 /* TruthLieSentenceRepository.swift */; };
+		AC16009229FECA16009E5D59 /* TruthLieTurn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16009129FECA16009E5D59 /* TruthLieTurn.swift */; };
+		AC16009529FEDC97009E5D59 /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16009429FEDC97009E5D59 /* WinView.swift */; };
+		AC16009729FEDEFA009E5D59 /* ProgressBarWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16009629FEDEFA009E5D59 /* ProgressBarWin.swift */; };
 		AC27AE7C29F5143F005018D1 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE7B29F5143F005018D1 /* Prologue.swift */; };
 		AC27AE8529F51731005018D1 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8029F51731005018D1 /* Quicksand-Light.ttf */; };
 		AC27AE8629F51731005018D1 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8129F51731005018D1 /* Quicksand-Regular.ttf */; };
@@ -36,9 +39,13 @@
 		AC27AE8D29F51A17005018D1 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE8C29F51A17005018D1 /* AppFont.swift */; };
 		AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE8E29F51BAE005018D1 /* TextPrologue.swift */; };
 		AC27AE9529F52C27005018D1 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9429F52C27005018D1 /* Map.swift */; };
-		AC27AE9729F5309A005018D1 /* GameButton'.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9629F5309A005018D1 /* GameButton'.swift */; };
+		AC27AE9729F5309A005018D1 /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9629F5309A005018D1 /* GameButton.swift */; };
 		AC27AE9C29F54925005018D1 /* SwimPlatypus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */; };
 		AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AEA029F66F47005018D1 /* CatchGacha.swift */; };
+		ACB47D7829FA1271008F215F /* FloatingLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7729FA1271008F215F /* FloatingLevel.swift */; };
+		ACB47D7A29FA3DCA008F215F /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7929FA3DCA008F215F /* NavBar.swift */; };
+		ACB47D7C29FE7299008F215F /* PopUpGamePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7B29FE7299008F215F /* PopUpGamePreview.swift */; };
+		ACB47D8029FE7E59008F215F /* PopUpGameTurn.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7F29FE7E59008F215F /* PopUpGameTurn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +70,9 @@
 		AC05332429F2A4BD004AD470 /* TruthLieSentenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruthLieSentenceViewModel.swift; sourceTree = "<group>"; };
 		AC05332629F2AB18004AD470 /* SelectSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSentence.swift; sourceTree = "<group>"; };
 		AC05332829F2B20B004AD470 /* TruthLieSentenceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruthLieSentenceRepository.swift; sourceTree = "<group>"; };
+		AC16009129FECA16009E5D59 /* TruthLieTurn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruthLieTurn.swift; sourceTree = "<group>"; };
+		AC16009429FEDC97009E5D59 /* WinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinView.swift; sourceTree = "<group>"; };
+		AC16009629FEDEFA009E5D59 /* ProgressBarWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarWin.swift; sourceTree = "<group>"; };
 		AC27AE7B29F5143F005018D1 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
 		AC27AE8029F51731005018D1 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
 		AC27AE8129F51731005018D1 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
@@ -73,9 +83,13 @@
 		AC27AE8C29F51A17005018D1 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		AC27AE8E29F51BAE005018D1 /* TextPrologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPrologue.swift; sourceTree = "<group>"; };
 		AC27AE9429F52C27005018D1 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
-		AC27AE9629F5309A005018D1 /* GameButton'.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameButton'.swift"; sourceTree = "<group>"; };
+		AC27AE9629F5309A005018D1 /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimPlatypus.swift; sourceTree = "<group>"; };
 		AC27AEA029F66F47005018D1 /* CatchGacha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchGacha.swift; sourceTree = "<group>"; };
+		ACB47D7729FA1271008F215F /* FloatingLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLevel.swift; sourceTree = "<group>"; };
+		ACB47D7929FA3DCA008F215F /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
+		ACB47D7B29FE7299008F215F /* PopUpGamePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpGamePreview.swift; sourceTree = "<group>"; };
+		ACB47D7F29FE7E59008F215F /* PopUpGameTurn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpGameTurn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +213,7 @@
 				AC05331029F24692004AD470 /* CustomTextField.swift */,
 				AC05331229F24AB6004AD470 /* CustomButton.swift */,
 				AC05331429F27CD0004AD470 /* TitleGame.swift */,
+				ACB47D7929FA3DCA008F215F /* NavBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -263,6 +278,7 @@
 		AC05330A29F24545004AD470 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				ACB47D7D29FE7E38008F215F /* Presenters */,
 				AC27AE9D29F569F5005018D1 /* CatchGacha */,
 				AC27AE9829F548FF005018D1 /* SwimPlatypus */,
 				AC05331629F28087004AD470 /* TwoTruthsOneLie */,
@@ -284,6 +300,7 @@
 			children = (
 				AC05331B29F29F7B004AD470 /* InputSentences.swift */,
 				AC05332629F2AB18004AD470 /* SelectSentence.swift */,
+				AC16009129FECA16009E5D59 /* TruthLieTurn.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -322,6 +339,14 @@
 				AC05332829F2B20B004AD470 /* TruthLieSentenceRepository.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AC16009329FED9FD009E5D59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC16009429FEDC97009E5D59 /* WinView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AC27AE7329F510D8005018D1 /* Prologue */ = {
@@ -397,7 +422,9 @@
 		AC27AE9229F5281E005018D1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				AC27AE9629F5309A005018D1 /* GameButton'.swift */,
+				AC27AE9629F5309A005018D1 /* GameButton.swift */,
+				ACB47D7729FA1271008F215F /* FloatingLevel.swift */,
+				ACB47D7B29FE7299008F215F /* PopUpGamePreview.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -456,6 +483,24 @@
 				AC27AEA029F66F47005018D1 /* CatchGacha.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		ACB47D7D29FE7E38008F215F /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				AC16009329FED9FD009E5D59 /* View */,
+				ACB47D7E29FE7E4A008F215F /* Components */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		ACB47D7E29FE7E4A008F215F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ACB47D7F29FE7E59008F215F /* PopUpGameTurn.swift */,
+				AC16009629FEDEFA009E5D59 /* ProgressBarWin.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,29 +580,36 @@
 			files = (
 				AC27AE7C29F5143F005018D1 /* Prologue.swift in Sources */,
 				AC05330329F24311004AD470 /* NetworkManager.swift in Sources */,
+				ACB47D7A29FA3DCA008F215F /* NavBar.swift in Sources */,
 				AC0532E329F23F0E004AD470 /* mini_challenge1.xcdatamodeld in Sources */,
 				AC05332129F2A3E4004AD470 /* TruthLieSentence.swift in Sources */,
-				AC27AE9729F5309A005018D1 /* GameButton'.swift in Sources */,
+				AC27AE9729F5309A005018D1 /* GameButton.swift in Sources */,
 				AC0532FA29F2428A004AD470 /* Prompt.swift in Sources */,
+				AC16009729FEDEFA009E5D59 /* ProgressBarWin.swift in Sources */,
 				AC0532EF29F24117004AD470 /* AppColor.swift in Sources */,
 				AC05331129F24692004AD470 /* CustomTextField.swift in Sources */,
 				AC05332929F2B20B004AD470 /* TruthLieSentenceRepository.swift in Sources */,
 				AC0532E029F23F0E004AD470 /* Persistence.swift in Sources */,
 				AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */,
 				AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */,
+				ACB47D7C29FE7299008F215F /* PopUpGamePreview.swift in Sources */,
 				AC05331529F27CD0004AD470 /* TitleGame.swift in Sources */,
+				AC16009229FECA16009E5D59 /* TruthLieTurn.swift in Sources */,
 				AC0532D929F23F0D004AD470 /* ContentView.swift in Sources */,
 				AC05332529F2A4BD004AD470 /* TruthLieSentenceViewModel.swift in Sources */,
 				AC05332729F2AB18004AD470 /* SelectSentence.swift in Sources */,
 				AC05331E29F2A02C004AD470 /* TwoTruthsOneLie.swift in Sources */,
 				AC05331C29F29F7B004AD470 /* InputSentences.swift in Sources */,
+				AC16009529FEDC97009E5D59 /* WinView.swift in Sources */,
 				AC05331329F24AB6004AD470 /* CustomButton.swift in Sources */,
 				AC27AE8D29F51A17005018D1 /* AppFont.swift in Sources */,
 				AC27AE9529F52C27005018D1 /* Map.swift in Sources */,
 				AC05330729F24385004AD470 /* CoreDataManager.swift in Sources */,
+				ACB47D7829FA1271008F215F /* FloatingLevel.swift in Sources */,
 				AC0532FC29F242AE004AD470 /* Error.swift in Sources */,
 				AC0532D729F23F0D004AD470 /* mini_challenge1App.swift in Sources */,
 				AC27AE9C29F54925005018D1 /* SwimPlatypus.swift in Sources */,
+				ACB47D8029FE7E59008F215F /* PopUpGameTurn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

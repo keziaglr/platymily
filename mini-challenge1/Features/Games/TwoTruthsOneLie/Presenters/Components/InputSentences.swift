@@ -14,35 +14,39 @@ struct InputSentences: View {
     
     var body: some View {
         VStack{
-            VStack{
-                Text(Prompt.TwoTruthsOneLie.inputTruth)
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                CustomTextField(text: $sentences[0])
-                CustomTextField(text: $sentences[1])
-                                    
-            }
-            .padding(.vertical, 50)
-            VStack{
+            VStack(alignment: .leading){
                 Text(Prompt.TwoTruthsOneLie.inputLie)
                     .foregroundColor(.white)
-                    .fontWeight(.bold)
-                CustomTextField(text: $sentences[2])
+                    .padding(.leading, 20)
+                    .font(.custom(AppFont.bold, size: 18))
+                CustomTextField(text: $sentences[2], placeholder: Prompt.TwoTruthsOneLie.placeholderLie)
+            }
+            .padding(.vertical, 30)
+            VStack(alignment: .leading){
+                Text(Prompt.TwoTruthsOneLie.inputTruth)
+                    .foregroundColor(.white)
+                    .font(.custom(AppFont.bold, size: 18))
+                    .padding(.leading, 20)
+                CustomTextField(text: $sentences[0], placeholder: Prompt.TwoTruthsOneLie.placeholderTruth1)
+                CustomTextField(text: $sentences[1], placeholder: Prompt.TwoTruthsOneLie.placeholderTruth2)
             }
             .padding(.bottom, 80)
            
             Button(action: {
-                for i in 0...2{
-                    truthLieSentenceViewModel.sentence = sentences[i]
-                    if i == 2{
-                        truthLieSentenceViewModel.isLie = true
-                    }else{
-                        truthLieSentenceViewModel.isLie = false
-                    }
-                    truthLieSentenceViewModel.saveResult()
-                }
                 
+                if sentences[0] != "" && sentences[1] != "" && sentences[2] != ""{
+                    for i in 0...2{
+                        truthLieSentenceViewModel.sentence = sentences[i]
+                        if i == 2{
+                            truthLieSentenceViewModel.isLie = true
+                        }else{
+                            truthLieSentenceViewModel.isLie = false
+                        }
+                        truthLieSentenceViewModel.saveResult()
+                    }
+                    
                     self.movePage = true
+                }
             },label:{
                 RoundedButton(text: Prompt.Button.confirm)
             })

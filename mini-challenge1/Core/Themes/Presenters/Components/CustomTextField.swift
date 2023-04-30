@@ -9,11 +9,17 @@ import SwiftUI
 
 struct CustomTextField: View {
     @Binding var text: String
+    @State var placeholder: String
         
     var body: some View {
         ZStack{
             
             ZStack(alignment: .leading) {
+                if text.isEmpty {
+                    Text(placeholder)
+                        .font(.custom(AppFont.bold, size: 14))
+                        .foregroundColor(AppColor.orange.opacity(0.5))
+                }
                 TextField("", text: $text)
                     .foregroundColor(AppColor.orange)
                     .fontWeight(.bold)

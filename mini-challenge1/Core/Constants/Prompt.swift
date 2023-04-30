@@ -10,13 +10,77 @@ import Foundation
 struct Prompt { private init() {} }
 
 extension Prompt {
+    struct Games{
+        static let game1 = SwimPlatypus.self
+        static let game2 = GuessTheWord.self
+        static let game3 = ConnectFOUR.self
+        static let game4 = CatchGacha.self
+        static let game5 = TwoTruthsOneLie.self
+        static let game6 = TheLastTrial.self
+    }
+}
+
+extension Prompt{
+    struct Role{
+        static let platy = "Platypus"
+        static let puggle = "Puggle"
+    }
+}
+
+extension Prompt {
     struct TwoTruthsOneLie {
-        static let title = "Two Truths One Lie"
-        static let inputTruth = "Input two truths about yourself"
-        static let inputLie = "Input a lie about yourself"
+        static let title = "2 Truths 1 Lie"
+        static let rules = "1. Player will be given 3 boxes to fill.\n2. Player have to write down one sentence of lie in the first box and two sentences of truth in the second and third boxes.\n3. Other Player would try to guess Player’s lie.\n4. If the Player successfully guess the Lie correct, Player will get 10+ point.\n5. The first Player to achieve 30 points will be nominated as the winner."
+        static let inputTruth = "Input two TRUTHS about yourself"
+        static let inputLie = "Input a LIE about yourself"
         static let chooseLie = "Select the LIE"
-        static let parent = "P"
-        static let child = "C"
+        static let parent = "Parent"
+        static let child = "Child"
+        static let placeholderLie = "e.g. I like candy"
+        static let placeholderTruth1 = "e.g. I dislike sweet foods"
+        static let placeholderTruth2 = "e.g. I hate candy"
+        static let gotPoint = "You got 10+ point"
+        private init() {}
+    }
+}
+
+extension Prompt {
+    struct SwimPlatypus {
+        static let title = "Swim, Platypus"
+        static let rules = "1. Player can only go **Upward** and **Downward**. \n2. The faster Player tap, the higher Platypus will swim. Once Player stop, Platypus will swim downward.\n3. If Platypus hit the ground or Coral**, Player will lose.\n4. Every time Player successfully pass the **Coral**, Player will get 1+ point.\n5. Player who has **higher point** will be nominated as the winner."
+        private init() {}
+    }
+}
+
+extension Prompt {
+    struct CatchGacha {
+        static let title = "Catch Gacha"
+        static let rules = "1. Player can only go Horizontally.\n2. Player will be given 3 Lives.\n3. Every time Player catches a wood, Player will get 1+ point.\n4. If Player is hit by a rock, Player will lose 1 life.\n5. Player who has higher point will be nominated as the winner."
+        private init() {}
+    }
+}
+
+extension Prompt {
+    struct GuessTheWord {
+        static let title = "Guess the Word"
+        static let rules = "1. Each Player will be given a word randomly by the system.\n2. Player would put the phone on their forehead and guess the given word by asking questions to the other Player.\n3. Other Player would have to answer with only **Yes**, **No**, and **Might Be**.\n4. If the Player guess it right, the Player will get 10+ points.\n5. The first Player to achieve **30 points** will be nominated as the winner."
+        private init() {}
+    }
+}
+
+extension Prompt {
+    struct ConnectFOUR {
+        static let title = "Connect FOUR"
+        static let rules = "1. Each Player will be given a different color circle.\n2. Each Player can only set a circle once every round and the round continues until a 4 in row is made.\n3. The row can be made vertically/horizontally/or diagonally.\n4. Player can block other Player’s circle from getting 4 in a row.\n5. If the Player connect 4 of same colored discs in a row, the Player will get 10+ points.\n6. The first Player to achieve 30 points will be nominated as the winner."
+        
+        private init() {}
+    }
+}
+
+extension Prompt {
+    struct TheLastTrial {
+        static let title = "The Last Trial"
+        static let rules = "1. Player will face Sneky - The Devourer of Platypus.\n2. Player will be given 3 lives and shoot Bubble every once a while to attack Sneky.\n3. Sneky will unleash poison attack and if Player is hit by the attack, Player lose 1 life.\n4. Buffs will randomly appear and might give double attacks or additional life for a limited time.\n5. Each time Sneky is defeated, Player will get 10+ points and Sneky can revive up to 3 times.\n6. The fastest Player to achieve 30 points will be nominated as the winner."
         
         private init() {}
     }
@@ -37,11 +101,36 @@ extension Prompt {
     struct Button {
         static let confirm = "Confirm"
         static let playAgain = "Play Again"
-        static let startTrial = "Start Trial"
+        static let startChallenge = "Start Challenge"
         static let gacha = "Gacha"
         static let equip = "Equip"
         static let continueBtn = "Continue"
         
         private init() {}
+    }
+}
+
+
+extension Prompt{
+    struct Rules{
+        static let title = "Rules & Regulations"
+    }
+}
+
+
+extension Prompt{
+    struct GameResult{
+        static let win = "The winner is"
+        static let tie = "It is a tie!"
+        static let tieWinner = "DUO WINNER"
+    }
+}
+
+extension Prompt{
+    struct GameTurn{
+        static let turn = "It’s your turn!"
+        static let child = "THE CHILD"
+        static let parent = "THE PARENT"
+        static let tap = "Tap anywhere to continue"
     }
 }

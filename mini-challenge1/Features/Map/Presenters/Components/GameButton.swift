@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GameButton: View {
     @State var type: String
+    @State var title: String
+    @State var desc: String
     var body: some View {
         if type == "Left" {
             HStack{
@@ -18,23 +20,23 @@ struct GameButton: View {
                     .frame(width: 100, height: 100)
                     
                 VStack(alignment: .leading){
-                    Text("Game1")
+                    Text(title)
                         .font(.custom(AppFont.bold, size: 21))
-                        .foregroundColor(AppColor.white)
-                    Text("A small description of game")
+                        .foregroundColor(AppColor.navy)
+                    Text(desc)
                         .font(.custom(AppFont.regular, size: 14))
-                        .foregroundColor(AppColor.white)
+                        .foregroundColor(AppColor.navy)
                 }
             }.padding(20)
         }else if type == "Right" {
             HStack{
                 VStack(alignment: .trailing){
-                    Text("Game1")
+                    Text(title)
                         .font(.custom(AppFont.bold, size: 21))
-                        .foregroundColor(AppColor.white)
-                    Text("A small description of game")
+                        .foregroundColor(AppColor.navy)
+                    Text(desc)
                         .font(.custom(AppFont.regular, size: 14))
-                        .foregroundColor(AppColor.white)
+                        .foregroundColor(AppColor.navy)
                 }
                 Image("Title")
                     .resizable()
@@ -48,12 +50,12 @@ struct GameButton: View {
                     .clipShape(Circle())
                     .frame(width: 100, height: 100)
                 VStack(alignment: .center){
-                    Text("Game1")
+                    Text(title)
                         .font(.custom(AppFont.bold, size: 21))
-                        .foregroundColor(AppColor.white)
-                    Text("A small description of game")
+                        .foregroundColor(AppColor.navy)
+                    Text(desc)
                         .font(.custom(AppFont.regular, size: 14))
-                        .foregroundColor(AppColor.white)
+                        .foregroundColor(AppColor.navy)
                 }
             }.padding(20)
         }
@@ -63,6 +65,6 @@ struct GameButton: View {
 
 struct GameButton_Previews: PreviewProvider {
     static var previews: some View {
-        GameButton(type: "Up")
+        GameButton(type: "Up", title: "hi", desc: "a")
     }
 }

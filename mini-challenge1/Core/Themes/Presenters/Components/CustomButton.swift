@@ -16,17 +16,11 @@ struct RoundedButton: View {
                 .padding(.horizontal, 70)
                 .foregroundColor(AppColor.white)
                 .fontWeight(.bold)
-                .font(.custom(AppFont.bold, size: 18))
+                .font(.custom(AppFont.medium, size: 18))
                 .background(
                     RoundedRectangle(cornerRadius: 30)
-                        .stroke(AppColor.white, lineWidth: 3)
-                        .shadow(radius: 10)
-                        .background(
-                            RoundedRectangle(cornerRadius: 30)
-                                .fill(AppColor.orange)
-                        )
-
-                    )
+                        .fill(AppColor.orange)
+                )
         }
     }
 }
@@ -36,21 +30,21 @@ struct RectangleButton: View {
     @Binding var selected: Bool
     var body: some View {
         ZStack(alignment: .leading) {
-                Text(text)
-                    .foregroundColor(selected ? AppColor.white : AppColor.orange)
-                    .fontWeight(.bold)
-                    .padding(.vertical,16)
-                    .padding(.horizontal, 70)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(selected ? AppColor.white : AppColor.orange, lineWidth: 3)
-                            .shadow(radius: 10)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(selected ? AppColor.orange : AppColor.white)
-                            )
-
-                    )
+            Text(text)
+                .foregroundColor(selected ? AppColor.white : AppColor.orange)
+                .fontWeight(.bold)
+                .padding(.vertical,16)
+                .padding(.horizontal, 70)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(selected ? AppColor.white : AppColor.orange, lineWidth: 3)
+                        .shadow(radius: 10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(selected ? AppColor.orange : AppColor.white)
+                        )
+                    
+                )
             
         }
     }
@@ -63,23 +57,18 @@ struct TruthLieButton: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-                Text(text)
-                    .foregroundColor(AppColor.white)
-                    .fontWeight(.bold)
-                    .font(.system(size: 12))
-                    .padding(.vertical,16)
-                    .frame(minWidth: 350)
-                    .multilineTextAlignment(.leading)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(AppColor.white, lineWidth: 3)
-                            .shadow(radius: 10)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(showColor ? color : AppColor.orange)
-                            )
-
-                    )
+            Text(text)
+                .foregroundColor(AppColor.white)
+                .fontWeight(.bold)
+                .font(.system(size: 12))
+                .padding(.vertical,16)
+                .frame(minWidth: 350)
+                .multilineTextAlignment(.leading)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(showColor ? color : AppColor.orange)
+                        .shadow(radius: 5)
+                )
             
         }
     }
