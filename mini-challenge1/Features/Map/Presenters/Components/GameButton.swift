@@ -14,7 +14,7 @@ struct GameButton: View {
     var body: some View {
         if type == "Left" {
             HStack{
-                Image("Title")
+                Image("Shellfish")
                     .resizable()
                     .clipShape(Circle())
                     .frame(width: 100, height: 100)
@@ -38,17 +38,17 @@ struct GameButton: View {
                         .font(.custom(AppFont.regular, size: 14))
                         .foregroundColor(AppColor.navy)
                 }
-                Image("Title")
+                Image("Shellfish")
                     .resizable()
                     .clipShape(Circle())
                     .frame(width: 100, height: 100)
             }.padding(50)
         }else if type == "Up" {
             VStack{
-                Image("Title")
+                Image("Shellfish")
                     .resizable()
                     .clipShape(Circle())
-                    .frame(width: 100, height: 100)
+                    .frame(width: 120, height: 120)
                 VStack(alignment: .center){
                     Text(title)
                         .font(.custom(AppFont.bold, size: 21))

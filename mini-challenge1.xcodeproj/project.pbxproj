@@ -28,7 +28,7 @@
 		AC05332729F2AB18004AD470 /* SelectSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC05332629F2AB18004AD470 /* SelectSentence.swift */; };
 		AC05332929F2B20B004AD470 /* TruthLieSentenceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC05332829F2B20B004AD470 /* TruthLieSentenceRepository.swift */; };
 		AC16009229FECA16009E5D59 /* TruthLieTurn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16009129FECA16009E5D59 /* TruthLieTurn.swift */; };
-		AC16009529FEDC97009E5D59 /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16009429FEDC97009E5D59 /* WinView.swift */; };
+		AC16009529FEDC97009E5D59 /* GameResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16009429FEDC97009E5D59 /* GameResultView.swift */; };
 		AC16009729FEDEFA009E5D59 /* ProgressBarWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16009629FEDEFA009E5D59 /* ProgressBarWin.swift */; };
 		AC27AE7C29F5143F005018D1 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE7B29F5143F005018D1 /* Prologue.swift */; };
 		AC27AE8529F51731005018D1 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8029F51731005018D1 /* Quicksand-Light.ttf */; };
@@ -46,6 +46,8 @@
 		ACB47D7A29FA3DCA008F215F /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7929FA3DCA008F215F /* NavBar.swift */; };
 		ACB47D7C29FE7299008F215F /* PopUpGamePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7B29FE7299008F215F /* PopUpGamePreview.swift */; };
 		ACB47D8029FE7E59008F215F /* PopUpGameTurn.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7F29FE7E59008F215F /* PopUpGameTurn.swift */; };
+		ACE95CD329FF58D5009B0C33 /* PopUpReadySetGo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE95CD229FF58D5009B0C33 /* PopUpReadySetGo.swift */; };
+		ACE95CD529FF9E62009B0C33 /* PopUpPlatyCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE95CD429FF9E62009B0C33 /* PopUpPlatyCoin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +73,7 @@
 		AC05332629F2AB18004AD470 /* SelectSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSentence.swift; sourceTree = "<group>"; };
 		AC05332829F2B20B004AD470 /* TruthLieSentenceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruthLieSentenceRepository.swift; sourceTree = "<group>"; };
 		AC16009129FECA16009E5D59 /* TruthLieTurn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruthLieTurn.swift; sourceTree = "<group>"; };
-		AC16009429FEDC97009E5D59 /* WinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinView.swift; sourceTree = "<group>"; };
+		AC16009429FEDC97009E5D59 /* GameResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultView.swift; sourceTree = "<group>"; };
 		AC16009629FEDEFA009E5D59 /* ProgressBarWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarWin.swift; sourceTree = "<group>"; };
 		AC27AE7B29F5143F005018D1 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
 		AC27AE8029F51731005018D1 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
@@ -90,6 +92,8 @@
 		ACB47D7929FA3DCA008F215F /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		ACB47D7B29FE7299008F215F /* PopUpGamePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpGamePreview.swift; sourceTree = "<group>"; };
 		ACB47D7F29FE7E59008F215F /* PopUpGameTurn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpGameTurn.swift; sourceTree = "<group>"; };
+		ACE95CD229FF58D5009B0C33 /* PopUpReadySetGo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpReadySetGo.swift; sourceTree = "<group>"; };
+		ACE95CD429FF9E62009B0C33 /* PopUpPlatyCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpPlatyCoin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,7 +348,7 @@
 		AC16009329FED9FD009E5D59 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AC16009429FEDC97009E5D59 /* WinView.swift */,
+				AC16009429FEDC97009E5D59 /* GameResultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -499,6 +503,8 @@
 			children = (
 				ACB47D7F29FE7E59008F215F /* PopUpGameTurn.swift */,
 				AC16009629FEDEFA009E5D59 /* ProgressBarWin.swift */,
+				ACE95CD229FF58D5009B0C33 /* PopUpReadySetGo.swift */,
+				ACE95CD429FF9E62009B0C33 /* PopUpPlatyCoin.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -591,8 +597,10 @@
 				AC05332929F2B20B004AD470 /* TruthLieSentenceRepository.swift in Sources */,
 				AC0532E029F23F0E004AD470 /* Persistence.swift in Sources */,
 				AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */,
+				ACE95CD329FF58D5009B0C33 /* PopUpReadySetGo.swift in Sources */,
 				AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */,
 				ACB47D7C29FE7299008F215F /* PopUpGamePreview.swift in Sources */,
+				ACE95CD529FF9E62009B0C33 /* PopUpPlatyCoin.swift in Sources */,
 				AC05331529F27CD0004AD470 /* TitleGame.swift in Sources */,
 				AC16009229FECA16009E5D59 /* TruthLieTurn.swift in Sources */,
 				AC0532D929F23F0D004AD470 /* ContentView.swift in Sources */,
@@ -600,7 +608,7 @@
 				AC05332729F2AB18004AD470 /* SelectSentence.swift in Sources */,
 				AC05331E29F2A02C004AD470 /* TwoTruthsOneLie.swift in Sources */,
 				AC05331C29F29F7B004AD470 /* InputSentences.swift in Sources */,
-				AC16009529FEDC97009E5D59 /* WinView.swift in Sources */,
+				AC16009529FEDC97009E5D59 /* GameResultView.swift in Sources */,
 				AC05331329F24AB6004AD470 /* CustomButton.swift in Sources */,
 				AC27AE8D29F51A17005018D1 /* AppFont.swift in Sources */,
 				AC27AE9529F52C27005018D1 /* Map.swift in Sources */,

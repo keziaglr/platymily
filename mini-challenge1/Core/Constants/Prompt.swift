@@ -105,6 +105,7 @@ extension Prompt {
         static let gacha = "Gacha"
         static let equip = "Equip"
         static let continueBtn = "Continue"
+        static let claimPlatycoin = "Claim Platycoin"
         
         private init() {}
     }
@@ -131,6 +132,13 @@ extension Prompt{
         static let turn = "It’s your turn!"
         static let child = "THE CHILD"
         static let parent = "THE PARENT"
+        static let tap = "Tap anywhere to continue"
+    }
+    
+    struct Platycoin{
+        static let congrats = "Congrats"
+        static let given = "You have been given"
+        static let platycoin = "PlatyCoin"
         static let tap = "Tap anywhere to continue"
     }
 }

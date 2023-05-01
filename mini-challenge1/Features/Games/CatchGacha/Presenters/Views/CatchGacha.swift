@@ -16,14 +16,16 @@ struct PhysicsCategory {
 }
 
 class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
-    
+    @ObservedObject var catchGachaOO : CatchGachaOO
     let playerTexture = SKTexture(imageNamed: "Holding_Basket")
-    let hearthTexture = SKTexture(imageNamed: "Platy")
+    let player2Texture = SKTexture(imageNamed: "Puggle_Basket")
+    let hearthTexture = SKTexture(imageNamed: "Platypus")
+    let hearth2Texture = SKTexture(imageNamed: "Puggle")
     var player: SKSpriteNode!
     var player2: SKSpriteNode!
     var ground: SKSpriteNode!
-    var rock: SKSpriteNode!
-    var bread: SKSpriteNode!
+    var bom: SKSpriteNode!
+    var gacha: SKSpriteNode!
     var bread2: SKSpriteNode!
     var hearth1: SKSpriteNode!
     var hearth2: SKSpriteNode!
@@ -31,12 +33,19 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
     var hearth21: SKSpriteNode!
     var hearth22: SKSpriteNode!
     var hearth23: SKSpriteNode!
-    var score = 0
-    var score2 = 0
+    var playerAlive = true
+    var player2Alive = true
     var highscore = 0
     let scoreLabel = SKLabelNode(text: "0")
     let scoreLabel2 = SKLabelNode(text: "0")
+    init(size: CGSize, catchGachaOO: CatchGachaOO) {
+            self.catchGachaOO = catchGachaOO
+            super.init(size: size)
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func createGround(){
         ground = SKSpriteNode(imageNamed: "Ground")
@@ -72,7 +81,7 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.collisionBitMask = 0
         addChild(player)
         
-        player2 = SKSpriteNode(texture: playerTexture, size: CGSize(width: 100, height: 100))
+        player2 = SKSpriteNode(texture: player2Texture, size: CGSize(width: 100, height: 100))
         player2.position = CGPoint(x: size.width*3/4+30, y: size.height*3/4)
         player2.zRotation = CGFloat.pi/2
         player2.physicsBody = SKPhysicsBody(rectangleOf: player.size)
@@ -99,13 +108,13 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
         addChild(hearth2)
         addChild(hearth3)
         
-        hearth21 = SKSpriteNode(texture: hearthTexture, size: CGSize(width: 25, height: 25))
+        hearth21 = SKSpriteNode(texture: hearth2Texture, size: CGSize(width: 25, height: 25))
         hearth21.position = CGPoint(x: 20, y: frame.midY * 3 / 2 - 30)
         hearth21.zRotation = CGFloat.pi * 0.5
-        hearth22 = SKSpriteNode(texture: hearthTexture, size: CGSize(width: 25, height: 25))
+        hearth22 = SKSpriteNode(texture: hearth2Texture, size: CGSize(width: 25, height: 25))
         hearth22.position = CGPoint(x: 20, y: frame.midY * 3 / 2)
         hearth22.zRotation = CGFloat.pi * 0.5
-        hearth23 = SKSpriteNode(texture: hearthTexture, size: CGSize(width: 25, height: 25))
+        hearth23 = SKSpriteNode(texture: hearth2Texture, size: CGSize(width: 25, height: 25))
         hearth23.position = CGPoint(x: 20, y: frame.midY * 3 / 2 + 30)
         hearth23.zRotation = CGFloat.pi * 0.5
         addChild(hearth21)
@@ -115,35 +124,47 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
     
     func createRock(testing: Bool) {
         let rockTexture = SKTexture(imageNamed: "Bomb")
-        rock = SKSpriteNode(texture: rockTexture)
-        rock.size = CGSize(width: 25, height: 25)
-        let randomY = testing ? CGFloat.random(in: rock.size.width...size.height/2 - rock.size.width) : CGFloat.random(in: size.height/2+rock.size.width...size.height - rock.size.width)
-        rock.zRotation = CGFloat.pi/2
-        rock.position = CGPoint(x: 0, y: randomY)
-        rock.physicsBody = SKPhysicsBody(rectangleOf: rock.size)
-        rock.physicsBody?.categoryBitMask = PhysicsCategory.rock
-        rock.physicsBody?.contactTestBitMask = PhysicsCategory.player2 | PhysicsCategory.player
-        rock.physicsBody?.velocity = CGVector(dx: 100, dy: 0)
-        rock.physicsBody?.linearDamping = 10
+        bom = SKSpriteNode(texture: rockTexture)
+        bom.size = CGSize(width: 25, height: 25)
+        let randomY = testing ? CGFloat.random(in: bom.size.width...size.height/2 - bom.size.width) : CGFloat.random(in: size.height/2+bom.size.width...size.height - bom.size.width)
+        bom.zRotation = CGFloat.pi/2
+        bom.position = CGPoint(x: 0, y: randomY)
+        bom.physicsBody = SKPhysicsBody(rectangleOf: bom.size)
+        bom.physicsBody?.categoryBitMask = PhysicsCategory.rock
+        bom.physicsBody?.contactTestBitMask = PhysicsCategory.player2 | PhysicsCategory.player
+        bom.physicsBody?.velocity = CGVector(dx: 100, dy: 0)
+        bom.physicsBody?.linearDamping = 10
 
-        addChild(rock)
+        if catchGachaOO.startGame && catchGachaOO.firstTap{
+            if testing && playerAlive{
+                addChild(bom)
+            }else if !testing && player2Alive{
+                addChild(bom)
+            }
+        }
     }
     
     func createBread(testing: Bool) {
         let breadTexture = SKTexture(imageNamed: "Gacha")
-        bread = SKSpriteNode(texture: breadTexture)
-        bread.name = "bread"
-        bread.size = CGSize(width: 25, height: 25)
-        let randomY = testing ? CGFloat.random(in: bread.size.width...size.height/2 - bread.size.width) : CGFloat.random(in: size.height/2+bread.size.width...size.height - bread.size.width)
-        bread.position = CGPoint(x: 0, y: randomY)
-        bread.zRotation = CGFloat.pi/2
-        bread.physicsBody = SKPhysicsBody(rectangleOf: bread.size)
-        bread.physicsBody?.categoryBitMask = PhysicsCategory.bread
-        bread.physicsBody?.contactTestBitMask = PhysicsCategory.player | PhysicsCategory.player2
-        bread.physicsBody?.velocity = CGVector(dx: 100, dy: 0)
-        bread.physicsBody?.linearDamping = 10
+        gacha = SKSpriteNode(texture: breadTexture)
+        gacha.name = "bread"
+        gacha.size = CGSize(width: 25, height: 25)
+        let randomY = testing ? CGFloat.random(in: gacha.size.width...size.height/2 - gacha.size.width) : CGFloat.random(in: size.height/2+gacha.size.width...size.height - gacha.size.width)
+        gacha.position = CGPoint(x: 0, y: randomY)
+        gacha.zRotation = CGFloat.pi/2
+        gacha.physicsBody = SKPhysicsBody(rectangleOf: gacha.size)
+        gacha.physicsBody?.categoryBitMask = PhysicsCategory.bread
+        gacha.physicsBody?.contactTestBitMask = PhysicsCategory.player | PhysicsCategory.player2
+        gacha.physicsBody?.velocity = CGVector(dx: 100, dy: 0)
+        gacha.physicsBody?.linearDamping = 10
 
-        addChild(bread)
+        if catchGachaOO.startGame && catchGachaOO.firstTap{
+            if testing && playerAlive{
+                addChild(gacha)
+            }else if !testing && player2Alive{
+                addChild(gacha)
+            }
+        }
 
     }
 
@@ -188,6 +209,7 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
         }
         let sequenceActionBread = SKAction.sequence([createBreadAction, waitAction])
         let repeatActionBread = SKAction.repeatForever(sequenceActionBread)
+        
         run(repeatActionBread)
         
         createGround()
@@ -202,16 +224,16 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         if contact.bodyA.categoryBitMask == PhysicsCategory.player && contact.bodyB.categoryBitMask == PhysicsCategory.bread {
             contact.bodyB.node?.removeFromParent()
-            score += 1
-            
-            scoreLabel.text = "\(score)"
+            if playerAlive{
+                catchGachaOO.scorePlaty += 1
+            }
         }
         
-        if contact.bodyA.categoryBitMask == PhysicsCategory.player2 && contact.bodyB.categoryBitMask == PhysicsCategory.bread {
+        if contact.bodyA.categoryBitMask == PhysicsCategory.player2 && contact.bodyB.categoryBitMask == PhysicsCategory.bread{
             contact.bodyB.node?.removeFromParent()
-            score2 += 1
-            
-            scoreLabel2.text = "\(score2)"
+            if player2Alive{
+                catchGachaOO.scorePuggle += 1
+            }
         }
         
         if contact.bodyA.categoryBitMask == PhysicsCategory.player && contact.bodyB.categoryBitMask == PhysicsCategory.rock {
@@ -223,8 +245,8 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
                 hearth2.removeFromParent()
             } else if hearth1.parent != nil {
                 hearth1.removeFromParent()
+                playerAlive = false
             }
-            scoreLabel.text = "\(score)"
         }
         
         if contact.bodyA.categoryBitMask == PhysicsCategory.player2 && contact.bodyB.categoryBitMask == PhysicsCategory.rock {
@@ -236,14 +258,26 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
                 hearth22.removeFromParent()
             } else if hearth21.parent != nil {
                 hearth21.removeFromParent()
+                player2Alive = false
+                
             }
-            scoreLabel2.text = "\(score)"
+        }
+        scoreLabel.text = "\(catchGachaOO.scorePlaty)"
+        scoreLabel2.text = "\(catchGachaOO.scorePuggle)"
+        
+        
+        if !playerAlive && !player2Alive{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+                self.catchGachaOO.gameOver = true
+                }
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
+            
+            catchGachaOO.firstTap = true
             
             if(location.y < self.size.height/2 - 50){
                 player.position.y = location.y
@@ -257,13 +291,47 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
 
 }
 
+class CatchGachaOO: ObservableObject {
+    @Published var startGame: Bool = true
+    @Published var firstTap: Bool = false
+    @Published var scorePlaty: Int = 0
+    @Published var scorePuggle: Int = 0
+    @Published var gameOver: Bool = false
+}
+
 struct CatchGacha: View {
+    @StateObject var catchGacha = CatchGachaOO()
     var body: some View {
-        ZStack{
-            GeometryReader { geometry in
-                SpriteView(scene: CatchGachaScene(size: CGSize(width: geometry.size.width, height: geometry.size.height)), options: [.allowsTransparency])
+        ZStack {
+            if !catchGacha.gameOver {
+                ZStack{
+                    GeometryReader { geometry in
+                        SpriteView(scene: CatchGachaScene(size: CGSize(width: geometry.size.width, height: geometry.size.height), catchGachaOO: catchGacha), options: [.allowsTransparency])
+                    }
+                    .edgesIgnoringSafeArea(.all)
+                    PopUpReadySetGo(start: $catchGacha.startGame, potrait: false)
+                        .opacity($catchGacha.startGame.wrappedValue ? 0.0 : 1.0)
+                    if catchGacha.startGame && !catchGacha.firstTap{
+                        HStack (spacing: 75){
+                            Text("Drag Platypus to move")
+                                .font(.custom(AppFont.bold, size: 16))
+                                .foregroundColor(AppColor.navy)
+                                .multilineTextAlignment(.center)
+                                .allowsHitTesting(false)
+                                .frame(width: 120)
+                            
+                            Text("Drag Puggle to move")
+                                .font(.custom(AppFont.bold, size: 16))
+                                .foregroundColor(AppColor.navy)
+                                .frame(width: 120)
+                                .multilineTextAlignment(.center)
+                                .allowsHitTesting(false)
+                        }.rotationEffect(.degrees(270))
+                    }
+                }
+            }else{
+                GameResultView(scorePlaty: catchGacha.scorePlaty, scorePuggle: catchGacha.scorePuggle, playAgain: AnyView(CatchGacha()))
             }
-            .edgesIgnoringSafeArea(.all)
         }
     }
 }

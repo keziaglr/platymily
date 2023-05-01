@@ -71,7 +71,7 @@ struct SelectSentence: View {
             
             
         }.fullScreenCover(isPresented: $showWinView) {
-            WinView(scorePlaty: truthLieSentenceViewModel.pointPlaty, scorePuggle: truthLieSentenceViewModel.pointPuggle, maxScore: 30, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())))
+            GameResultView(scorePlaty: truthLieSentenceViewModel.pointPlaty, scorePuggle: truthLieSentenceViewModel.pointPuggle, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())))
         }
     }
 }

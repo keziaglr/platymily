@@ -98,6 +98,7 @@ struct Map: View {
                             
                             
                             
+                            
                         }.padding(.vertical, 600)
                         .background(
                             Image("Map")
@@ -105,6 +106,13 @@ struct Map: View {
                                 .edgesIgnoringSafeArea(.all)
                                 .scaledToFill()
                     )
+                        Button {
+                            showPopup = true
+                             self.game = Prompt.Games.game6.title
+                             self.rules = Prompt.Games.game6.rules
+                        } label: {
+                            GameButton(type: "Up", title: Prompt.Games.game6.title, desc: "Locked")
+                        }.position(CGPoint(x: 200, y: 1100))
                     }
                 }.edgesIgnoringSafeArea(.all)
                 

@@ -21,7 +21,7 @@ struct PopUpGamePreview: View {
                     showPopup = false
                 }
             VStack{
-                Image("Platy")
+                Image("Shellfish")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 120)

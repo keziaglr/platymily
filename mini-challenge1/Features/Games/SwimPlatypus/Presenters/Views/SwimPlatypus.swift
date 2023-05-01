@@ -17,6 +17,8 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
     
     var platy:SKSpriteNode!
     var platy2:SKSpriteNode!
+    var platyScore:SKSpriteNode!
+    var platy2Score:SKSpriteNode!
     var skyColor:SKColor!
     var coralTextureUp:SKTexture!
     var coralTextureDown:SKTexture!
@@ -26,8 +28,6 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
     var canRestart = Bool()
     var scoreLabelNode:SKLabelNode!
     var scoreLabelNode2:SKLabelNode!
-    var score = NSInteger()
-    var score2 = NSInteger()
     var pipeDown: SKSpriteNode!
     
     let platyCategory: UInt32 = 1 << 0
@@ -37,6 +37,17 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
     let scoreCategory: UInt32 = 1 << 4
     let scoreCategory2: UInt32 = 1 << 5
     private var activeTouches = [UITouch:String]()
+    
+    @ObservedObject var swimPlatyOO : SwimPlatyOO
+    
+    init(size: CGSize, swimPlatyOO: SwimPlatyOO) {
+            self.swimPlatyOO = swimPlatyOO
+            super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didMove(to view: SKView) {
         view.isMultipleTouchEnabled = true
@@ -52,6 +63,7 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(moving)
         pipes = SKNode()
         moving.addChild(pipes)
+        moving.speed = 0
         
         let skyTexture = SKTexture(imageNamed: "Flappy_Background")
         skyTexture.filteringMode = .nearest
@@ -95,7 +107,7 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
         
         
         platy.physicsBody = SKPhysicsBody(circleOfRadius: platy.size.height / 2.0)
-        platy.physicsBody?.isDynamic = true
+        platy.physicsBody?.isDynamic = false
         platy.physicsBody?.allowsRotation = false
         
         platy.physicsBody?.categoryBitMask = platyCategory
@@ -104,13 +116,15 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
         
         self.addChild(platy)
         
-        platy2 = SKSpriteNode(texture: birdTexture1)
+        let birdTexture2 = SKTexture(imageNamed: "Flappy_Puggle")
+        birdTexture2.filteringMode = .nearest
+        platy2 = SKSpriteNode(texture: birdTexture2)
         
-        platy2.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
+        platy2.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.5)
         
         
         platy2.physicsBody = SKPhysicsBody(circleOfRadius: platy2.size.height / 2.0)
-        platy2.physicsBody?.isDynamic = true
+        platy2.physicsBody?.isDynamic = false
         platy2.physicsBody?.allowsRotation = false
         
         platy2.physicsBody?.categoryBitMask = platy2Category
@@ -125,97 +139,83 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
         ground.physicsBody?.categoryBitMask = worldCategory
         self.addChild(ground)
         
-        score = 0
+        platyScore = SKSpriteNode(texture: birdTexture1)
         scoreLabelNode = SKLabelNode(fontNamed:AppFont.bold)
+        platyScore.position = CGPoint( x: self.frame.midX/4+5, y: 3 * self.frame.size.height / 4 + 15 )
         scoreLabelNode.position = CGPoint( x: self.frame.midX/2, y: 3 * self.frame.size.height / 4 )
         scoreLabelNode.zPosition = 100
-        scoreLabelNode.text = String(score)
+        platyScore.zPosition = 100
+        platyScore.setScale(0.4)
+        scoreLabelNode.text = String(swimPlatyOO.scorePlaty)
         self.addChild(scoreLabelNode)
+        self.addChild(platyScore)
         
-        score2 = 0
+        platy2Score = SKSpriteNode(texture: birdTexture2)
         scoreLabelNode2 = SKLabelNode(fontNamed:AppFont.bold)
         scoreLabelNode2.position = CGPoint( x: self.frame.midX*3/2, y: 3 * self.frame.size.height / 4 )
+        platy2Score.position = CGPoint( x: self.frame.midX*3/2-40, y: 3 * self.frame.size.height / 4 + 15)
         scoreLabelNode2.zPosition = 100
-        scoreLabelNode2.text = String(score2)
+        platy2Score.zPosition = 100
+        platy2Score.setScale(0.4)
+        scoreLabelNode2.text = String(swimPlatyOO.scorePuggle)
         self.addChild(scoreLabelNode2)
+        self.addChild(platy2Score)
         
     }
     
     func spawnPipes() {
-        let pipePair = SKNode()
-        pipePair.position = CGPoint( x: self.frame.size.width + coralTextureUp.size().width * 2, y: 0 )
-        pipePair.zPosition = -10
+        if swimPlatyOO.startGame && swimPlatyOO.firstTap{
+            
+            let pipePair = SKNode()
+            pipePair.position = CGPoint( x: self.frame.size.width + coralTextureUp.size().width * 2, y: 0 )
+            pipePair.zPosition = -10
+            
+            let height = UInt32( self.frame.size.height / 10)
+            let y = Double(arc4random_uniform(height) + height)
+            
+            pipeDown = SKSpriteNode(texture: coralTextureDown)
+            pipeDown.position = CGPoint(x: 0.0, y: y + Double(pipeDown.size.height) + verticalPipeGap)
+            
+            pipeDown.physicsBody = SKPhysicsBody(rectangleOf: pipeDown.size)
+            pipeDown.physicsBody?.isDynamic = false
+            pipeDown.physicsBody?.categoryBitMask = pipeCategory
+            pipeDown.physicsBody?.contactTestBitMask = platyCategory | platy2Category
+            pipePair.addChild(pipeDown)
+            
+            let pipeUp = SKSpriteNode(texture: coralTextureUp)
+            
+            pipeUp.position = CGPoint(x: 0.0, y: y)
+            
+            pipeUp.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
+            pipeUp.physicsBody?.isDynamic = false
+            pipeUp.physicsBody?.categoryBitMask = pipeCategory
+            pipeUp.physicsBody?.contactTestBitMask = platyCategory | platy2Category
+            pipePair.addChild(pipeUp)
+            
+            let contactNode = SKNode()
+            contactNode.position = CGPoint( x: pipeDown.size.width + platy.size.width / 2, y: self.frame.midY )
+            contactNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize( width: pipeUp.size.width, height: self.frame.size.height ))
+            contactNode.physicsBody?.isDynamic = false
+            contactNode.physicsBody?.categoryBitMask = scoreCategory
+            contactNode.physicsBody?.contactTestBitMask = platyCategory
+            pipePair.addChild(contactNode)
+            
+            let contactNode2 = SKNode()
+            contactNode2.position = CGPoint( x: pipeDown.size.width + platy.size.width / 2, y: self.frame.midY )
+            contactNode2.physicsBody = SKPhysicsBody(rectangleOf: CGSize( width: pipeUp.size.width, height: self.frame.size.height ))
+            contactNode2.physicsBody?.isDynamic = false
+            contactNode2.physicsBody?.categoryBitMask = scoreCategory2
+            contactNode2.physicsBody?.contactTestBitMask = platy2Category
+            pipePair.addChild(contactNode2)
+            
+            pipePair.run(movePipesAndRemove)
+            pipes.addChild(pipePair)
+        }
         
-        let height = UInt32( self.frame.size.height / 10)
-        let y = Double(arc4random_uniform(height) + height)
         
-        pipeDown = SKSpriteNode(texture: coralTextureDown)
-        pipeDown.position = CGPoint(x: 0.0, y: y + Double(pipeDown.size.height) + verticalPipeGap)
-        
-        pipeDown.physicsBody = SKPhysicsBody(rectangleOf: pipeDown.size)
-        pipeDown.physicsBody?.isDynamic = false
-        pipeDown.physicsBody?.categoryBitMask = pipeCategory
-        pipeDown.physicsBody?.contactTestBitMask = platyCategory | platy2Category
-        pipePair.addChild(pipeDown)
-        
-        let pipeUp = SKSpriteNode(texture: coralTextureUp)
-        
-        pipeUp.position = CGPoint(x: 0.0, y: y)
-        
-        pipeUp.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
-        pipeUp.physicsBody?.isDynamic = false
-        pipeUp.physicsBody?.categoryBitMask = pipeCategory
-        pipeUp.physicsBody?.contactTestBitMask = platyCategory | platy2Category
-        pipePair.addChild(pipeUp)
-        
-        let contactNode = SKNode()
-        contactNode.position = CGPoint( x: pipeDown.size.width + platy.size.width / 2, y: self.frame.midY )
-        contactNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize( width: pipeUp.size.width, height: self.frame.size.height ))
-        contactNode.physicsBody?.isDynamic = false
-        contactNode.physicsBody?.categoryBitMask = scoreCategory
-        contactNode.physicsBody?.contactTestBitMask = platyCategory
-        pipePair.addChild(contactNode)
-        
-        let contactNode2 = SKNode()
-        contactNode2.position = CGPoint( x: pipeDown.size.width + platy.size.width / 2, y: self.frame.midY )
-        contactNode2.physicsBody = SKPhysicsBody(rectangleOf: CGSize( width: pipeUp.size.width, height: self.frame.size.height ))
-        contactNode2.physicsBody?.isDynamic = false
-        contactNode2.physicsBody?.categoryBitMask = scoreCategory2
-        contactNode2.physicsBody?.contactTestBitMask = platy2Category
-        pipePair.addChild(contactNode2)
-        
-        pipePair.run(movePipesAndRemove)
-        pipes.addChild(pipePair)
         
     }
-    
-    func resetScene (){
-        // Move bird to original position and reset velocity
-        platy.position = CGPoint(x: self.frame.size.width / 2.5, y: self.frame.midY)
-        platy.physicsBody?.velocity = CGVector( dx: 0, dy: 0 )
-        platy.physicsBody?.collisionBitMask = worldCategory | pipeCategory
-        platy.speed = 1.0
-        platy.zRotation = 0.0
-        
-        platy2.position = CGPoint(x: self.frame.size.width / 2.5, y: self.frame.midY)
-        platy2.physicsBody?.velocity = CGVector( dx: 0, dy: 0 )
-        platy2.physicsBody?.collisionBitMask = worldCategory | pipeCategory
-        platy2.speed = 1.0
-        platy2.zRotation = 0.0
-        
-        // Remove all existing pipes
-        pipes.removeAllChildren()
-        
-        // Reset _canRestart
-        canRestart = false
-        
-        // Reset score
-        score = 0
-        scoreLabelNode.text = String(score)
-        
-        // Restart animation
-        moving.speed = 1
-    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
@@ -237,25 +237,36 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
                     }
                 }
             }
+            if swimPlatyOO.startGame && platyAlive && platy2Alive{
+                swimPlatyOO.firstTap = true
+                moving.speed = 1
+                platy2.physicsBody?.isDynamic = true
+                platy.physicsBody?.isDynamic = true
+            }
         }
         
     }
     
+    
     override func update(_ currentTime: TimeInterval) {
-        /* Called before each frame is rendered */
+        
         let value = platy.physicsBody!.velocity.dy * ( platy.physicsBody!.velocity.dy < 0 ? 0.003 : 0.001 )
         platy.zRotation = min( max(-1, value), 0.5 )
         
         let value2 = platy2.physicsBody!.velocity.dy * ( platy2.physicsBody!.velocity.dy < 0 ? 0.003 : 0.001 )
         platy2.zRotation = min( max(-1, value2), 0.5 )
         
+        
+        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        
+        
         if moving.speed > 0 {
             if ( contact.bodyA.categoryBitMask & scoreCategory ) == scoreCategory || ( contact.bodyB.categoryBitMask & scoreCategory ) == scoreCategory && platyAlive {
-                score += 1
-                scoreLabelNode.text = String(score)
+                swimPlatyOO.scorePlaty += 1
+                scoreLabelNode.text = String(swimPlatyOO.scorePlaty)
                 
                 scoreLabelNode.run(SKAction.sequence([SKAction.scale(to: 1.5, duration:TimeInterval(0.1)), SKAction.scale(to: 1.0, duration:TimeInterval(0.1))]))
             }else if contact.bodyA.categoryBitMask == platyCategory || contact.bodyB.categoryBitMask == platyCategory && platyAlive {
@@ -273,8 +284,8 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
             }
             
             if ( contact.bodyA.categoryBitMask & scoreCategory2 ) == scoreCategory2 || ( contact.bodyB.categoryBitMask & scoreCategory2 ) == scoreCategory2 && platy2Alive{
-                score2 += 1
-                scoreLabelNode2.text = String(score2)
+                swimPlatyOO.scorePuggle += 1
+                scoreLabelNode2.text = String(swimPlatyOO.scorePuggle)
                 
                 scoreLabelNode2.run(SKAction.sequence([SKAction.scale(to: 1.5, duration:TimeInterval(0.1)), SKAction.scale(to: 1.0, duration:TimeInterval(0.1))]))
             }else if contact.bodyA.categoryBitMask == platy2Category || contact.bodyB.categoryBitMask == platy2Category && platy2Alive{
@@ -295,6 +306,10 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
                 moving.speed = 0
                 platy.physicsBody?.collisionBitMask = worldCategory
                 platy2.physicsBody?.collisionBitMask = worldCategory
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+                    self.swimPlatyOO.gameOver = true
+                    }
             }
             
             
@@ -303,14 +318,50 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
 }
 
 
+class SwimPlatyOO: ObservableObject {
+    @Published var startGame: Bool = false
+    @Published var firstTap: Bool = false
+    @Published var scorePlaty: Int = 0
+    @Published var scorePuggle: Int = 0
+    @Published var gameOver: Bool = false
+}
+
 struct SwimPlatypusView: View {
-    
+    @StateObject var swimPlatyOO = SwimPlatyOO()
     var body: some View {
-        ZStack{
-            GeometryReader { geometry in
-                SpriteView(scene: SwimPlatypusScene(size: CGSize(width: geometry.size.width, height: geometry.size.height)), options: [.allowsTransparency])
+        ZStack {
+            if !swimPlatyOO.gameOver {
+                ZStack{
+                    GeometryReader { geometry in
+                        SpriteView(scene: SwimPlatypusScene(size: CGSize(width: geometry.size.width, height: geometry.size.height), swimPlatyOO: swimPlatyOO), options: [.allowsTransparency])
+                    }
+                    .edgesIgnoringSafeArea(.all)
+                    if swimPlatyOO.startGame && !swimPlatyOO.firstTap{
+                        HStack (spacing: 100){
+                            Text("Tap here to move Platypus")
+                                .font(.custom(AppFont.bold, size: 16))
+                            .foregroundColor(AppColor.navy)
+                            .frame(width: 100)
+                            .multilineTextAlignment(.center)
+                            .allowsHitTesting(false)
+                        .offset(y: 200)
+                        
+                            Text("Tap here to move Puggle")
+                                .font(.custom(AppFont.bold, size: 16))
+                            .foregroundColor(AppColor.navy)
+                            .frame(width: 100)
+                            .multilineTextAlignment(.center)
+                            .allowsHitTesting(false)
+                        .offset(y: 200)
+                        
+                        }
+                    }
+                    PopUpReadySetGo(start: $swimPlatyOO.startGame, potrait: true)
+                        .opacity($swimPlatyOO.startGame.wrappedValue ? 0.0 : 1.0)
+                }
+            }else{
+                GameResultView(scorePlaty: swimPlatyOO.scorePlaty, scorePuggle: swimPlatyOO.scorePuggle, playAgain: AnyView(SwimPlatypusView()))
             }
-            .edgesIgnoringSafeArea(.all)
         }
     }
 }
