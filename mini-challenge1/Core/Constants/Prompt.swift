@@ -47,7 +47,7 @@ extension Prompt {
 extension Prompt {
     struct SwimPlatypus {
         static let title = "Swim, Platypus"
-        static let rules = "1. Player can only go **Upward** and **Downward**. \n2. The faster Player tap, the higher Platypus will swim. Once Player stop, Platypus will swim downward.\n3. If Platypus hit the ground or Coral**, Player will lose.\n4. Every time Player successfully pass the **Coral**, Player will get 1+ point.\n5. Player who has **higher point** will be nominated as the winner."
+        static let rules = "1. Player can only go Upward and Downward. \n2. The faster Player tap, the higher Platypus will swim. Once Player stop, Platypus will swim downward.\n3. If Platypus hit the ground or Coral, Player will lose.\n4. Every time Player successfully pass the Coral, Player will get 1+ point.\n5. Player who has higher point will be nominated as the winner."
         private init() {}
     }
 }
@@ -63,7 +63,7 @@ extension Prompt {
 extension Prompt {
     struct GuessTheWord {
         static let title = "Guess the Word"
-        static let rules = "1. Each Player will be given a word randomly by the system.\n2. Player would put the phone on their forehead and guess the given word by asking questions to the other Player.\n3. Other Player would have to answer with only **Yes**, **No**, and **Might Be**.\n4. If the Player guess it right, the Player will get 10+ points.\n5. The first Player to achieve **30 points** will be nominated as the winner."
+        static let rules = "1. Each Player will be given a word randomly by the system.\n2. Player would put the phone on their forehead and guess the given word by asking questions to the other Player.\n3. Other Player would have to answer with only Yes, No, and Might Be.\n4. If the Player guess it right, the Player will get 10+ points.\n5. The first Player to achieve 30 points will be nominated as the winner."
         private init() {}
     }
 }
@@ -115,6 +115,12 @@ extension Prompt {
 extension Prompt{
     struct Rules{
         static let title = "Rules & Regulations"
+    }
+    
+    struct Navbar{
+        static let map = "Map"
+        static let platyroll = "Platyroll"
+        static let profile = "Profile"
     }
 }
 

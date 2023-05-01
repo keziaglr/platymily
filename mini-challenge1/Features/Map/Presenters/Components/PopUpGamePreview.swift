@@ -10,6 +10,7 @@ import SwiftUI
 struct PopUpGamePreview: View {
     @Binding var title : String
     @State var rules : String
+    @State var image : String
     @Binding var showPopup : Bool
     var body: some View {
         
@@ -21,10 +22,11 @@ struct PopUpGamePreview: View {
                     showPopup = false
                 }
             VStack{
-                Image("Shellfish")
+                Image(image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 120)
+                    .shadow(radius: 10)
                 Text(title)
                     .font(.custom(AppFont.bold, size: 28))
                     .foregroundColor(AppColor.navy)

@@ -11,6 +11,8 @@ struct GameResultView: View {
     @State var scorePlaty: Int
     @State var scorePuggle: Int
     @State var playAgain: AnyView
+    @State var game: Int
+    @StateObject var vm = MapViewModel()
     var body: some View {
         NavigationView {
             ZStack {
@@ -82,12 +84,21 @@ struct GameResultView: View {
     }
     
     func getHigherScore() -> Int{
+        var winner = ""
+        if scorePlaty == scorePuggle {
+            winner = "Tie"
+        }else if scorePlaty > scorePuggle{
+            winner = "Platypus"
+        }else{
+            winner = "Puggle"
+        }
+        vm.updateData(index: game, winner: winner)
         return scorePlaty >= scorePuggle ? scorePlaty : scorePuggle
     }
 }
 
-struct GameResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameResultView(scorePlaty: 20, scorePuggle: 40, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())))
-    }
-}
+//struct GameResultView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GameResultView(scorePlaty: 20, scorePuggle: 40, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())))
+//    }
+//}

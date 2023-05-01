@@ -9,30 +9,48 @@ import SwiftUI
 
 struct NavBar: View {
     var body: some View {
-        ZStack(alignment: .leading) {
-            HStack{
-                IconNavBar()
-                IconNavBar()
-                IconNavBar()
+            ZStack(alignment: .leading) {
+                HStack{
+                    NavigationLink {
+                        Map()
+                    }label: {
+                        IconNavBar(title: Prompt.Navbar.map)
+                    }
+                    NavigationLink {
+//                        Map()
+                    }label: {
+                        IconNavBar(title: Prompt.Navbar.platyroll)
+                    }
+                    NavigationLink {
+//                        Map()
+                    }label: {
+                        IconNavBar(title: Prompt.Navbar.profile)
+                    }
+                }
+                    
             }
-                
-        }
-        .padding(.horizontal, 20)
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(AppColor.orange)
-                .shadow(radius: 10)
-            )
+            .padding(.horizontal, 20)
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(AppColor.orange)
+                    .shadow(radius: 10)
+        )
     }
 }
 
 struct IconNavBar: View{
+    @State var title : String
     var body: some View {
-        Circle()
-            .stroke(AppColor.white, lineWidth: 3)
-            .frame(width: 46)
-            .padding(.vertical, 10)
-            .padding(.horizontal, 30)
+        VStack {
+            Circle()
+                .stroke(AppColor.white, lineWidth: 3)
+                .frame(width: 35)
+            .padding(.horizontal, 35)
+            Text(title)
+                .foregroundColor(AppColor.white)
+                .font(.custom(AppFont.bold, size: 14))
+                .offset(y:-7)
+        }.padding(.top, 10)
     }
 }
 

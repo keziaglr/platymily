@@ -360,7 +360,7 @@ struct SwimPlatypusView: View {
                         .opacity($swimPlatyOO.startGame.wrappedValue ? 0.0 : 1.0)
                 }
             }else{
-                GameResultView(scorePlaty: swimPlatyOO.scorePlaty, scorePuggle: swimPlatyOO.scorePuggle, playAgain: AnyView(SwimPlatypusView()))
+                GameResultView(scorePlaty: swimPlatyOO.scorePlaty, scorePuggle: swimPlatyOO.scorePuggle, playAgain: AnyView(SwimPlatypusView()), game: 0)
             }
         }
     }

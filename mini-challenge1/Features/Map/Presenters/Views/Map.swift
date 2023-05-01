@@ -11,6 +11,8 @@ struct Map: View {
     @State private var showPopup = false
     @State var game = "Game Name"
     @State var rules = "Rules"
+    @State var image = "1"
+    @StateObject var vm = MapViewModel()
     var body: some View {
         
         NavigationView {
@@ -24,80 +26,47 @@ struct Map: View {
 
                             LineBetweenTwoPoints(
                                 start:CGPoint(x: 130, y: -245),
-                                end: CGPoint(x: 270, y: -185),
+                                end: CGPoint(x: 270, y: -200),
                                 control1: CGPoint(x: 180, y: -190),
                                 control2: CGPoint(x: 240, y: -230))
+                            .opacity(vm.savedEntities[1].status ? 1.0 : 0)
                             
                             LineBetweenTwoPoints(
-                                start:CGPoint(x: 270, y: -100),
+                                start:CGPoint(x: 270, y: -90),
                                 end: CGPoint(x: 130, y: -50),
                                 control1: CGPoint(x: 250, y: -25),
                                 control2: CGPoint(x: 160, y: -90))
+                            .opacity(vm.savedEntities[2].status ? 1.0 : 0)
                             
                             LineBetweenTwoPoints(
                                 start:CGPoint(x: 130, y: 55),
-                                end: CGPoint(x: 270, y: 110),
+                                end: CGPoint(x: 260, y: 90),
                                 control1: CGPoint(x: 180, y: 110),
                                 control2: CGPoint(x: 240, y: 65))
+                            .opacity(vm.savedEntities[3].status ? 1.0 : 0)
                             
                             LineBetweenTwoPoints(
-                                start:CGPoint(x: 270, y: 200),
+                                start:CGPoint(x: 270, y: 210),
                                 end: CGPoint(x: 130, y: 250),
                                 control1: CGPoint(x: 250, y: 275),
                                 control2: CGPoint(x: 160, y: 210))
+                            .opacity(vm.savedEntities[4].status ? 1.0 : 0)
                             
                             
                             LineBetweenTwoPoints(
-                                start:CGPoint(x: 130, y: 350),
-                                end: CGPoint(x: 200, y: 430),
+                                start:CGPoint(x: 130, y: 355),
+                                end: CGPoint(x: 200, y: 410),
                                 control1: CGPoint(x: 140, y: 400),
                                 control2: CGPoint(x: 180, y: 375))
+                            .opacity(vm.savedEntities[5].status ? 1.0 : 0)
                             
                             
-                            Button {
-                               showPopup = true
-                                self.game = Prompt.Games.game1.title
-                                self.rules = Prompt.Games.game1.rules
-                            } label: {
-                                GameButton(type: "Left", title: Prompt.Games.game1.title, desc: "Locked")
-                            }.position(CGPoint(x: 200, y: -300))
-                            
-                            Button {
-                                showPopup = true
-                                 self.game = Prompt.Games.game2.title
-                                 self.rules = Prompt.Games.game2.rules
-                            } label: {
-                                GameButton(type: "Right", title: Prompt.Games.game2.title, desc: "Locked")
-                            }.position(CGPoint(x: 200, y: -150))
-                            
-                            Button {
-                                showPopup = true
-                                 self.game = Prompt.Games.game3.title
-                                 self.rules = Prompt.Games.game3.rules
-                            } label: {
-                                GameButton(type: "Left", title: Prompt.Games.game3.title, desc: "Locked")
-                                
-                            }.position(CGPoint(x: 200, y: 0))
-                            
-                            Button {
-                                showPopup = true
-                                 self.game = Prompt.Games.game4.title
-                                 self.rules = Prompt.Games.game4.rules
-                            } label: {
-                                GameButton(type: "Right", title: Prompt.Games.game4.title, desc: "Locked")
-                            }.position(CGPoint(x: 200, y: 150))
-                            
-                            
-                            Button {
-                                showPopup = true
-                                 self.game = Prompt.Games.game5.title
-                                 self.rules = Prompt.Games.game5.rules
-                            } label: {
-                                GameButton(type: "Left", title: Prompt.Games.game5.title, desc: "Locked")
-                            }.position(CGPoint(x: 200, y: 300))
-                            
-                            
-                            
+                            GameButtonAction(index: 0, showPopup: $showPopup, game: $game, rules: $rules, image: $image)
+                            GameButtonAction(index: 1, showPopup: $showPopup, game: $game, rules: $rules, image: $image)
+                            GameButtonAction(index: 2, showPopup: $showPopup, game: $game, rules: $rules, image: $image)
+                            GameButtonAction(index: 3, showPopup: $showPopup, game: $game, rules: $rules, image: $image)
+                            GameButtonAction(index: 4, showPopup: $showPopup, game: $game, rules: $rules, image: $image)
+                           
                             
                         }.padding(.vertical, 600)
                         .background(
@@ -106,13 +75,7 @@ struct Map: View {
                                 .edgesIgnoringSafeArea(.all)
                                 .scaledToFill()
                     )
-                        Button {
-                            showPopup = true
-                             self.game = Prompt.Games.game6.title
-                             self.rules = Prompt.Games.game6.rules
-                        } label: {
-                            GameButton(type: "Up", title: Prompt.Games.game6.title, desc: "Locked")
-                        }.position(CGPoint(x: 200, y: 1100))
+                        GameButtonAction(index: 5, showPopup: $showPopup, game: $game, rules: $rules, image: $image)
                     }
                 }.edgesIgnoringSafeArea(.all)
                 
@@ -124,11 +87,11 @@ struct Map: View {
                     NavBar()
                 }
                 if showPopup{
-                    PopUpGamePreview(title: $game, rules: rules, showPopup: $showPopup)
+                    PopUpGamePreview(title: $game, rules: rules, image: image, showPopup: $showPopup)
                 }
                     
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 

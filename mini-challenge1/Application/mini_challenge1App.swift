@@ -9,11 +9,10 @@ import SwiftUI
 
 @main
 struct mini_challenge1App: App {
-    let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())
+            Map()
         }
     }
 }

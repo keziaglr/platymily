@@ -16,8 +16,7 @@ struct SelectSentence: View {
     @State var showColor = false
     @State var shuffledSentences : [TruthLieSentence]
     @State var isCorrect = false
-    @State var showWinView = false
-    
+    @State var showWinView = false    
     var body: some View {
         VStack{
             Text(Prompt.TwoTruthsOneLie.chooseLie)
@@ -71,7 +70,7 @@ struct SelectSentence: View {
             
             
         }.fullScreenCover(isPresented: $showWinView) {
-            GameResultView(scorePlaty: truthLieSentenceViewModel.pointPlaty, scorePuggle: truthLieSentenceViewModel.pointPuggle, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())))
+            GameResultView(scorePlaty: truthLieSentenceViewModel.pointPlaty, scorePuggle: truthLieSentenceViewModel.pointPuggle, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())), game: 4)
         }
     }
 }

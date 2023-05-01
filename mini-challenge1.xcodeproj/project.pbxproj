@@ -8,11 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AC0532D729F23F0D004AD470 /* mini_challenge1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0532D629F23F0D004AD470 /* mini_challenge1App.swift */; };
-		AC0532D929F23F0D004AD470 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0532D829F23F0D004AD470 /* ContentView.swift */; };
 		AC0532DB29F23F0E004AD470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0532DA29F23F0E004AD470 /* Assets.xcassets */; };
 		AC0532DE29F23F0E004AD470 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0532DD29F23F0E004AD470 /* Preview Assets.xcassets */; };
-		AC0532E029F23F0E004AD470 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0532DF29F23F0E004AD470 /* Persistence.swift */; };
-		AC0532E329F23F0E004AD470 /* mini_challenge1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC0532E129F23F0E004AD470 /* mini_challenge1.xcdatamodeld */; };
 		AC0532EF29F24117004AD470 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0532EE29F24117004AD470 /* AppColor.swift */; };
 		AC0532FA29F2428A004AD470 /* Prompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0532F929F2428A004AD470 /* Prompt.swift */; };
 		AC0532FC29F242AE004AD470 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0532FB29F242AE004AD470 /* Error.swift */; };
@@ -48,16 +45,15 @@
 		ACB47D8029FE7E59008F215F /* PopUpGameTurn.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7F29FE7E59008F215F /* PopUpGameTurn.swift */; };
 		ACE95CD329FF58D5009B0C33 /* PopUpReadySetGo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE95CD229FF58D5009B0C33 /* PopUpReadySetGo.swift */; };
 		ACE95CD529FF9E62009B0C33 /* PopUpPlatyCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE95CD429FF9E62009B0C33 /* PopUpPlatyCoin.swift */; };
+		ACE95CD929FFA9C4009B0C33 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE95CD829FFA9C4009B0C33 /* MapViewModel.swift */; };
+		ACE95CE32A00129B009B0C33 /* MC1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACE95CE12A00129B009B0C33 /* MC1.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC0532D329F23F0D004AD470 /* mini-challenge1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mini-challenge1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0532D629F23F0D004AD470 /* mini_challenge1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mini_challenge1App.swift; sourceTree = "<group>"; };
-		AC0532D829F23F0D004AD470 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AC0532DA29F23F0E004AD470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC0532DD29F23F0E004AD470 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AC0532DF29F23F0E004AD470 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		AC0532E229F23F0E004AD470 /* mini_challenge1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mini_challenge1.xcdatamodel; sourceTree = "<group>"; };
 		AC0532EE29F24117004AD470 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		AC0532F929F2428A004AD470 /* Prompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompt.swift; sourceTree = "<group>"; };
 		AC0532FB29F242AE004AD470 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -94,6 +90,8 @@
 		ACB47D7F29FE7E59008F215F /* PopUpGameTurn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpGameTurn.swift; sourceTree = "<group>"; };
 		ACE95CD229FF58D5009B0C33 /* PopUpReadySetGo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpReadySetGo.swift; sourceTree = "<group>"; };
 		ACE95CD429FF9E62009B0C33 /* PopUpPlatyCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpPlatyCoin.swift; sourceTree = "<group>"; };
+		ACE95CD829FFA9C4009B0C33 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		ACE95CE22A00129B009B0C33 /* MC1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MC1.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +128,6 @@
 				AC0532EB29F24089004AD470 /* Features */,
 				AC0532EA29F24084004AD470 /* Core */,
 				AC0532E929F23F9E004AD470 /* Application */,
-				AC0532D829F23F0D004AD470 /* ContentView.swift */,
-				AC0532DF29F23F0E004AD470 /* Persistence.swift */,
-				AC0532E129F23F0E004AD470 /* mini_challenge1.xcdatamodeld */,
 				AC0532DC29F23F0E004AD470 /* Preview Content */,
 			);
 			path = "mini-challenge1";
@@ -275,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				AC05330629F24385004AD470 /* CoreDataManager.swift */,
+				ACE95CE12A00129B009B0C33 /* MC1.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -409,6 +405,8 @@
 		AC27AE9029F52806005018D1 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				ACE95CD729FFA9A4009B0C33 /* Models */,
+				ACE95CD629FFA999009B0C33 /* ViewModels */,
 				AC27AE9129F52818005018D1 /* Presenters */,
 			);
 			path = Map;
@@ -509,6 +507,21 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		ACE95CD629FFA999009B0C33 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ACE95CD829FFA9C4009B0C33 /* MapViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ACE95CD729FFA9A4009B0C33 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -587,7 +600,6 @@
 				AC27AE7C29F5143F005018D1 /* Prologue.swift in Sources */,
 				AC05330329F24311004AD470 /* NetworkManager.swift in Sources */,
 				ACB47D7A29FA3DCA008F215F /* NavBar.swift in Sources */,
-				AC0532E329F23F0E004AD470 /* mini_challenge1.xcdatamodeld in Sources */,
 				AC05332129F2A3E4004AD470 /* TruthLieSentence.swift in Sources */,
 				AC27AE9729F5309A005018D1 /* GameButton.swift in Sources */,
 				AC0532FA29F2428A004AD470 /* Prompt.swift in Sources */,
@@ -595,15 +607,15 @@
 				AC0532EF29F24117004AD470 /* AppColor.swift in Sources */,
 				AC05331129F24692004AD470 /* CustomTextField.swift in Sources */,
 				AC05332929F2B20B004AD470 /* TruthLieSentenceRepository.swift in Sources */,
-				AC0532E029F23F0E004AD470 /* Persistence.swift in Sources */,
+				ACE95CD929FFA9C4009B0C33 /* MapViewModel.swift in Sources */,
 				AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */,
 				ACE95CD329FF58D5009B0C33 /* PopUpReadySetGo.swift in Sources */,
 				AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */,
 				ACB47D7C29FE7299008F215F /* PopUpGamePreview.swift in Sources */,
 				ACE95CD529FF9E62009B0C33 /* PopUpPlatyCoin.swift in Sources */,
 				AC05331529F27CD0004AD470 /* TitleGame.swift in Sources */,
+				ACE95CE32A00129B009B0C33 /* MC1.xcdatamodeld in Sources */,
 				AC16009229FECA16009E5D59 /* TruthLieTurn.swift in Sources */,
-				AC0532D929F23F0D004AD470 /* ContentView.swift in Sources */,
 				AC05332529F2A4BD004AD470 /* TruthLieSentenceViewModel.swift in Sources */,
 				AC05332729F2AB18004AD470 /* SelectSentence.swift in Sources */,
 				AC05331E29F2A02C004AD470 /* TwoTruthsOneLie.swift in Sources */,
@@ -820,13 +832,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		AC0532E129F23F0E004AD470 /* mini_challenge1.xcdatamodeld */ = {
+		ACE95CE12A00129B009B0C33 /* MC1.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				AC0532E229F23F0E004AD470 /* mini_challenge1.xcdatamodel */,
+				ACE95CE22A00129B009B0C33 /* MC1.xcdatamodel */,
 			);
-			currentVersion = AC0532E229F23F0E004AD470 /* mini_challenge1.xcdatamodel */;
-			path = mini_challenge1.xcdatamodeld;
+			currentVersion = ACE95CE22A00129B009B0C33 /* MC1.xcdatamodel */;
+			path = MC1.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

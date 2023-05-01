@@ -330,7 +330,7 @@ struct CatchGacha: View {
                     }
                 }
             }else{
-                GameResultView(scorePlaty: catchGacha.scorePlaty, scorePuggle: catchGacha.scorePuggle, playAgain: AnyView(CatchGacha()))
+                GameResultView(scorePlaty: catchGacha.scorePlaty, scorePuggle: catchGacha.scorePuggle, playAgain: AnyView(CatchGacha()), game: 3)
             }
         }
     }
