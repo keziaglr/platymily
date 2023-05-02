@@ -10,14 +10,15 @@ import SwiftUI
 struct PopUpPlatyCoin: View {
     @Binding var showPopup: Bool
     @State var coinAmount: Int
+    @StateObject var vm = ProfileViewModel()
     var body: some View {
         ZStack{
             Rectangle()
                 .fill(Color.black.opacity(0.5))
                 .edgesIgnoringSafeArea(.all)
-                .onTapGesture {
-                    showPopup = false
-                }
+//                .onTapGesture {
+//                    showPopup = false
+//                }
             
             VStack{
                 Text(Prompt.Platycoin.congrats)
@@ -36,14 +37,15 @@ struct PopUpPlatyCoin: View {
                     .foregroundColor(AppColor.white)
                     .textCase(.uppercase)
                 Button {
-                    //action here
+                    showPopup = false
+                    vm.getCoin(coin: Int64(coinAmount))
                 } label: {
                     RoundedButton(text: Prompt.Button.claimPlatycoin)
                 }
-                Text(Prompt.GameTurn.tap)
-                    .offset(CGSize(width: 0, height: 50))
-                    .font(.custom(AppFont.medium, size: 14))
-                    .foregroundColor(AppColor.white)
+//                Text(Prompt.GameTurn.tap)
+//                    .offset(CGSize(width: 0, height: 50))
+//                    .font(.custom(AppFont.medium, size: 14))
+//                    .foregroundColor(AppColor.white)
             }
             .padding(20)
             .frame(width: 350, height: 350)

@@ -32,11 +32,11 @@ struct PopUpGamePreview: View {
                     .foregroundColor(AppColor.navy)
                 VStack (alignment: .leading){
                     Text(Prompt.Rules.title)
-                        .font(.custom(AppFont.bold, size: 14))
+                        .font(.custom(AppFont.bold, size: 16))
                         .foregroundColor(AppColor.navy)
                         .padding(.bottom, 5)
                     Text(rules)
-                        .font(.custom(AppFont.regular, size: 12))
+                        .font(.custom(AppFont.regular, size: 14))
                         .foregroundColor(AppColor.navy)
                         .multilineTextAlignment(.leading)
                 }.padding(.vertical, 5)
@@ -53,7 +53,7 @@ struct PopUpGamePreview: View {
                 }
             }
             .padding(20)
-            .frame(width: 350, height: 500)
+            .frame(width: 350, height: 550)
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(AppColor.white, lineWidth: 3)
@@ -61,7 +61,7 @@ struct PopUpGamePreview: View {
                     .background(
                         Image("Background")
                             .resizable()
-                            .frame(width: 350, height: 500)
+                            .frame(width: 350, height: 550)
                             .scaledToFill()
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                     )

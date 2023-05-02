@@ -63,7 +63,15 @@ class MapViewModel: ObservableObject{
         }
     }
     
-    func updateData(index: Int, winner: String){
+    func updateData(index: Int, scorePlaty: Int, scorePuggle: Int){
+        var winner = ""
+        if scorePlaty == scorePuggle {
+            winner = "Tie"
+        }else if scorePlaty > scorePuggle{
+            winner = "Platypus"
+        }else{
+            winner = "Puggle"
+        }
         savedEntities[index].winner = winner
         
         if index != 5{
@@ -71,30 +79,5 @@ class MapViewModel: ObservableObject{
         }
         saveData()
     }
+    
 }
-
-//struct MapView: View {
-//    @StateObject var vm = MapViewModel()
-//    
-//    var body: some View {
-//        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-//            .onTapGesture {
-//                print("hi")
-//                vm.addData(name: "Test", winner: "kezia", status: false)
-//            }
-//        Text(vm.savedEntities[0].name ?? "No Game")
-//        List{
-//            ForEach(vm.savedEntities){
-//                entity in
-//                
-//                Text(entity.name ?? "NO NAME")
-//            }
-//        }
-//    }
-//}
-//
-//struct MapViewModel_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MapView()
-//    }
-//}

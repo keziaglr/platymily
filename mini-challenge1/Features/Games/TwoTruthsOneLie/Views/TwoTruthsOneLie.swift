@@ -8,49 +8,50 @@
 import SwiftUI
 
 struct TwoTruthsOneLie: View {
-    @State private var name = ""
-    @State private var selectedP = false
-    @State private var selectedC = true
     @ObservedObject var truthLieSentenceViewModel: TruthLieSentenceViewModel
-    @State private var movePage = false
+    @State var movePage = 1
     @State var platyTurn : Bool = true
     @State var showPopup : Bool = true
     var body: some View {
         NavigationView {
-            ZStack{
-                
-                Image("Background")
-                    .resizable()
-                    .ignoresSafeArea()
-                VStack{
-                    TitleGame(title: Prompt.TwoTruthsOneLie.title)
-                    .padding(.bottom, 30)
+            if movePage == 1 || movePage == 2 {
+                ZStack{
                     
-                    HStack {
-                        TruthLieTurn(role: Prompt.Role.platy, truthLieSentenceViewModel: truthLieSentenceViewModel)
-                            .opacity(platyTurn ? 1.0 : 0.5)
+                    Image("Background")
+                        .resizable()
+                        .ignoresSafeArea()
+                    VStack{
+                        TitleGame(title: Prompt.TwoTruthsOneLie.title)
+                        .padding(.bottom, 30)
+                        
+                        HStack {
+                            TruthLieTurn(role: Prompt.Role.platy, truthLieSentenceViewModel: truthLieSentenceViewModel)
+                                .opacity(platyTurn ? 1.0 : 0.5)
+                            Spacer()
+                            TruthLieTurn(role: Prompt.Role.puggle, truthLieSentenceViewModel: truthLieSentenceViewModel)
+                                .opacity(platyTurn ? 0.5 : 1.0)
+                        }.padding(.horizontal, 20)
+                        
+                        if movePage == 1{
+                            InputSentences(truthLieSentenceViewModel: truthLieSentenceViewModel, movePage: $movePage, showPopup: $showPopup, platyTurn: $platyTurn)
+                                .frame(minWidth: 300)
+                        }else if movePage == 2{
+                            SelectSentence(truthLieSentenceViewModel: truthLieSentenceViewModel, movePage: $movePage, platyTurn: $platyTurn, showPopup: $showPopup, shuffledSentences: truthLieSentenceViewModel.sentenceRepository.savedSentences.shuffled())
+                                .frame(minWidth: 300)
+                        }
                         Spacer()
-                        TruthLieTurn(role: Prompt.Role.puggle, truthLieSentenceViewModel: truthLieSentenceViewModel)
-                            .opacity(platyTurn ? 0.5 : 1.0)
-                    }.padding(.horizontal, 20)
-                    
-                    if !movePage{
-                        InputSentences(truthLieSentenceViewModel: truthLieSentenceViewModel, movePage: $movePage)
-                            .frame(minWidth: 300)
-                    }else{
-                        SelectSentence(truthLieSentenceViewModel: truthLieSentenceViewModel, movePage: $movePage, platyTurn: $platyTurn, showPopup: $showPopup, shuffledSentences: truthLieSentenceViewModel.sentenceRepository.savedSentences.shuffled())
-                            .frame(minWidth: 300)
+                        NavBar()
+                        
+                        
                     }
-                    Spacer()
-                    NavBar()
-                    
-                    
+                    if showPopup{
+                        PopUpGameTurn(platyTurn: platyTurn, showPopup: $showPopup)
+                    }
                 }
-                if showPopup{
-                    PopUpGameTurn(platyTurn: platyTurn, showPopup: $showPopup)
-                }
+            }else{
+                GameResultView(scorePlaty: truthLieSentenceViewModel.pointPlaty, scorePuggle: truthLieSentenceViewModel.pointPuggle, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())), game: 4)
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 

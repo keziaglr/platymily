@@ -80,12 +80,15 @@ struct Map: View {
                 }.edgesIgnoringSafeArea(.all)
                 
                     
-
                 VStack{
                     FloatingLevel()
+                        .padding(.top, 20)
+                    Spacer()
+                }
+                VStack{
                     Spacer()
                     NavBar()
-                }
+                }.ignoresSafeArea()
                 if showPopup{
                     PopUpGamePreview(title: $game, rules: rules, image: image, showPopup: $showPopup)
                 }

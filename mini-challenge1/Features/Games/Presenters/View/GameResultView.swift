@@ -12,22 +12,30 @@ struct GameResultView: View {
     @State var scorePuggle: Int
     @State var playAgain: AnyView
     @State var game: Int
-    @StateObject var vm = MapViewModel()
+    @State var showPopup : Bool = true
+    @StateObject var gvm = GameViewModel()
+    @StateObject var mvm = MapViewModel()
+    @StateObject var pvm = ProfileViewModel()
     var body: some View {
         NavigationView {
             ZStack {
                 Image("Background")
                     .resizable()
                     .ignoresSafeArea()
-                
+                    .onAppear{
+                        if gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game) != 0{
+                            pvm.levelUp(index: game)
+                            mvm.updateData(index: game, scorePlaty: scorePlaty, scorePuggle: scorePuggle)
+                        }
+                    }
                 VStack {
                     Spacer()
                     NavBar()
-                }
+                }.ignoresSafeArea()
                 if scorePlaty != scorePuggle {
                     VStack{
                         Text(Prompt.GameResult.win)
-                            .font(.custom(AppFont.bold, size: 14))
+                            .font(.custom(AppFont.bold, size: 16))
                             .foregroundColor(AppColor.white)
                         Text(scorePlaty > scorePuggle ? Prompt.Role.platy : Prompt.Role.puggle)
                             .font(.custom(AppFont.bold, size: 42))
@@ -37,8 +45,8 @@ struct GameResultView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 250)
-                        ProgressBarWin(score: scorePlaty, maxScore: getHigherScore(),platy: true)
-                        ProgressBarWin(score: scorePuggle, maxScore: getHigherScore(), platy: false)
+                        ProgressBarWin(score: scorePlaty, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game),platy: true)
+                        ProgressBarWin(score: scorePuggle, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game), platy: false)
                         NavigationLink {
                             playAgain
                         } label: {
@@ -50,7 +58,7 @@ struct GameResultView: View {
                 }else{
                     VStack{
                         Text(Prompt.GameResult.tie)
-                            .font(.custom(AppFont.bold, size: 14))
+                            .font(.custom(AppFont.bold, size: 16))
                             .foregroundColor(AppColor.white)
                         Text(Prompt.GameResult.tieWinner)
                             .font(.custom(AppFont.bold, size: 42))
@@ -65,11 +73,11 @@ struct GameResultView: View {
                             Image(Prompt.Role.puggle)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .offset(x: 25, y:10)
-                            .frame(width: 120)
+                                .offset(x: 25, y:25)
+                            .frame(width: 150)
                         }
-                        ProgressBarWin(score: scorePlaty, maxScore: getHigherScore(),platy: true)
-                        ProgressBarWin(score: scorePuggle, maxScore: getHigherScore(), platy: false)
+                        ProgressBarWin(score: scorePlaty, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game),platy: true)
+                        ProgressBarWin(score: scorePuggle, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game), platy: false)
                         NavigationLink {
                             playAgain
                         } label: {
@@ -79,26 +87,18 @@ struct GameResultView: View {
 
                     }.padding(.bottom, 100)
                 }
+                
+                if gvm.coin != 0 && gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game) != 0 && showPopup{
+                    PopUpPlatyCoin(showPopup: $showPopup, coinAmount: gvm.coin)
+                }
             }
         }.navigationBarBackButtonHidden(true)
     }
-    
-    func getHigherScore() -> Int{
-        var winner = ""
-        if scorePlaty == scorePuggle {
-            winner = "Tie"
-        }else if scorePlaty > scorePuggle{
-            winner = "Platypus"
-        }else{
-            winner = "Puggle"
-        }
-        vm.updateData(index: game, winner: winner)
-        return scorePlaty >= scorePuggle ? scorePlaty : scorePuggle
-    }
+
 }
 
-//struct GameResultView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GameResultView(scorePlaty: 20, scorePuggle: 40, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())))
-//    }
-//}
+struct GameResultView_Previews: PreviewProvider {
+    static var previews: some View {
+        GameResultView(scorePlaty: 20, scorePuggle: 20, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())), game: 1)
+    }
+}

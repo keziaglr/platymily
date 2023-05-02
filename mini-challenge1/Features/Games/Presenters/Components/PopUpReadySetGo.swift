@@ -37,7 +37,7 @@ struct PopUpReadySetGo: View {
             }.rotationEffect(.degrees(potrait ? 0 : 270))
             .onAppear {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                    withAnimation(Animation.easeInOut(duration: 1.0)) {
+                    withAnimation(Animation.easeInOut(duration: 0.5)) {
                         if self.readyOpacity == 0.2 {
                             self.readyOpacity = 1.0
                         } else if self.setOpacity == 0.2 {
@@ -48,7 +48,7 @@ struct PopUpReadySetGo: View {
                             self.readyOpacity = 0.1
                             self.goOpacity = 1.0
                             self.timer?.invalidate()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 self.start = true
                             }
                         }

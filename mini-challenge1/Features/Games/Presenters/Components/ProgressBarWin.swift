@@ -34,9 +34,10 @@ struct ProgressBarWin: View {
                 }.zIndex(-2)
                 Text(platy ? Prompt.Role.platy : Prompt.Role.puggle)
                     .font(.custom(AppFont.bold, size: 16))
-                    .foregroundColor(score == 0 || maxScore/score < 1/2 ? AppColor.orange : AppColor.white)
+                    .foregroundColor(getColor())
                     .offset(x: -130)
                     .textCase(.uppercase)
+                    .multilineTextAlignment(.leading)
                 Text("\(score)")
                     .font(.custom(AppFont.bold, size: 21))
                     .foregroundColor(maxScore == score ? AppColor.white : AppColor.orange)
@@ -52,10 +53,22 @@ struct ProgressBarWin: View {
         let percentage = value / maxValue
         return width *  CGFloat(percentage)
     }
+    
+    func getColor()-> Color{
+        if score == 0 && maxScore == 0{
+            return AppColor.white
+        }else if score == 0 && maxScore != 0{
+            return AppColor.orange
+        }else if score/maxScore > 1/2{
+            return AppColor.white
+        }else{
+            return AppColor.orange
+        }
+    }
 }
 
-//struct ProgressBarWin_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProgressBarWin(score: 20, maxScore: 20)
-//    }
-//}
+struct ProgressBarWin_Previews: PreviewProvider {
+    static var previews: some View {
+        ProgressBarWin(score: 20, maxScore: 20, platy: true)
+    }
+}

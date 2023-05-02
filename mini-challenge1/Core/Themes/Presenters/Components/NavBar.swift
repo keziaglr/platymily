@@ -14,38 +14,40 @@ struct NavBar: View {
                     NavigationLink {
                         Map()
                     }label: {
-                        IconNavBar(title: Prompt.Navbar.map)
+                        IconNavBar(title: Prompt.Navbar.map, image: "Icon_Map")
                     }
                     NavigationLink {
 //                        Map()
                     }label: {
-                        IconNavBar(title: Prompt.Navbar.platyroll)
+                        IconNavBar(title: Prompt.Navbar.platyroll, image: "Icon_Platyroll")
                     }
                     NavigationLink {
 //                        Map()
                     }label: {
-                        IconNavBar(title: Prompt.Navbar.profile)
+                        IconNavBar(title: Prompt.Navbar.profile, image: "Icon_Profile")
                     }
                 }
                     
-            }
-            .padding(.horizontal, 20)
+            }.padding(.bottom, 20)
             .background(
-                RoundedRectangle(cornerRadius: 20)
+                Rectangle()
                     .fill(AppColor.orange)
                     .shadow(radius: 10)
-        )
+                    .frame(width: UIScreen.main.bounds.width)
+                )
     }
 }
 
 struct IconNavBar: View{
     @State var title : String
+    @State var image : String
     var body: some View {
         VStack {
-            Circle()
-                .stroke(AppColor.white, lineWidth: 3)
-                .frame(width: 35)
-            .padding(.horizontal, 35)
+            Image(image)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 30)
+            .padding(.horizontal, 50)
             Text(title)
                 .foregroundColor(AppColor.white)
                 .font(.custom(AppFont.bold, size: 14))

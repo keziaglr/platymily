@@ -47,6 +47,8 @@
 		ACE95CD529FF9E62009B0C33 /* PopUpPlatyCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE95CD429FF9E62009B0C33 /* PopUpPlatyCoin.swift */; };
 		ACE95CD929FFA9C4009B0C33 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE95CD829FFA9C4009B0C33 /* MapViewModel.swift */; };
 		ACE95CE32A00129B009B0C33 /* MC1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACE95CE12A00129B009B0C33 /* MC1.xcdatamodeld */; };
+		ACEE61DC2A00CB6800A41E6A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE61DB2A00CB6800A41E6A /* ProfileViewModel.swift */; };
+		ACEE61E02A0161B100A41E6A /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE61DF2A0161B100A41E6A /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,8 @@
 		ACE95CD429FF9E62009B0C33 /* PopUpPlatyCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpPlatyCoin.swift; sourceTree = "<group>"; };
 		ACE95CD829FFA9C4009B0C33 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		ACE95CE22A00129B009B0C33 /* MC1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MC1.xcdatamodel; sourceTree = "<group>"; };
+		ACEE61DB2A00CB6800A41E6A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		ACEE61DF2A0161B100A41E6A /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 		AC0532EB29F24089004AD470 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				ACEE61D92A00CB4E00A41E6A /* Profile */,
 				AC27AE9029F52806005018D1 /* Map */,
 				AC27AE7329F510D8005018D1 /* Prologue */,
 				AC05330A29F24545004AD470 /* Games */,
@@ -278,6 +283,7 @@
 		AC05330A29F24545004AD470 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				ACEE61DD2A01617200A41E6A /* ViewModels */,
 				ACB47D7D29FE7E38008F215F /* Presenters */,
 				AC27AE9D29F569F5005018D1 /* CatchGacha */,
 				AC27AE9829F548FF005018D1 /* SwimPlatypus */,
@@ -522,6 +528,30 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		ACEE61D92A00CB4E00A41E6A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				ACEE61DA2A00CB5800A41E6A /* ViewModels */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		ACEE61DA2A00CB5800A41E6A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ACEE61DB2A00CB6800A41E6A /* ProfileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ACEE61DD2A01617200A41E6A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ACEE61DF2A0161B100A41E6A /* GameViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -610,6 +640,7 @@
 				ACE95CD929FFA9C4009B0C33 /* MapViewModel.swift in Sources */,
 				AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */,
 				ACE95CD329FF58D5009B0C33 /* PopUpReadySetGo.swift in Sources */,
+				ACEE61E02A0161B100A41E6A /* GameViewModel.swift in Sources */,
 				AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */,
 				ACB47D7C29FE7299008F215F /* PopUpGamePreview.swift in Sources */,
 				ACE95CD529FF9E62009B0C33 /* PopUpPlatyCoin.swift in Sources */,
@@ -627,6 +658,7 @@
 				AC05330729F24385004AD470 /* CoreDataManager.swift in Sources */,
 				ACB47D7829FA1271008F215F /* FloatingLevel.swift in Sources */,
 				AC0532FC29F242AE004AD470 /* Error.swift in Sources */,
+				ACEE61DC2A00CB6800A41E6A /* ProfileViewModel.swift in Sources */,
 				AC0532D729F23F0D004AD470 /* mini_challenge1App.swift in Sources */,
 				AC27AE9C29F54925005018D1 /* SwimPlatypus.swift in Sources */,
 				ACB47D8029FE7E59008F215F /* PopUpGameTurn.swift in Sources */,
@@ -686,7 +718,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -740,7 +772,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -758,6 +790,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mini-challenge1/Preview Content\"";
+				DEVELOPMENT_TEAM = CL2T9LDG63;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mini-challenge1/Info.plist";
@@ -787,6 +820,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mini-challenge1/Preview Content\"";
+				DEVELOPMENT_TEAM = CL2T9LDG63;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mini-challenge1/Info.plist";

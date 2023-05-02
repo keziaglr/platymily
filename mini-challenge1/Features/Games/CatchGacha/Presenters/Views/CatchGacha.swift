@@ -125,7 +125,7 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
     func createRock(testing: Bool) {
         let rockTexture = SKTexture(imageNamed: "Bomb")
         bom = SKSpriteNode(texture: rockTexture)
-        bom.size = CGSize(width: 25, height: 25)
+        bom.size = CGSize(width: 30, height: 30)
         let randomY = testing ? CGFloat.random(in: bom.size.width...size.height/2 - bom.size.width) : CGFloat.random(in: size.height/2+bom.size.width...size.height - bom.size.width)
         bom.zRotation = CGFloat.pi/2
         bom.position = CGPoint(x: 0, y: randomY)
@@ -148,7 +148,7 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
         let breadTexture = SKTexture(imageNamed: "Gacha")
         gacha = SKSpriteNode(texture: breadTexture)
         gacha.name = "bread"
-        gacha.size = CGSize(width: 25, height: 25)
+        gacha.size = CGSize(width: 30, height: 30)
         let randomY = testing ? CGFloat.random(in: gacha.size.width...size.height/2 - gacha.size.width) : CGFloat.random(in: size.height/2+gacha.size.width...size.height - gacha.size.width)
         gacha.position = CGPoint(x: 0, y: randomY)
         gacha.zRotation = CGFloat.pi/2
@@ -262,8 +262,18 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
                 
             }
         }
-        scoreLabel.text = "\(catchGachaOO.scorePlaty)"
-        scoreLabel2.text = "\(catchGachaOO.scorePuggle)"
+        
+        if playerAlive{
+            scoreLabel.text = "\(catchGachaOO.scorePlaty)"
+        }else{
+            scoreLabel.text = "GAME OVER"
+        }
+        
+        if player2Alive{
+            scoreLabel2.text = "\(catchGachaOO.scorePuggle)"
+        }else{
+            scoreLabel2.text = "GAME OVER"
+        }
         
         
         if !playerAlive && !player2Alive{
@@ -292,7 +302,7 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
 }
 
 class CatchGachaOO: ObservableObject {
-    @Published var startGame: Bool = true
+    @Published var startGame: Bool = false
     @Published var firstTap: Bool = false
     @Published var scorePlaty: Int = 0
     @Published var scorePuggle: Int = 0

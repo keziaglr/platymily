@@ -10,7 +10,7 @@ import SwiftUI
 struct SelectSentence: View {
     @ObservedObject var truthLieSentenceViewModel: TruthLieSentenceViewModel
     @State var color = AppColor.green
-    @Binding var movePage : Bool
+    @Binding var movePage : Int
     @Binding var platyTurn : Bool
     @Binding var showPopup : Bool
     @State var showColor = false
@@ -34,13 +34,9 @@ struct SelectSentence: View {
                         }else{
                             truthLieSentenceViewModel.puggleCorrect()
                         }
-                        
-                        
                         if truthLieSentenceViewModel.pointPlaty >= 30 || truthLieSentenceViewModel.pointPuggle >= 30 {
-                            showWinView = true
+                            self.movePage = 3
                         }
-                        
-                        
                     }
                 } label: {
                     TruthLieButton(text: sentence.sentence, color: sentence.isLie ? AppColor.green : AppColor.red, showColor: $showColor)
@@ -50,8 +46,7 @@ struct SelectSentence: View {
             
             
             Button(action: {
-                self.movePage = false
-                platyTurn.toggle()
+                self.movePage = 1
                 self.showPopup = true
                 truthLieSentenceViewModel.resetAll()
             },label:{
@@ -69,8 +64,6 @@ struct SelectSentence: View {
                 
             
             
-        }.fullScreenCover(isPresented: $showWinView) {
-            GameResultView(scorePlaty: truthLieSentenceViewModel.pointPlaty, scorePuggle: truthLieSentenceViewModel.pointPuggle, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())), game: 4)
         }
     }
 }

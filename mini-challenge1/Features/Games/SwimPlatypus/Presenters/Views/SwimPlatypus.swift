@@ -137,7 +137,16 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
         ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: 1))
         ground.physicsBody?.isDynamic = false
         ground.physicsBody?.categoryBitMask = worldCategory
+        ground.alpha = 0
         self.addChild(ground)
+        
+        let upper = SKShapeNode(rect: CGRect(x: 0, y: -5, width: self.frame.width, height: 0.01))
+        upper.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: 0.01))
+        upper.physicsBody?.isDynamic = false
+        upper.physicsBody?.categoryBitMask = worldCategory
+        upper.position = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height+1)
+        upper.alpha = 0
+        self.addChild(upper)
         
         platyScore = SKSpriteNode(texture: birdTexture1)
         scoreLabelNode = SKLabelNode(fontNamed:AppFont.bold)
@@ -319,7 +328,7 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
 
 
 class SwimPlatyOO: ObservableObject {
-    @Published var startGame: Bool = false
+    @Published var startGame: Bool = true
     @Published var firstTap: Bool = false
     @Published var scorePlaty: Int = 0
     @Published var scorePuggle: Int = 0
@@ -338,21 +347,36 @@ struct SwimPlatypusView: View {
                     .edgesIgnoringSafeArea(.all)
                     if swimPlatyOO.startGame && !swimPlatyOO.firstTap{
                         HStack (spacing: 100){
-                            Text("Tap here to move Platypus")
-                                .font(.custom(AppFont.bold, size: 16))
-                            .foregroundColor(AppColor.navy)
-                            .frame(width: 100)
-                            .multilineTextAlignment(.center)
-                            .allowsHitTesting(false)
-                        .offset(y: 200)
+                            VStack {
+                                Text("Tap here to move Platypus")
+                                    .font(.custom(AppFont.bold, size: 16))
+                                .foregroundColor(AppColor.navy)
+                                .frame(width: 100)
+                                .multilineTextAlignment(.center)
+                                .allowsHitTesting(false)
+                            .offset(y: 200)
+                                Image("flappy-plat")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .offset(y: 200)
+                                    .frame(width: 70)
+                            }
+                            
                         
-                            Text("Tap here to move Puggle")
-                                .font(.custom(AppFont.bold, size: 16))
-                            .foregroundColor(AppColor.navy)
-                            .frame(width: 100)
-                            .multilineTextAlignment(.center)
-                            .allowsHitTesting(false)
-                        .offset(y: 200)
+                            VStack {
+                                Text("Tap here to move Puggle")
+                                    .font(.custom(AppFont.bold, size: 16))
+                                .foregroundColor(AppColor.navy)
+                                .frame(width: 100)
+                                .multilineTextAlignment(.center)
+                                .allowsHitTesting(false)
+                            .offset(y: 200)
+                                Image("Flappy_Puggle")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .offset(y: 200)
+                                    .frame(width: 70)
+                            }
                         
                         }
                     }

@@ -19,7 +19,8 @@ struct TitleGame: View {
                 .multilineTextAlignment(.center)
                 .offset(x: 15, y:8)
                 .foregroundColor(AppColor.white)
-                .fontWeight(.bold)
+                .font(.custom(AppFont.bold, size: 18))
+                .textCase(.uppercase)
         }
     }
 }

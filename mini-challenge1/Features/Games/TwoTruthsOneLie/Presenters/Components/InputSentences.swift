@@ -9,7 +9,9 @@ import SwiftUI
 
 struct InputSentences: View {
     @ObservedObject var truthLieSentenceViewModel: TruthLieSentenceViewModel
-    @Binding var movePage : Bool
+    @Binding var movePage : Int
+    @Binding var showPopup : Bool
+    @Binding var platyTurn : Bool
     @State var sentences = ["","",""]
     
     var body: some View {
@@ -44,8 +46,9 @@ struct InputSentences: View {
                         }
                         truthLieSentenceViewModel.saveResult()
                     }
-                    
-                    self.movePage = true
+                    self.showPopup = true
+                    self.movePage = 2
+                    platyTurn.toggle()
                 }
             },label:{
                 RoundedButton(text: Prompt.Button.confirm)

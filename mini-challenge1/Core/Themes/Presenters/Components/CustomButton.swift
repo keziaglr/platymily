@@ -60,9 +60,8 @@ struct TruthLieButton: View {
         ZStack(alignment: .leading) {
             Text(text)
                 .foregroundColor(AppColor.white)
-                .fontWeight(.bold)
-                .font(.system(size: 12))
-                .padding(.vertical,16)
+                .font(.custom(AppFont.bold, size: 16))
+                .padding(.vertical,12)
                 .frame(minWidth: 350)
                 .multilineTextAlignment(.leading)
                 .background(

@@ -23,10 +23,10 @@ struct TruthLieTurn: View {
                     VStack (alignment: .leading){
                         Text(Prompt.Role.platy)
                             .foregroundColor(AppColor.white)
-                        .font(.custom(AppFont.bold, size: 14))
+                        .font(.custom(AppFont.bold, size: 16))
                         Text("\(truthLieSentenceViewModel.pointPlaty) points")
                             .foregroundColor(AppColor.white)
-                        .font(.custom(AppFont.regular, size: 12))
+                        .font(.custom(AppFont.regular, size: 14))
                     }
                 }
             }
@@ -36,10 +36,10 @@ struct TruthLieTurn: View {
                     VStack (alignment: .trailing){
                         Text(Prompt.Role.puggle)
                             .foregroundColor(AppColor.white)
-                        .font(.custom(AppFont.bold, size: 14))
+                        .font(.custom(AppFont.bold, size: 16))
                         Text("\(truthLieSentenceViewModel.pointPuggle) points")
                             .foregroundColor(AppColor.white)
-                        .font(.custom(AppFont.regular, size: 12))
+                        .font(.custom(AppFont.regular, size: 14))
                     }
                     Image(Prompt.Role.puggle)
                         .resizable()
