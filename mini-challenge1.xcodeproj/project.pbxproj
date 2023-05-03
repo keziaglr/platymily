@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		683757292A01FA75001F499A /* Gacha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757262A01FA75001F499A /* Gacha.swift */; };
+		6837572A2A01FA75001F499A /* GachaObtained.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757272A01FA75001F499A /* GachaObtained.swift */; };
+		6837572B2A01FA75001F499A /* GachaResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757282A01FA75001F499A /* GachaResult.swift */; };
+		683757302A01FA8E001F499A /* TheLastTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6837572F2A01FA8E001F499A /* TheLastTrial.swift */; };
+		683757372A01FAAD001F499A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757342A01FAAD001F499A /* GameView.swift */; };
+		683757382A01FAAD001F499A /* ChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757352A01FAAD001F499A /* ChooseView.swift */; };
+		683757392A01FAAD001F499A /* GuessTheWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757362A01FAAD001F499A /* GuessTheWord.swift */; };
 		AC0532D729F23F0D004AD470 /* mini_challenge1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0532D629F23F0D004AD470 /* mini_challenge1App.swift */; };
 		AC0532DB29F23F0E004AD470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0532DA29F23F0E004AD470 /* Assets.xcassets */; };
 		AC0532DE29F23F0E004AD470 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0532DD29F23F0E004AD470 /* Preview Assets.xcassets */; };
@@ -52,6 +59,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		683757262A01FA75001F499A /* Gacha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gacha.swift; sourceTree = "<group>"; };
+		683757272A01FA75001F499A /* GachaObtained.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaObtained.swift; sourceTree = "<group>"; };
+		683757282A01FA75001F499A /* GachaResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaResult.swift; sourceTree = "<group>"; };
+		6837572F2A01FA8E001F499A /* TheLastTrial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheLastTrial.swift; sourceTree = "<group>"; };
+		683757342A01FAAD001F499A /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		683757352A01FAAD001F499A /* ChooseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseView.swift; sourceTree = "<group>"; };
+		683757362A01FAAD001F499A /* GuessTheWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessTheWord.swift; sourceTree = "<group>"; };
 		AC0532D329F23F0D004AD470 /* mini-challenge1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mini-challenge1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0532D629F23F0D004AD470 /* mini_challenge1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mini_challenge1App.swift; sourceTree = "<group>"; };
 		AC0532DA29F23F0E004AD470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +123,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		683757232A01FA75001F499A /* Gacha */ = {
+			isa = PBXGroup;
+			children = (
+				683757242A01FA75001F499A /* Presenters */,
+			);
+			path = Gacha;
+			sourceTree = "<group>";
+		};
+		683757242A01FA75001F499A /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				683757252A01FA75001F499A /* Views */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		683757252A01FA75001F499A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				683757262A01FA75001F499A /* Gacha.swift */,
+				683757272A01FA75001F499A /* GachaObtained.swift */,
+				683757282A01FA75001F499A /* GachaResult.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6837572C2A01FA8E001F499A /* TheLastTrial */ = {
+			isa = PBXGroup;
+			children = (
+				6837572D2A01FA8E001F499A /* Presenters */,
+			);
+			path = TheLastTrial;
+			sourceTree = "<group>";
+		};
+		6837572D2A01FA8E001F499A /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				6837572E2A01FA8E001F499A /* Views */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		6837572E2A01FA8E001F499A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6837572F2A01FA8E001F499A /* TheLastTrial.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		683757312A01FAAD001F499A /* GuessTheWord */ = {
+			isa = PBXGroup;
+			children = (
+				683757322A01FAAD001F499A /* Presenters */,
+			);
+			path = GuessTheWord;
+			sourceTree = "<group>";
+		};
+		683757322A01FAAD001F499A /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				683757332A01FAAD001F499A /* Views */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		683757332A01FAAD001F499A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				683757342A01FAAD001F499A /* GameView.swift */,
+				683757352A01FAAD001F499A /* ChooseView.swift */,
+				683757362A01FAAD001F499A /* GuessTheWord.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		AC0532CA29F23F0D004AD470 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +258,7 @@
 		AC0532EB29F24089004AD470 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				683757232A01FA75001F499A /* Gacha */,
 				ACEE61D92A00CB4E00A41E6A /* Profile */,
 				AC27AE9029F52806005018D1 /* Map */,
 				AC27AE7329F510D8005018D1 /* Prologue */,
@@ -285,6 +376,8 @@
 			children = (
 				ACEE61DD2A01617200A41E6A /* ViewModels */,
 				ACB47D7D29FE7E38008F215F /* Presenters */,
+				6837572C2A01FA8E001F499A /* TheLastTrial */,
+				683757312A01FAAD001F499A /* GuessTheWord */,
 				AC27AE9D29F569F5005018D1 /* CatchGacha */,
 				AC27AE9829F548FF005018D1 /* SwimPlatypus */,
 				AC05331629F28087004AD470 /* TwoTruthsOneLie */,
@@ -628,20 +721,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC27AE7C29F5143F005018D1 /* Prologue.swift in Sources */,
+				683757302A01FA8E001F499A /* TheLastTrial.swift in Sources */,
 				AC05330329F24311004AD470 /* NetworkManager.swift in Sources */,
 				ACB47D7A29FA3DCA008F215F /* NavBar.swift in Sources */,
 				AC05332129F2A3E4004AD470 /* TruthLieSentence.swift in Sources */,
 				AC27AE9729F5309A005018D1 /* GameButton.swift in Sources */,
 				AC0532FA29F2428A004AD470 /* Prompt.swift in Sources */,
+				683757292A01FA75001F499A /* Gacha.swift in Sources */,
 				AC16009729FEDEFA009E5D59 /* ProgressBarWin.swift in Sources */,
 				AC0532EF29F24117004AD470 /* AppColor.swift in Sources */,
 				AC05331129F24692004AD470 /* CustomTextField.swift in Sources */,
 				AC05332929F2B20B004AD470 /* TruthLieSentenceRepository.swift in Sources */,
 				ACE95CD929FFA9C4009B0C33 /* MapViewModel.swift in Sources */,
 				AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */,
+				683757372A01FAAD001F499A /* GameView.swift in Sources */,
 				ACE95CD329FF58D5009B0C33 /* PopUpReadySetGo.swift in Sources */,
 				ACEE61E02A0161B100A41E6A /* GameViewModel.swift in Sources */,
 				AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */,
+				683757382A01FAAD001F499A /* ChooseView.swift in Sources */,
 				ACB47D7C29FE7299008F215F /* PopUpGamePreview.swift in Sources */,
 				ACE95CD529FF9E62009B0C33 /* PopUpPlatyCoin.swift in Sources */,
 				AC05331529F27CD0004AD470 /* TitleGame.swift in Sources */,
@@ -653,14 +750,17 @@
 				AC05331C29F29F7B004AD470 /* InputSentences.swift in Sources */,
 				AC16009529FEDC97009E5D59 /* GameResultView.swift in Sources */,
 				AC05331329F24AB6004AD470 /* CustomButton.swift in Sources */,
+				6837572B2A01FA75001F499A /* GachaResult.swift in Sources */,
 				AC27AE8D29F51A17005018D1 /* AppFont.swift in Sources */,
 				AC27AE9529F52C27005018D1 /* Map.swift in Sources */,
 				AC05330729F24385004AD470 /* CoreDataManager.swift in Sources */,
 				ACB47D7829FA1271008F215F /* FloatingLevel.swift in Sources */,
+				683757392A01FAAD001F499A /* GuessTheWord.swift in Sources */,
 				AC0532FC29F242AE004AD470 /* Error.swift in Sources */,
 				ACEE61DC2A00CB6800A41E6A /* ProfileViewModel.swift in Sources */,
 				AC0532D729F23F0D004AD470 /* mini_challenge1App.swift in Sources */,
 				AC27AE9C29F54925005018D1 /* SwimPlatypus.swift in Sources */,
+				6837572A2A01FA75001F499A /* GachaObtained.swift in Sources */,
 				ACB47D8029FE7E59008F215F /* PopUpGameTurn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
