@@ -125,7 +125,7 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
     func createRock(testing: Bool) {
         let rockTexture = SKTexture(imageNamed: "Bomb")
         bom = SKSpriteNode(texture: rockTexture)
-        bom.size = CGSize(width: 30, height: 30)
+        bom.size = CGSize(width: 35, height: 35)
         let randomY = testing ? CGFloat.random(in: bom.size.width...size.height/2 - bom.size.width) : CGFloat.random(in: size.height/2+bom.size.width...size.height - bom.size.width)
         bom.zRotation = CGFloat.pi/2
         bom.position = CGPoint(x: 0, y: randomY)
@@ -145,23 +145,35 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createBread(testing: Bool) {
-        let breadTexture = SKTexture(imageNamed: "Gacha")
-        gacha = SKSpriteNode(texture: breadTexture)
-        gacha.name = "bread"
-        gacha.size = CGSize(width: 30, height: 30)
-        let randomY = testing ? CGFloat.random(in: gacha.size.width...size.height/2 - gacha.size.width) : CGFloat.random(in: size.height/2+gacha.size.width...size.height - gacha.size.width)
-        gacha.position = CGPoint(x: 0, y: randomY)
-        gacha.zRotation = CGFloat.pi/2
-        gacha.physicsBody = SKPhysicsBody(rectangleOf: gacha.size)
-        gacha.physicsBody?.categoryBitMask = PhysicsCategory.bread
-        gacha.physicsBody?.contactTestBitMask = PhysicsCategory.player | PhysicsCategory.player2
-        gacha.physicsBody?.velocity = CGVector(dx: 100, dy: 0)
-        gacha.physicsBody?.linearDamping = 10
 
         if catchGachaOO.startGame && catchGachaOO.firstTap{
             if testing && playerAlive{
+                let breadTexture = SKTexture(imageNamed: "Gacha")
+                gacha = SKSpriteNode(texture: breadTexture)
+                gacha.name = "bread"
+                gacha.size = CGSize(width: 30, height: 30)
+                let randomY = testing ? CGFloat.random(in: gacha.size.width...size.height/2 - gacha.size.width) : CGFloat.random(in: size.height/2+gacha.size.width...size.height - gacha.size.width)
+                gacha.position = CGPoint(x: 0, y: randomY)
+                gacha.zRotation = CGFloat.pi/2
+                gacha.physicsBody = SKPhysicsBody(rectangleOf: gacha.size)
+                gacha.physicsBody?.categoryBitMask = PhysicsCategory.bread
+                gacha.physicsBody?.contactTestBitMask = PhysicsCategory.player | PhysicsCategory.player2
+                gacha.physicsBody?.velocity = CGVector(dx: 100, dy: 0)
+                gacha.physicsBody?.linearDamping = 10
                 addChild(gacha)
             }else if !testing && player2Alive{
+                let breadTexture = SKTexture(imageNamed: "Gacha-Puggle")
+                gacha = SKSpriteNode(texture: breadTexture)
+                gacha.name = "bread"
+                gacha.size = CGSize(width: 30, height: 30)
+                let randomY = testing ? CGFloat.random(in: gacha.size.width...size.height/2 - gacha.size.width) : CGFloat.random(in: size.height/2+gacha.size.width...size.height - gacha.size.width)
+                gacha.position = CGPoint(x: 0, y: randomY)
+                gacha.zRotation = CGFloat.pi/2
+                gacha.physicsBody = SKPhysicsBody(rectangleOf: gacha.size)
+                gacha.physicsBody?.categoryBitMask = PhysicsCategory.bread
+                gacha.physicsBody?.contactTestBitMask = PhysicsCategory.player | PhysicsCategory.player2
+                gacha.physicsBody?.velocity = CGVector(dx: 100, dy: 0)
+                gacha.physicsBody?.linearDamping = 10
                 addChild(gacha)
             }
         }

@@ -12,7 +12,6 @@ struct GameResultView: View {
     @State var scorePuggle: Int
     @State var playAgain: AnyView
     @State var game: Int
-    @State var showPopup : Bool = true
     @StateObject var gvm = GameViewModel()
     @StateObject var mvm = MapViewModel()
     @StateObject var pvm = ProfileViewModel()
@@ -22,12 +21,7 @@ struct GameResultView: View {
                 Image("Background")
                     .resizable()
                     .ignoresSafeArea()
-                    .onAppear{
-                        if gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game) != 0{
-                            pvm.levelUp(index: game)
-                            mvm.updateData(index: game, scorePlaty: scorePlaty, scorePuggle: scorePuggle)
-                        }
-                    }
+                    
                 VStack {
                     Spacer()
                     NavBar()
@@ -45,8 +39,8 @@ struct GameResultView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 250)
-                        ProgressBarWin(score: scorePlaty, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game),platy: true)
-                        ProgressBarWin(score: scorePuggle, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game), platy: false)
+                        ProgressBarWin(score: scorePlaty, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game),platy: true, gvm: gvm)
+                        ProgressBarWin(score: scorePuggle, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game), platy: false, gvm: gvm)
                         NavigationLink {
                             playAgain
                         } label: {
@@ -76,8 +70,8 @@ struct GameResultView: View {
                                 .offset(x: 25, y:25)
                             .frame(width: 150)
                         }
-                        ProgressBarWin(score: scorePlaty, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game),platy: true)
-                        ProgressBarWin(score: scorePuggle, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game), platy: false)
+                        ProgressBarWin(score: scorePlaty, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game),platy: true, gvm: gvm)
+                        ProgressBarWin(score: scorePuggle, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game), platy: false, gvm: gvm)
                         NavigationLink {
                             playAgain
                         } label: {
@@ -88,8 +82,17 @@ struct GameResultView: View {
                     }.padding(.bottom, 100)
                 }
                 
-                if gvm.coin != 0 && gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game) != 0 && showPopup{
-                    PopUpPlatyCoin(showPopup: $showPopup, coinAmount: gvm.coin)
+                if  gvm.showPopup{
+                    PopUpPlatyCoin(coinAmount: gvm.coin, gvm: gvm)
+                }
+            }.onAppear{
+                if scorePlaty != 0 || scorePuggle != 0{
+                    pvm.levelUp(index: game)
+                    mvm.updateData(index: game, scorePlaty: scorePlaty, scorePuggle: scorePuggle)
+                }
+                
+                if gvm.checkChance(scorePlaty: scorePlaty, scorePuggle: scorePuggle){
+                    gvm.showPopup = true
                 }
             }
         }.navigationBarBackButtonHidden(true)
@@ -99,6 +102,6 @@ struct GameResultView: View {
 
 struct GameResultView_Previews: PreviewProvider {
     static var previews: some View {
-        GameResultView(scorePlaty: 20, scorePuggle: 20, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())), game: 1)
+        GameResultView(scorePlaty: 2, scorePuggle: 5, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())), game: 1)
     }
 }

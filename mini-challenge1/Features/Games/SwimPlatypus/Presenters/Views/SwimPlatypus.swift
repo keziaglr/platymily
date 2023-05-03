@@ -328,7 +328,7 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
 
 
 class SwimPlatyOO: ObservableObject {
-    @Published var startGame: Bool = true
+    @Published var startGame: Bool = false
     @Published var firstTap: Bool = false
     @Published var scorePlaty: Int = 0
     @Published var scorePuggle: Int = 0

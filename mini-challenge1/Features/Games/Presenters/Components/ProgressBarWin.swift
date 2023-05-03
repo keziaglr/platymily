@@ -11,6 +11,8 @@ struct ProgressBarWin: View {
     @State var score : Int
     @State var maxScore : Int
     @State var platy : Bool
+    @State var progress: CGFloat = -1
+    @ObservedObject var gvm : GameViewModel
     var body: some View {
         HStack{
             Image(platy ? Prompt.Role.platy : Prompt.Role.puggle)
@@ -25,12 +27,31 @@ struct ProgressBarWin: View {
                     Capsule()
                         .fill(AppColor.white)
                         .frame(width: 350, height: 40)
-                        .offset(CGSize(width: -50, height: 0))
+                        .offset(x:-50)
                         .overlay(Capsule()                 .stroke(AppColor.orange, lineWidth: 3).offset(CGSize(width: -50, height: 0)))
                     Capsule()
                         .fill(AppColor.orange)
                         .offset(x:-50)
-                        .frame(width: progress(value: Double(self.score), maxValue: Double(self.maxScore), width: 350), height: 40)
+                        .frame(width: self.progress, height: 40)
+                        .onAppear{
+                            if !gvm.showPopup {
+                                Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+                                    if progress < progress(value: Double(self.score), maxValue: Double(self.maxScore), width: 350) {
+                                        self.progress += 1
+                                    }
+                                }
+                            }
+                        }
+                        .onChange(of: gvm.showPopup) { newValue in
+                            if !newValue {
+                                Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+                                    if progress < progress(value: Double(self.score), maxValue: Double(self.maxScore), width: 350) {
+                                        self.progress += 1
+                                    }
+                                }
+                            }
+                        }
+                    
                 }.zIndex(-2)
                 Text(platy ? Prompt.Role.platy : Prompt.Role.puggle)
                     .font(.custom(AppFont.bold, size: 16))
@@ -50,6 +71,9 @@ struct ProgressBarWin: View {
     private func progress(value: Double,
                           maxValue: Double,
                           width: CGFloat) -> CGFloat {
+        guard maxValue > 0 else {
+            return 350
+        }
         let percentage = value / maxValue
         return width *  CGFloat(percentage)
     }
@@ -59,7 +83,7 @@ struct ProgressBarWin: View {
             return AppColor.white
         }else if score == 0 && maxScore != 0{
             return AppColor.orange
-        }else if score/maxScore > 1/2{
+        }else if Double(score) / Double(maxScore) > 0.2{
             return AppColor.white
         }else{
             return AppColor.orange
@@ -67,8 +91,11 @@ struct ProgressBarWin: View {
     }
 }
 
-struct ProgressBarWin_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgressBarWin(score: 20, maxScore: 20, platy: true)
-    }
-}
+//struct ProgressBarWin_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VStack {
+////            ProgressBarWin(score: 5, maxScore: 5, platy: true)
+//            ProgressBarWin(score: 0, maxScore: 0, platy: false)
+//        }
+//    }
+//}
