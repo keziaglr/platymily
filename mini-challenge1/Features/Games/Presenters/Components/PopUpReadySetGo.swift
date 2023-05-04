@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct PopUpReadySetGo: View {
-    @State private var readyOpacity: Double = 0.2
-    @State private var setOpacity: Double = 0.2
-    @State private var goOpacity: Double = 0.2
+    @State var readyOpacity: Double = 0.2
+    @State var setOpacity: Double = 0.2
+    @State var goOpacity: Double = 0.2
     @State private var timer: Timer?
     @State private var showRotate: Bool = true
     @Binding var start: Bool

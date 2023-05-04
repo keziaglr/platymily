@@ -182,7 +182,10 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
         bossBullet.physicsBody!.collisionBitMask = 0
         
         // Add the asset to the scene
-        addChild(bossBullet)
+        if lastTrial00.startGame && lastTrial00.firstTap{
+            addChild(bossBullet)
+        }
+        
         
         var projectileSpeed: CGFloat = 1000
         if lastTrial00.scorePlaty >= 150{
@@ -222,7 +225,10 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
         characterBullet.physicsBody!.collisionBitMask = 0
         
         // Add the asset node to the scene
-        addChild(characterBullet)
+        if lastTrial00.startGame && lastTrial00.firstTap{
+            addChild(characterBullet)
+        }
+        
         
         // Calculate the duration of the asset's movement across the screen based on the speed constant
         let moveDuration = TimeInterval(2.0)
@@ -318,6 +324,7 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            lastTrial00.firstTap = true
             let location = touch.location(in: self)
             let previousLocation = touch.previousLocation(in: self)
             let translation = CGPoint(x: location.x - previousLocation.x, y: location.y - previousLocation.y)
@@ -369,11 +376,6 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
             spawnBossProjectile()
             spawnBossProjectile()
         }
-
-//        if lastTrial00.platyTurn == false{
-//            puggleTurn()
-//        }
-        
         
         if frameSinceCharacterBulletLastSpawn >= spawnInterval{
             frameSinceCharacterBulletLastSpawn = 0
@@ -401,22 +403,25 @@ struct TheLastTrial: View {
                     SpriteView(scene: TheLastTrialScene(size: CGSize(width: geometry.size.width, height: geometry.size.height), lastTrial00: lastTrial), options: [.allowsTransparency])
                 }
                 .edgesIgnoringSafeArea(.all)
-//                PopUpReadySetGo(start: $lastTrial.startGame, potrait: false)
-//                    .opacity($lastTrial.startGame.wrappedValue ? 0.0 : 1.0)
-//                    .rotationEffect(.degrees(90))
-//                if lastTrial.startGame && !lastTrial.firstTap{
-//                    VStack (spacing: 75){
-//                        Text("Drag Platypus to move")
-//                            .font(.custom(AppFont.bold, size: 16))
-//                            .foregroundColor(AppColor.navy)
-//                            .multilineTextAlignment(.center)
-//                            .allowsHitTesting(false)
-//                            .frame(width: 120)
-//
-//                    }.rotationEffect(.degrees(0))
-//                }
+                PopUpReadySetGo(goOpacity: 0.2, start: $lastTrial.startGame, potrait: false)
+                    .opacity($lastTrial.startGame.wrappedValue ? 0.0 : 1.0)
+//                    .rotationEffect(.degrees())
+                if lastTrial.startGame && !lastTrial.firstTap{
+                    VStack (spacing: 75){
+                        Text("Drag Platypus to move")
+                            .font(.custom(AppFont.bold, size: 16))
+                            .foregroundColor(AppColor.navy)
+                            .multilineTextAlignment(.center)
+                            .allowsHitTesting(false)
+                            .frame(width: 120)
+
+                    }
+                    .rotationEffect(.degrees(270))
+                    .padding(.trailing, 100)
+                }
                 if lastTrial.showPopup{
                     PopUpGameTurn(platyTurn: lastTrial.platyTurn, showPopup: $lastTrial.showPopup)
+                    
                 }
             }
             .navigationBarBackButtonHidden(true)

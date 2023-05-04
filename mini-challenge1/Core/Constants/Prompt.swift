@@ -103,7 +103,7 @@ extension Prompt {
         static let playAgain = "Play Again"
         static let startChallenge = "Start Challenge"
         static let gacha = "Gacha"
-        static let equip = "Equip"
+        static let equip = "Equip set"
         static let continueBtn = "Continue"
         static let claimPlatycoin = "Claim Platycoin"
         

@@ -43,10 +43,16 @@ struct PopUpGamePreview: View {
                 NavigationLink {
                     if title == Prompt.Games.game1.title {
                         SwimPlatypusView()
+                    }else if title == Prompt.Games.game2.title {
+                        GuessTheWord()
+                    }else if title == Prompt.Games.game3.title{
+                       //Connect4
                     }else if title == Prompt.Games.game4.title {
                         CatchGacha()
                     }else if title == Prompt.Games.game5.title {
                         TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel() )
+                    }else if title == Prompt.Games.game6.title {
+                        TheLastTrial()
                     }
                 } label: {
                     RoundedButton(text: Prompt.Button.startChallenge)

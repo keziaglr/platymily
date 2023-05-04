@@ -13,6 +13,8 @@ class GuessWord00: ObservableObject{
     @Published var scorePlaty: Int = 0
     @Published var scorePuggle: Int = 0
     @Published var gameOver: Bool = false
+    @Published var platyTurn: Bool = true
+    @Published var showPopup: Bool = true
 }
 
 struct GameView: View {
@@ -31,6 +33,7 @@ struct GameView: View {
     var body: some View {
         if !guessWord.gameOver {
             ZStack{
+                
                 Image("GuessTheWord_Board")
                     .resizable()
                     .scaledToFit()
@@ -82,6 +85,10 @@ struct GameView: View {
                     .padding(.top, 90)
                 }
                 .rotationEffect(.degrees(270))
+                
+                if guessWord.showPopup{
+                    PopUpGameTurn(platyTurn: guessWord.platyTurn, showPopup: $guessWord.showPopup)
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Image("Background")
@@ -110,7 +117,11 @@ struct GameView: View {
     }
     
     private func guessCorrect() {
-        guessWord.scorePlaty += 10
+        if guessWord.platyTurn == true{
+            guessWord.scorePlaty += 10
+        } else{
+            guessWord.scorePuggle += 10
+        }
         guessedWordsCount += 1
         
         if guessedWordsCount == words.count{
@@ -127,8 +138,12 @@ struct GameView: View {
     private func guessIncorrect() {
         guessChanceRemaining -= 1
         if guessChanceRemaining == 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
-                self.guessWord.gameOver = true
+            if guessWord.platyTurn == true{
+                guessWord.platyTurn = false
+                guessWord.showPopup = true
+                guessChanceRemaining = 3
+            } else{
+                guessWord.gameOver = true
             }
         } else {
             guessText = "Wrong!"

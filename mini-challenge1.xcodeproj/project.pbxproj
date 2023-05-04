@@ -15,6 +15,14 @@
 		683757382A01FAAD001F499A /* ChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757352A01FAAD001F499A /* ChooseView.swift */; };
 		683757392A01FAAD001F499A /* GuessTheWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757362A01FAAD001F499A /* GuessTheWord.swift */; };
 		6837573F2A035039001F499A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6837573E2A035039001F499A /* Lottie */; };
+		683757422A03643C001F499A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757412A03643C001F499A /* UserProfile.swift */; };
+		683757832A037847001F499A /* ConnectFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683757822A037847001F499A /* ConnectFour.storyboard */; };
+		683757852A037854001F499A /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757842A037854001F499A /* BoardCell.swift */; };
+		6837578A2A037860001F499A /* BoardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757862A037860001F499A /* BoardItem.swift */; };
+		6837578B2A037860001F499A /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757872A037860001F499A /* Board.swift */; };
+		6837578C2A037860001F499A /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757882A037860001F499A /* Turn.swift */; };
+		6837578D2A037860001F499A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757892A037860001F499A /* ViewController.swift */; };
+		6837578F2A037873001F499A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6837578E2A037873001F499A /* SceneDelegate.swift */; };
 		AC0532D729F23F0D004AD470 /* mini_challenge1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0532D629F23F0D004AD470 /* mini_challenge1App.swift */; };
 		AC0532DB29F23F0E004AD470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0532DA29F23F0E004AD470 /* Assets.xcassets */; };
 		AC0532DE29F23F0E004AD470 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0532DD29F23F0E004AD470 /* Preview Assets.xcassets */; };
@@ -78,6 +86,14 @@
 		683757342A01FAAD001F499A /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		683757352A01FAAD001F499A /* ChooseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseView.swift; sourceTree = "<group>"; };
 		683757362A01FAAD001F499A /* GuessTheWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessTheWord.swift; sourceTree = "<group>"; };
+		683757412A03643C001F499A /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		683757822A037847001F499A /* ConnectFour.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConnectFour.storyboard; sourceTree = "<group>"; };
+		683757842A037854001F499A /* BoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
+		683757862A037860001F499A /* BoardItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardItem.swift; sourceTree = "<group>"; };
+		683757872A037860001F499A /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		683757882A037860001F499A /* Turn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
+		683757892A037860001F499A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6837578E2A037873001F499A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AC0532D329F23F0D004AD470 /* mini-challenge1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mini-challenge1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0532D629F23F0D004AD470 /* mini_challenge1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mini_challenge1App.swift; sourceTree = "<group>"; };
 		AC0532DA29F23F0E004AD470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,6 +235,44 @@
 				683757342A01FAAD001F499A /* GameView.swift */,
 				683757352A01FAAD001F499A /* ChooseView.swift */,
 				683757362A01FAAD001F499A /* GuessTheWord.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		683757402A03642C001F499A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				683757412A03643C001F499A /* UserProfile.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6837577F2A037815001F499A /* ConnectFour */ = {
+			isa = PBXGroup;
+			children = (
+				683757802A037826001F499A /* Presenters */,
+			);
+			path = ConnectFour;
+			sourceTree = "<group>";
+		};
+		683757802A037826001F499A /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				683757812A03782C001F499A /* Views */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		683757812A03782C001F499A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6837578E2A037873001F499A /* SceneDelegate.swift */,
+				683757872A037860001F499A /* Board.swift */,
+				683757862A037860001F499A /* BoardItem.swift */,
+				683757882A037860001F499A /* Turn.swift */,
+				683757892A037860001F499A /* ViewController.swift */,
+				683757842A037854001F499A /* BoardCell.swift */,
+				683757822A037847001F499A /* ConnectFour.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -401,6 +455,7 @@
 		AC05330A29F24545004AD470 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				6837577F2A037815001F499A /* ConnectFour */,
 				ACEE61DD2A01617200A41E6A /* ViewModels */,
 				ACB47D7D29FE7E38008F215F /* Presenters */,
 				6837572C2A01FA8E001F499A /* TheLastTrial */,
@@ -699,6 +754,7 @@
 		ACEE61D92A00CB4E00A41E6A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				683757402A03642C001F499A /* Views */,
 				ACEE61DA2A00CB5800A41E6A /* ViewModels */,
 			);
 			path = Profile;
@@ -789,6 +845,7 @@
 				AC8772EE2A037CB200C9CC02 /* slide3.json in Resources */,
 				AC27AE8829F51731005018D1 /* Quicksand-Bold.ttf in Resources */,
 				AC27AE8929F51731005018D1 /* Quicksand-Medium.ttf in Resources */,
+				683757832A037847001F499A /* ConnectFour.storyboard in Resources */,
 				AC27AE8729F51731005018D1 /* Quicksand-SemiBold.ttf in Resources */,
 				AC8772CE2A0353BC00C9CC02 /* splashscreen.json in Resources */,
 				AC8772ED2A037CB200C9CC02 /* slide1.json in Resources */,
@@ -829,17 +886,24 @@
 				AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */,
 				683757382A01FAAD001F499A /* ChooseView.swift in Sources */,
 				ACB47D7C29FE7299008F215F /* PopUpGamePreview.swift in Sources */,
+				6837578A2A037860001F499A /* BoardItem.swift in Sources */,
 				ACE95CD529FF9E62009B0C33 /* PopUpPlatyCoin.swift in Sources */,
 				AC05331529F27CD0004AD470 /* TitleGame.swift in Sources */,
+				6837578C2A037860001F499A /* Turn.swift in Sources */,
+				683757422A03643C001F499A /* UserProfile.swift in Sources */,
 				ACE95CE32A00129B009B0C33 /* MC1.xcdatamodeld in Sources */,
 				AC16009229FECA16009E5D59 /* TruthLieTurn.swift in Sources */,
+				6837578B2A037860001F499A /* Board.swift in Sources */,
 				AC05332529F2A4BD004AD470 /* TruthLieSentenceViewModel.swift in Sources */,
+				683757852A037854001F499A /* BoardCell.swift in Sources */,
+				6837578D2A037860001F499A /* ViewController.swift in Sources */,
 				AC05332729F2AB18004AD470 /* SelectSentence.swift in Sources */,
 				AC05331E29F2A02C004AD470 /* TwoTruthsOneLie.swift in Sources */,
 				AC05331C29F29F7B004AD470 /* InputSentences.swift in Sources */,
 				AC8772D32A03548D00C9CC02 /* SplashScreen.swift in Sources */,
 				AC16009529FEDC97009E5D59 /* GameResultView.swift in Sources */,
 				AC05331329F24AB6004AD470 /* CustomButton.swift in Sources */,
+				6837578F2A037873001F499A /* SceneDelegate.swift in Sources */,
 				6837572B2A01FA75001F499A /* GachaResult.swift in Sources */,
 				AC27AE8D29F51A17005018D1 /* AppFont.swift in Sources */,
 				AC27AE9529F52C27005018D1 /* Map.swift in Sources */,
