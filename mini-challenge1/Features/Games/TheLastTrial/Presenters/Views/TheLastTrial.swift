@@ -7,11 +7,13 @@
 
 import SwiftUI
 import SpriteKit
-import GameplayKit
 
 class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
     
+    @ObservedObject var lastTrial00 : LastTrial00
+    
     let characterTexture = SKTexture(imageNamed: "TheLastTrial_Platy")
+    let character2Texture = SKTexture(imageNamed: "Flappy_Puggle")
     let bossTexture = SKTexture(imageNamed: "Snake")
     let snakeVenomTexture = SKTexture(imageNamed: "Snake_Venom")
     let bubbleTexture = SKTexture(imageNamed: "Bubble")
@@ -37,10 +39,38 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
     let bossCategory: UInt32 = 0x1 << 2
     let characterProjectileCategory: UInt32 = 0x1 << 3
     
+    init(size: CGSize, lastTrial00: LastTrial00) {
+            self.lastTrial00 = lastTrial00
+            super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func characterHit(){
         if !isCharacterHit {
-            characterHealth -= 1
-            isCharacterHit = true
+            
+            if characterHealth > 0{
+                characterHealth -= 1
+                isCharacterHit = true
+                
+                if characterHealth == 0{
+                    if lastTrial00.platyTurn == true{
+                        lastTrial00.platyTurn = false
+                        lastTrial00.showPopup = true
+                        characterHealth = 3
+                        character.removeFromParent()
+                        healthLabel.removeFromParent()
+                        scoreLabel.removeFromParent()
+                        createCharacter()
+                        createInformationInterface()
+//                        scoreLabel.text = "Score: \(lastTrial00.platyTurn ? lastTrial00.scorePlaty : lastTrial00.scorePuggle)"
+                    }else{
+                        lastTrial00.gameOver = true
+                    }
+                }
+            }
             
             // Set a timer to reset isCharacterHit to false after 1 second
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
@@ -49,50 +79,64 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
             
             healthLabel.text = "Health: \(characterHealth)"
             
-            if characterHealth <= 0 {
-//                gameOver()
-            }
         }
+    }
+    
+    func puggleTurn(){
+        lastTrial00.showPopup = true
+        characterHealth = 3
+        
     }
     
     func bossHit(){
         if !isBossHit {
-            score += 10
+            if lastTrial00.platyTurn == true{
+                lastTrial00.scorePlaty += 10
+            }else{
+                lastTrial00.scorePuggle += 10
+            }
             isBossHit = true
             
             // Set a timer to reset isCharacterHit to false after 1 second
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
                 self.isBossHit = false
             }
-            
-            scoreLabel.text = "Score: \(score)"
+            if lastTrial00.platyTurn == true{
+                scoreLabel.text = "Score: \(lastTrial00.scorePlaty)"
+            }else{
+                scoreLabel.text = "Score: \(lastTrial00.scorePuggle)"
+            }
             
         }
     }
     
     func createInformationInterface(){
-        healthLabel = SKLabelNode(fontNamed: "Helvetica")
+        healthLabel = SKLabelNode(fontNamed: AppFont.bold)
         healthLabel.fontSize = 20
         healthLabel.fontColor = SKColor.white
         healthLabel.text = "Health: \(characterHealth)"
         healthLabel.horizontalAlignmentMode = .left
-        healthLabel.position = CGPoint(x: frame.minX + 30, y: frame.maxY - 30)
+        healthLabel.position = CGPoint(x: frame.minX + 50, y: frame.minY)
+        healthLabel.zRotation = CGFloat.pi/2
         addChild(healthLabel)
         
-        scoreLabel = SKLabelNode(fontNamed: "Helvetica")
+        
+        scoreLabel = SKLabelNode(fontNamed: AppFont.bold)
         scoreLabel.fontSize = 20
         scoreLabel.fontColor = SKColor.white
-        scoreLabel.text = "Score: \(score)"
+        scoreLabel.text = "Score: \(lastTrial00.platyTurn ? lastTrial00.scorePlaty : lastTrial00.scorePuggle)"
         scoreLabel.horizontalAlignmentMode = .left
-        scoreLabel.position = CGPoint(x: frame.minX + 30, y: frame.maxY - 50)
+        scoreLabel.position = CGPoint(x: frame.minX + 70, y: frame.minY)
+        scoreLabel.zRotation = CGFloat.pi/2
         addChild(scoreLabel)
     }
     
     func createCharacter(){
         // Create and add the character node to the scene
-        character = SKSpriteNode(texture: characterTexture, size: CGSize(width: 100, height: 100))
-        character.position = CGPoint(x: frame.midX, y: frame.midY)
         
+        character = SKSpriteNode(texture: lastTrial00.platyTurn ? characterTexture : character2Texture, size: CGSize(width: 100, height: 100))
+        character.position = CGPoint(x: frame.midX, y: frame.midY)
+        character.zRotation = CGFloat.pi/2
         character.physicsBody = SKPhysicsBody(texture: character.texture!, size: character.size)
         character.physicsBody!.affectedByGravity = false
         character.physicsBody!.isDynamic = true
@@ -105,9 +149,9 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createBoss(){
-        boss = SKSpriteNode(texture: bossTexture, size: CGSize(width: 400, height: 400))
-        boss.position = CGPoint(x: size.width - boss.size.width/2, y: size.height/2)
-        
+        boss = SKSpriteNode(texture: bossTexture, size: CGSize(width: 350, height: 350))
+        boss.position = CGPoint(x: size.width/2, y: size.height - boss.size.width/2)
+        boss.zRotation = CGFloat.pi/2
         boss.physicsBody = SKPhysicsBody(texture: boss.texture!, size: boss.size)
         boss.physicsBody!.affectedByGravity = false
         boss.physicsBody!.isDynamic = true
@@ -123,27 +167,33 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
         bossBullet = SKSpriteNode(texture: snakeVenomTexture, size: CGSize(width: 50, height: 50))
         
         // Set asset position on the right edge of the scene with a random y position
-        let maxY = size.height - bossBullet.size.height/2
-        let minY = bossBullet.size.height/2
-        let rangeY = maxY - minY
-        let randomY = CGFloat(arc4random_uniform(UInt32(rangeY))) + minY
-        bossBullet.position = CGPoint(x: size.width + bossBullet.size.width/2, y: randomY)
-        
+        let maxX = size.width - bossBullet.size.width/2
+        let minX = bossBullet.size.width/2
+        let rangeX = maxX - minX
+        let randomX = CGFloat(arc4random_uniform(UInt32(rangeX))) + minX
+        bossBullet.position = CGPoint(x: randomX, y: size.height + bossBullet.size.height/2)
+        bossBullet.zRotation = CGFloat.pi/2
         bossBullet.physicsBody = SKPhysicsBody(rectangleOf: bossBullet.size)
-//        bossBullet.physicsBody = SKPhysicsBody(texture: bossBullet.texture!, size: bossBullet.size)
+        //        bossBullet.physicsBody = SKPhysicsBody(texture: bossBullet.texture!, size: bossBullet.size)
         bossBullet.physicsBody!.affectedByGravity = false
         bossBullet.physicsBody!.isDynamic = true
         bossBullet.physicsBody!.categoryBitMask = bossProjectileCategory
         bossBullet.physicsBody!.contactTestBitMask = characterCategory
         bossBullet.physicsBody!.collisionBitMask = 0
-                
+        
         // Add the asset to the scene
         addChild(bossBullet)
         
+        var projectileSpeed: CGFloat = 1000
+        if lastTrial00.scorePlaty >= 150{
+            projectileSpeed = 500
+        } else if lastTrial00.scorePlaty >= 250{
+            projectileSpeed = 250
+        }
         
         // Set up SKAction to move the asset to the left edge of the scene
         let moveDuration = TimeInterval(4.0) // set duration of the movement
-        let moveAction = SKAction.moveTo(x: -bossBullet.size.width/2, duration: moveDuration)
+        let moveAction = SKAction.moveTo(y: -bossBullet.size.height/2, duration: TimeInterval(projectileSpeed / size.height * 2))
         
         // Remove the asset from the scene when it moves off the left edge
         let removeAction = SKAction.removeFromParent()
@@ -156,34 +206,34 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
     func spawnCharacterProjectile() {
         // Create a new asset node
         characterBullet = SKSpriteNode(texture: bubbleTexture, size: CGSize(width: 50, height: 50))
-
+        
         // Set the position of the asset to be just to the right of the character's position
         let characterPosition = character.position
-        let assetXPosition = characterPosition.x + character.size.width/2 + characterBullet.size.width/2
-        let assetYPosition = characterPosition.y
+        let assetXPosition = characterPosition.x
+        let assetYPosition = characterPosition.y + character.size.height/2 + characterBullet.size.height/2
         characterBullet.position = CGPoint(x: assetXPosition, y: assetYPosition)
-        
+        characterBullet.zRotation = CGFloat.pi/2
         characterBullet.physicsBody = SKPhysicsBody(rectangleOf: characterBullet.size)
-//        characterBullet.physicsBody = SKPhysicsBody(texture: characterBullet.texture!, size: characterBullet.size)
+        //        characterBullet.physicsBody = SKPhysicsBody(texture: characterBullet.texture!, size: characterBullet.size)
         characterBullet.physicsBody!.affectedByGravity = false
         characterBullet.physicsBody!.isDynamic = true
         characterBullet.physicsBody!.categoryBitMask = characterProjectileCategory
         characterBullet.physicsBody!.contactTestBitMask = bossCategory
         characterBullet.physicsBody!.collisionBitMask = 0
-
+        
         // Add the asset node to the scene
         addChild(characterBullet)
-
+        
         // Calculate the duration of the asset's movement across the screen based on the speed constant
         let moveDuration = TimeInterval(2.0)
-
+        
         // Create the action to move the asset across the screen, and remove it from the scene when it reaches the left edge
-        let moveAction = SKAction.moveTo(x: size.width + characterBullet.size.width/2, duration: moveDuration)
+        let moveAction = SKAction.moveTo(y: size.height + characterBullet.size.height/2, duration: moveDuration)
         let removeAction = SKAction.removeFromParent()
         let sequence = SKAction.sequence([moveAction, removeAction])
         characterBullet.run(sequence)
     }
-
+    
     
     override func didMove(to view: SKView) {
         
@@ -195,16 +245,19 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
         
         // Set the initial positions of the background nodes
         bg1.position = CGPoint(x: frame.midX, y: frame.midY)
-        bg2.position = CGPoint(x: bg1.position.x + bg1.size.width, y: frame.midY)
+        bg2.position = CGPoint(x: frame.midX, y: bg1.position.y + bg1.size.height)
+        
+        bg1.zRotation = CGFloat.pi/2
+        bg2.zRotation = CGFloat.pi/2
         
         // Add the background nodes to the scene
         addChild(bg1)
         addChild(bg2)
         
         // Create the scrolling actions
-        let moveLeft = SKAction.moveBy(x: -bg1.size.width, y: 0, duration: 10)
-        let reset = SKAction.moveBy(x: bg1.size.width, y: 0, duration: 0)
-        let sequence = SKAction.sequence([moveLeft, reset])
+        let moveUp = SKAction.moveBy(x: 0, y: -bg1.size.height, duration: 10)
+        let reset = SKAction.moveBy(x: 0, y: bg1.size.height, duration: 0)
+        let sequence = SKAction.sequence([moveUp, reset])
         let repeatForever = SKAction.repeatForever(sequence)
         
         // Run the scrolling actions on both background nodes
@@ -248,18 +301,18 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func touchDown(atPoint pos : CGPoint) {
-       
+        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-    
+        
     }
     
     func touchUp(atPoint pos : CGPoint) {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
@@ -296,27 +349,79 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
         
         frameSinceBossBulletLastSpawn += 1
         frameSinceCharacterBulletLastSpawn += 1
-            
-        if frameSinceBossBulletLastSpawn >= spawnInterval {
+        
+        if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty < 100 {
             frameSinceBossBulletLastSpawn = 0
             spawnBossProjectile()
-        } 
+        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty >= 100 && lastTrial00.scorePlaty < 200{
+            frameSinceBossBulletLastSpawn = 0
+            spawnBossProjectile()
+            spawnBossProjectile()
+        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty >= 200 && lastTrial00.scorePlaty < 250{
+            frameSinceBossBulletLastSpawn = 60
+            spawnBossProjectile()
+            spawnBossProjectile()
+            spawnBossProjectile()
+        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty >= 250{
+            frameSinceBossBulletLastSpawn = 60
+            spawnBossProjectile()
+            spawnBossProjectile()
+            spawnBossProjectile()
+            spawnBossProjectile()
+        }
+
+//        if lastTrial00.platyTurn == false{
+//            puggleTurn()
+//        }
+        
         
         if frameSinceCharacterBulletLastSpawn >= spawnInterval{
             frameSinceCharacterBulletLastSpawn = 0
             spawnCharacterProjectile()
         }
     }
+}
 
+class LastTrial00: ObservableObject{
+    @Published var startGame: Bool = false
+    @Published var firstTap: Bool = false
+    @Published var scorePlaty: Int = 0
+    @Published var scorePuggle: Int = 0
+    @Published var gameOver: Bool = false
+    @Published var platyTurn: Bool = true
+    @Published var showPopup: Bool = true
 }
 
 struct TheLastTrial: View {
+    @StateObject var lastTrial = LastTrial00()
     var body: some View {
-        ZStack{
-            GeometryReader { geometry in
-                SpriteView(scene: TheLastTrialScene(size: CGSize(width: geometry.size.width, height: geometry.size.height)), options: [.allowsTransparency])
+        if !lastTrial.gameOver {
+            ZStack{
+                GeometryReader { geometry in
+                    SpriteView(scene: TheLastTrialScene(size: CGSize(width: geometry.size.width, height: geometry.size.height), lastTrial00: lastTrial), options: [.allowsTransparency])
+                }
+                .edgesIgnoringSafeArea(.all)
+//                PopUpReadySetGo(start: $lastTrial.startGame, potrait: false)
+//                    .opacity($lastTrial.startGame.wrappedValue ? 0.0 : 1.0)
+//                    .rotationEffect(.degrees(90))
+//                if lastTrial.startGame && !lastTrial.firstTap{
+//                    VStack (spacing: 75){
+//                        Text("Drag Platypus to move")
+//                            .font(.custom(AppFont.bold, size: 16))
+//                            .foregroundColor(AppColor.navy)
+//                            .multilineTextAlignment(.center)
+//                            .allowsHitTesting(false)
+//                            .frame(width: 120)
+//
+//                    }.rotationEffect(.degrees(0))
+//                }
+                if lastTrial.showPopup{
+                    PopUpGameTurn(platyTurn: lastTrial.platyTurn, showPopup: $lastTrial.showPopup)
+                }
             }
-            .edgesIgnoringSafeArea(.all)
+            .navigationBarBackButtonHidden(true)
+        } else{
+            GameResultView(scorePlaty: lastTrial.scorePlaty, scorePuggle: lastTrial.scorePuggle, playAgain: AnyView(TheLastTrial()), game: 1)
         }
     }
 }
@@ -326,3 +431,4 @@ struct TheLastTrial_Previews: PreviewProvider {
         TheLastTrial()
     }
 }
+

@@ -20,7 +20,7 @@ struct RoundedButton: View {
                 .background(
                     RoundedRectangle(cornerRadius: 30)
                         .fill(AppColor.orange)
-                        .shadow(radius: 5)
+                        .shadow(radius: 3)
                 )
         }
     }

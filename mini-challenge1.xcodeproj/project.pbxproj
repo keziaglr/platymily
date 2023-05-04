@@ -14,6 +14,7 @@
 		683757372A01FAAD001F499A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757342A01FAAD001F499A /* GameView.swift */; };
 		683757382A01FAAD001F499A /* ChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757352A01FAAD001F499A /* ChooseView.swift */; };
 		683757392A01FAAD001F499A /* GuessTheWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683757362A01FAAD001F499A /* GuessTheWord.swift */; };
+		6837573F2A035039001F499A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6837573E2A035039001F499A /* Lottie */; };
 		AC0532D729F23F0D004AD470 /* mini_challenge1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0532D629F23F0D004AD470 /* mini_challenge1App.swift */; };
 		AC0532DB29F23F0E004AD470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0532DA29F23F0E004AD470 /* Assets.xcassets */; };
 		AC0532DE29F23F0E004AD470 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0532DD29F23F0E004AD470 /* Preview Assets.xcassets */; };
@@ -117,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6837573F2A035039001F499A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,6 +663,9 @@
 			dependencies = (
 			);
 			name = "mini-challenge1";
+			packageProductDependencies = (
+				6837573E2A035039001F499A /* Lottie */,
+			);
 			productName = "mini-challenge1";
 			productReference = AC0532D329F23F0D004AD470 /* mini-challenge1.app */;
 			productType = "com.apple.product-type.application";
@@ -689,6 +694,9 @@
 				Base,
 			);
 			mainGroup = AC0532CA29F23F0D004AD470;
+			packageReferences = (
+				6837573D2A035039001F499A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = AC0532D429F23F0D004AD470 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -964,6 +972,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6837573D2A035039001F499A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6837573E2A035039001F499A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6837573D2A035039001F499A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		ACE95CE12A00129B009B0C33 /* MC1.xcdatamodeld */ = {

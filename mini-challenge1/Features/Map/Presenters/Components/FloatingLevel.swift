@@ -85,7 +85,6 @@ struct FloatingLevel: View {
         .background(
             RoundedRectangle(cornerRadius: 20)
                 .fill(AppColor.orange)
-                .shadow(radius: 10)
                 .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.07)
             )
     }

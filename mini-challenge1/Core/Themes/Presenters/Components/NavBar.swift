@@ -32,7 +32,7 @@ struct NavBar: View {
             .background(
                 Rectangle()
                     .fill(AppColor.orange)
-                    .shadow(radius: 10)
+                    .shadow(radius: 3)
                     .frame(width: UIScreen.main.bounds.width)
                 )
     }

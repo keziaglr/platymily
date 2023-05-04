@@ -7,8 +7,16 @@
 
 import SwiftUI
 
+class GuessWord00: ObservableObject{
+    @Published var startGame: Bool = false
+    @Published var firstTap: Bool = false
+    @Published var scorePlaty: Int = 0
+    @Published var scorePuggle: Int = 0
+    @Published var gameOver: Bool = false
+}
+
 struct GameView: View {
-    
+    @StateObject var guessWord = GuessWord00()
     @State private var timeRemaining = 59 // set initial time remaining to 59 seconds
     @State private var guessChanceRemaining = 3
     @State private var points = 0
@@ -21,67 +29,73 @@ struct GameView: View {
     var firstWord = ""
     
     var body: some View {
-        ZStack{
-            Image("GuessTheWord_Board")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 500, height: 500)
-            
-            VStack {
-                Text("0:\(timeRemaining)")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .onAppear(){
-                        startTimer()
-                    }
-                    .padding(.bottom, 280)
-            }
-            
-            VStack {
-                Text(guessText)
-                    .font(.system(size: 40))
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                    .padding(.leading, 210)
-                    .padding(.trailing, 210)
-                    .padding(.top, 150)
+        if !guessWord.gameOver {
+            ZStack{
+                Image("GuessTheWord_Board")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 500, height: 500)
+                    .rotationEffect(.degrees(270))
                 
-                HStack {
-                    Button(action: {
-                        guessIncorrect()
-                    }) {
-                        Text("Wrong (x)")
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color.red)
-                            .cornerRadius(10)
-                    }
-                    .padding(.trailing)
-                    
-                    Button(action: {
-                        guessCorrect()
-                    }) {
-                        Text("Correct (v)")
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color.green)
-                            .cornerRadius(10)
-                    }
-                    .padding(.leading)
+                VStack {
+                    Text("0:\(timeRemaining)")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .onAppear(){
+                            startTimer()
+                        }
+                        .padding(.bottom, 280)
                 }
-                .padding(.top, 90)
+                .rotationEffect(.degrees(270))
+                
+                VStack {
+                    Text(guessText)
+                        .font(.system(size: 40))
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .padding(.top, 150)
+                    
+                    HStack {
+                        Button(action: {
+                            guessIncorrect()
+                        }) {
+                            Text("Wrong")
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.red)
+                                .cornerRadius(10)
+                        }
+                        .padding(.trailing)
+                        
+                        Button(action: {
+                            guessCorrect()
+                        }) {
+                            Text("Correct")
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.green)
+                                .cornerRadius(10)
+                        }
+                        .padding(.leading)
+                    }
+                    .padding(.top, 90)
+                }
+                .rotationEffect(.degrees(270))
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Image("Background")
+                .resizable()
+                .scaledToFill())
+            .ignoresSafeArea()
+            .onAppear(){
+                newGuess()
+            }
+            .navigationBarBackButtonHidden(true)
+        } else{
+            GameResultView(scorePlaty: guessWord.scorePlaty, scorePuggle: guessWord.scorePuggle, playAgain: AnyView(GuessTheWord()), game: 1)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Image("Background")
-            .resizable()
-            .scaledToFill())
-        .ignoresSafeArea()
-        .onAppear(){
-            newGuess()
-        }
-        .navigationBarBackButtonHidden(true)
+        
     }
     
     private func newGuess() {
@@ -90,17 +104,19 @@ struct GameView: View {
             return
         }
         guessText = words[wordIndex]
-        guessChanceRemaining = 3
+//        guessChanceRemaining = 3
         wordIndex = (wordIndex + 1) % words.count // increment the index and wrap around if needed
 //        guessText = words.randomElement() ?? ""
     }
     
     private func guessCorrect() {
-        points += 10
+        guessWord.scorePlaty += 10
         guessedWordsCount += 1
         
         if guessedWordsCount == words.count{
-            guessText = "Perfect Score" //move to winner screen
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+                self.guessWord.gameOver = true
+            }
         }else{
             newGuess()
             timeRemaining = 59 //restart timer
@@ -111,7 +127,9 @@ struct GameView: View {
     private func guessIncorrect() {
         guessChanceRemaining -= 1
         if guessChanceRemaining == 0 {
-            guessText = "Game Over" //move to game over screen
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+                self.guessWord.gameOver = true
+            }
         } else {
             guessText = "Wrong!"
             newGuess()
@@ -120,16 +138,24 @@ struct GameView: View {
     }
     
     private func startTimer() {
+        
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             if self.timeRemaining > 0 {
                 self.timeRemaining -= 1
             } else {
-                timer.invalidate()
-                guessIncorrect()
+                if self.guessChanceRemaining > 1 && self.wordIndex < self.words.count {
+                    self.guessIncorrect()
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+                        self.guessWord.gameOver = true
+                    }
+                    timer.invalidate()
+                }
             }
         }
     }
 }
+
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
