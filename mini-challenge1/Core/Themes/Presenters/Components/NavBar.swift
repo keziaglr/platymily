@@ -18,7 +18,7 @@ struct NavBar: View {
                         IconNavBar(title: Prompt.Navbar.map, image: "Icon_Map")
                     }
                     NavigationLink {
-//                        Map()
+                        Gacha(mc: mc)
                     }label: {
                         IconNavBar(title: Prompt.Navbar.platyroll, image: "Icon_Platyroll")
                     }

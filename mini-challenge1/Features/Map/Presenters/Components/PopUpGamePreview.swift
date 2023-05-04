@@ -48,7 +48,8 @@ struct PopUpGamePreview: View {
                         GuessTheWord(mc: mc)
                     }else if title == Prompt.Games.game3.title{
                        //Connect4
-                        GameResultView(scorePlaty: 10, scorePuggle: 20, playAgain: AnyView(GuessTheWord(mc: mc)), game: 2, mc: mc)
+//                        GameResultView(scorePlaty: 10, scorePuggle: 20, playAgain: AnyView(GuessTheWord(mc: mc)), game: 2, mc: mc)
+                        ConnectFourView(ViewControllerModel: ViewController())
                     }else if title == Prompt.Games.game4.title {
                         CatchGacha(mc: mc)
                     }else if title == Prompt.Games.game5.title {

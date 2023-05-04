@@ -10,6 +10,7 @@ import SwiftUI
 struct GachaObtained: View {
     
     @State private var skinObtained = ""
+    @StateObject var mc = MusicController()
     
     let skinTypes = ["Plat 1", "Plat 2", "Plat 3", "Plat 4", "Plat 5", "Plat 6", "Plat 7", "Plat 8", "Plat 9", "Plat 10", "Plat 11", "Plat 12", "Plat 13", "Plat 14", "Pug 1", "Pug 2", "Pug 3", "Pug 4", "Pug 5", "Pug 6", "Pug 7", "Pug 8", "Pug 9", "Pug 10", "Pug 11", "Pug 12", "Pug 13", "Pug 14"]
     
@@ -34,7 +35,7 @@ struct GachaObtained: View {
                     .resizable()
                     .scaledToFit()
                 
-                NavigationLink(destination: GachaResult()) {
+                NavigationLink(destination: GachaResult(mc: mc)) {
                     Text("Roll again")
                         .padding(10)
                         .padding(.leading, 50)
@@ -51,7 +52,7 @@ struct GachaObtained: View {
                 HStack {
                     Text("Go to")
                         .foregroundColor(.white)
-                    NavigationLink(destination: Gacha()){ //destination is supposed to be the profile view
+                    NavigationLink(destination: UserProfile(mc: mc)){ //destination is supposed to be the profile view
                         Text("Profile")
                             .foregroundColor(.white)
                             .fontWeight(.bold)

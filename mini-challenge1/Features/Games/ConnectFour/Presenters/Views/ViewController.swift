@@ -1,12 +1,32 @@
 import UIKit
+import SwiftUI
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource
+//class ConnectFour00: ObservableObject{
+//    @Published var startGame: Bool = false
+//    @Published var firstTap: Bool = false
+//    @Published var scorePlaty: Int = 0
+//    @Published var scorePuggle: Int = 0
+//    @Published var gameOver: Bool = false
+//    @Published var platyTurn: Bool = true
+//    @Published var showPopup: Bool = true
+//}
+
+
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ObservableObject
 {
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var turnImage: UIImageView!
-	
+    
 	var redScore = 0
 	var yellowScore = 0
+    
+    @Published var startGame: Bool = false
+    @Published var firstTap: Bool = false
+    @Published var scorePlaty: Int = 0
+    @Published var scorePuggle: Int = 0
+    @Published var gameOver: Bool = false
+    @Published var platyTurn: Bool = true
+    @Published var showPopup: Bool = true
     
     private var winner = ""
     private var gameEnded = false
@@ -26,12 +46,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
 		resetBoard()
 		setCellWidthHeight()
+        
+        
 	}
 
 	func setCellWidthHeight()
 	{
 		let width = collectionView.frame.size.width / 9
-		let height = collectionView.frame.size.height / 6
+		let height = collectionView.frame.size.height / 9
 		let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
 		flowLayout.itemSize = CGSize(width: width, height: height)
 	}
@@ -70,26 +92,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 				{
 					if yellowTurn()
 					{
-						yellowScore += 10
-                        checkScores()
-//                        if gameEnded == true{
-//                            NavigationLink(destination: ) {
-//                                Text("\(winner) won the game and gets a coin!")
-//                            }
-//                        }
+                        scorePuggle += 10
+                        
 					}
 					
 					if redTurn()
 					{
-						redScore += 10
-                        checkScores()
-//                        if gameEnded == true{
-//                            NavigationLink(destination: ) {
-//                                Text("\(winner) won the game and gets a coin!")
-//                            }
-//                        }
+                        scorePlaty += 10
+                       
 					}
+                
 					resultAlert(currentTurnVictoryMessage())
+                    
+                    gameOver = true
                     
 				}
 				
@@ -104,25 +119,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 			}
 		}
 	}
-    
-    func checkScores() {
-        if yellowScore == 30 {
-            winner = "Puggle"
-            gameEnded = true
-        } else if redScore == 30 {
-            winner = "Platypus"
-            gameEnded = true
-        }
-    }
 	
 	func resultAlert(_ title: String)
 	{
-		let message = "\nPlatypus: " + String(redScore) + "\n\nPuggle: " + String(yellowScore)
+		let message = "\nPlatypus: " + String(scorePlaty) + "\n\nPuggle: " + String(scorePuggle)
 		let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
 		ac.addAction(UIAlertAction(title: "Next Round", style: .default, handler: {
 			[self] (_) in
 			resetBoard()
 			self.resetCells()
+            
+//            let nextView =  GameResultView(scorePlaty: scorePlaty, scorePuggle: scorePuggle, playAgain: AnyView(ConnectFourView(ViewControllerModel: ViewController() )), game: 3)
+//            let hostingController = UIHostingController(rootView: nextView)
+//            self.present(hostingController, animated: true, completion: nil)
 		}))
 		self.present(ac, animated: true)
 	}
@@ -131,7 +140,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 	{
 		for cell in collectionView.visibleCells as! [BoardCell]
 		{
-			cell.image.image = UIImage(named: "Gacha 3")
+			cell.image.image = UIImage(named: "Bubble")
 		}
 	}
 }

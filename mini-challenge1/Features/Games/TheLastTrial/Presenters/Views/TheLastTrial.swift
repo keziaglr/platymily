@@ -357,19 +357,39 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
         frameSinceBossBulletLastSpawn += 1
         frameSinceCharacterBulletLastSpawn += 1
         
-        if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty < 100 {
+        if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty < 100 && lastTrial00.platyTurn == true {
             frameSinceBossBulletLastSpawn = 0
             spawnBossProjectile()
-        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty >= 100 && lastTrial00.scorePlaty < 200{
+        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty >= 100 && lastTrial00.scorePlaty < 200 && lastTrial00.platyTurn == true{
             frameSinceBossBulletLastSpawn = 0
             spawnBossProjectile()
             spawnBossProjectile()
-        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty >= 200 && lastTrial00.scorePlaty < 250{
+        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty >= 200 && lastTrial00.scorePlaty < 250 && lastTrial00.platyTurn == true{
             frameSinceBossBulletLastSpawn = 60
             spawnBossProjectile()
             spawnBossProjectile()
             spawnBossProjectile()
-        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty >= 250{
+        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePlaty >= 250 && lastTrial00.platyTurn == true{
+            frameSinceBossBulletLastSpawn = 60
+            spawnBossProjectile()
+            spawnBossProjectile()
+            spawnBossProjectile()
+            spawnBossProjectile()
+        }
+        
+        if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePuggle < 100 && lastTrial00.platyTurn == false {
+            frameSinceBossBulletLastSpawn = 0
+            spawnBossProjectile()
+        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePuggle >= 100 && lastTrial00.scorePuggle < 200 && lastTrial00.platyTurn == false{
+            frameSinceBossBulletLastSpawn = 0
+            spawnBossProjectile()
+            spawnBossProjectile()
+        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePuggle >= 200 && lastTrial00.scorePuggle < 250 && lastTrial00.platyTurn == false{
+            frameSinceBossBulletLastSpawn = 60
+            spawnBossProjectile()
+            spawnBossProjectile()
+            spawnBossProjectile()
+        } else if frameSinceBossBulletLastSpawn >= spawnInterval && lastTrial00.scorePuggle >= 250 && lastTrial00.platyTurn == false{
             frameSinceBossBulletLastSpawn = 60
             spawnBossProjectile()
             spawnBossProjectile()

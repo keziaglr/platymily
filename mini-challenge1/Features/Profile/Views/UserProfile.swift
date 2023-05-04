@@ -20,9 +20,9 @@ class UserProfile00: ObservableObject{
 struct UserProfile: View {
     @ObservedObject var mc : MusicController
     @StateObject var userProfile = UserProfile00()
-    var data: [Int] = Array(1...3)
-    let platypusSkin = ["Plat 1", "Plat 2", "Plat 3"]
-    let puggleSkin = ["Pug 1", "Pug 2", "Pug 3"]
+    var data: [Int] = Array(1...14)
+    let platypusSkin = ["Plat 1", "Plat 2", "Plat 3", "Plat 4", "Plat 5", "Plat 6", "Plat 7", "Plat 8", "Plat 9", "Plat 10", "Plat 11", "Plat 12", "Plat 13", "Plat 14"]
+    let puggleSkin = ["Pug 1", "Pug 2", "Pug 3", "Pug 4", "Pug 5", "Pug 6", "Pug 7", "Pug 8", "Pug 9", "Pug 10", "Pug 11", "Pug 12", "Pug 13", "Pug 14"]
     let fixedRows = [
         GridItem(.fixed(90)),
     ]
@@ -150,6 +150,7 @@ struct UserProfile: View {
             .resizable()
             .scaledToFill())
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
 }
 

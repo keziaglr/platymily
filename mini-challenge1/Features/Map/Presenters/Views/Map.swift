@@ -23,8 +23,6 @@ struct Map: View {
                     ZStack {
                         
                         ZStack{
-                            
-
                             LineBetweenTwoPoints(
                                 start:CGPoint(x: 130, y: -245),
                                 end: CGPoint(x: 270, y: -200),

@@ -48,7 +48,7 @@ struct SplashScreen: View {
                             Story(mc: mc)
                                 .opacity(showStory)
                         }
-
+                        
                     }
                 }.background(
                     Image("Background")
@@ -98,3 +98,4 @@ struct SplashScreen: View {
 //        SplashScreen()
 //    }
 //}
+

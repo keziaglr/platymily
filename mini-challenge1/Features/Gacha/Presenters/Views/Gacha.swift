@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Gacha: View {
+    
+    @StateObject var mc = MusicController()
+    
     var body: some View {
         NavigationView {
             VStack{
@@ -18,7 +21,7 @@ struct Gacha: View {
                 Image("GachaMachine")
                     .resizable()
                     .scaledToFit()
-                NavigationLink(destination: GachaResult()){
+                NavigationLink(destination: GachaResult(mc: mc)){
                     Text("1x Roll")
                         .padding(10)
                         .padding(.leading, 70)

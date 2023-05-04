@@ -10,6 +10,7 @@ import SwiftUI
 struct GachaResult: View {
     
     @State private var gachaRendered = ""
+    @StateObject var mc = MusicController()
     
     let gachaTypes = ["Gacha", "Gacha 2", "Gacha 3", "Gacha 4", "Gacha 5", "Gacha 6", "Gacha-Puggle"]
     

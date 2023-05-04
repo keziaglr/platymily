@@ -126,8 +126,12 @@ struct GameView: View {
         guessedWordsCount += 1
         
         if guessedWordsCount == words.count{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
-                self.guessWord.gameOver = true
+            if guessWord.platyTurn == true{
+                guessWord.platyTurn = false
+                guessWord.showPopup = true
+                guessChanceRemaining = 3
+            } else{
+                guessWord.gameOver = true
             }
         }else{
             newGuess()

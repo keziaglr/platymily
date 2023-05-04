@@ -14,8 +14,8 @@ struct GuessTheWord: View {
         NavigationView {
             ZStack{
                 VStack {
-                    
-                    NavigationLink(destination: ChooseView(mc: mc)){
+                
+                    NavigationLink(destination: GameView(mc: mc)){
                         Image("Play_Button")
                     }
                     .rotationEffect(.degrees(360))
