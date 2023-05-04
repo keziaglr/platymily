@@ -364,8 +364,8 @@ struct CatchGacha: View {
 }
 
 
-//struct CatchGacha_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CatchGacha()
-//    }
-//}
+struct CatchGacha_Previews: PreviewProvider {
+    static var previews: some View {
+        CatchGacha(mc: MusicController())
+    }
+}

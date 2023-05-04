@@ -47,14 +47,15 @@ struct TruthLieTurn: View {
                         .frame(width: 35, height: 35)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                        .scaleEffect(x: -1.0, y: 1.0)
                 }
             }
         }
     }
 }
 
-//struct TruthLieTurn_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TruthLieTurn(role: Prompt.Role.platy)
-//    }
-//}
+struct TruthLieTurn_Previews: PreviewProvider {
+    static var previews: some View {
+        TruthLieTurn(role: Prompt.Role.puggle, truthLieSentenceViewModel: TruthLieSentenceViewModel())
+    }
+}

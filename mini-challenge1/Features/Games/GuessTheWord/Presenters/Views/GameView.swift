@@ -88,7 +88,7 @@ struct GameView: View {
                 .rotationEffect(.degrees(270))
                 
                 if guessWord.showPopup{
-                    PopUpGameTurn(platyTurn: guessWord.platyTurn, showPopup: $guessWord.showPopup)
+                    PopUpGameTurn(platyTurn: guessWord.platyTurn, potrait: false, showPopup: $guessWord.showPopup)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

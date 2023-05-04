@@ -18,7 +18,7 @@ class UserProfile00: ObservableObject{
 }
 
 struct UserProfile: View {
-    
+    @ObservedObject var mc : MusicController
     @StateObject var userProfile = UserProfile00()
     var data: [Int] = Array(1...3)
     let platypusSkin = ["Plat 1", "Plat 2", "Plat 3"]
@@ -141,7 +141,7 @@ struct UserProfile: View {
             .background(.cyan)
             
             Spacer()
-            NavBar(mc: MusicController())
+            NavBar(mc: mc)
                 .ignoresSafeArea()
             
         }
@@ -155,6 +155,6 @@ struct UserProfile: View {
 
 struct UserProfile_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfile()
+        UserProfile(mc: MusicController())
     }
 }

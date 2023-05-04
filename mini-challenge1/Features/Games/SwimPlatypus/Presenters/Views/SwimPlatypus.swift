@@ -75,7 +75,7 @@ class SwimPlatypusScene: SKScene, SKPhysicsContactDelegate{
         for i in 0 ..< 2 + Int(self.frame.size.width / ( skyTexture.size().width * 2 )) {
             let i = CGFloat(i)
             let sprite = SKSpriteNode(texture: skyTexture)
-            sprite.setScale(0.35)
+            sprite.setScale(0.4)
             sprite.zPosition = -20
             sprite.position = CGPoint(x: i * sprite.size.width, y: sprite.size.height/2)
             sprite.run(moveSkySpritesForever)
@@ -390,13 +390,13 @@ struct SwimPlatypusView: View {
             }else{
                 GameResultView(scorePlaty: swimPlatyOO.scorePlaty, scorePuggle: swimPlatyOO.scorePuggle, playAgain: AnyView(SwimPlatypusView(mc: mc)), game: 0, mc: mc)
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
 //
-//struct SwimPlatypus_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SwimPlatypusView()
-//    }
-//}
+struct SwimPlatypus_Previews: PreviewProvider {
+    static var previews: some View {
+        SwimPlatypusView(mc: MusicController())
+    }
+}

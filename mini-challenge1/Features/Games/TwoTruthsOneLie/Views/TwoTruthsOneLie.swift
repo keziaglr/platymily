@@ -21,9 +21,7 @@ struct TwoTruthsOneLie: View {
                     Image("Background")
                         .resizable()
                         .ignoresSafeArea()
-                        .onAppear{
-                            mc.playGameMusic()
-                        }
+                        
                     VStack{
                         TitleGame(title: Prompt.TwoTruthsOneLie.title)
                         .padding(.bottom, 30)
@@ -49,18 +47,21 @@ struct TwoTruthsOneLie: View {
                         
                     }
                     if showPopup{
-                        PopUpGameTurn(platyTurn: platyTurn, showPopup: $showPopup)
+                        PopUpGameTurn(platyTurn: platyTurn, potrait: false, showPopup: $showPopup)
                     }
                 }
             }else{
                 GameResultView(scorePlaty: truthLieSentenceViewModel.pointPlaty, scorePuggle: truthLieSentenceViewModel.pointPuggle, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel(), mc: mc)), game: 4, mc: mc)
             }
         }.navigationBarBackButtonHidden(true)
+        .onAppear{
+            mc.playGameMusic()
+        }
     }
 }
 
-//struct TwoTruthsOneLie_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())
-//    }
-//}
+struct TwoTruthsOneLie_Previews: PreviewProvider {
+    static var previews: some View {
+        TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel(), mc : MusicController())
+    }
+}

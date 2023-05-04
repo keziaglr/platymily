@@ -424,7 +424,7 @@ struct TheLastTrial: View {
                     .padding(.trailing, 100)
                 }
                 if lastTrial.showPopup{
-                    PopUpGameTurn(platyTurn: lastTrial.platyTurn, showPopup: $lastTrial.showPopup)
+                    PopUpGameTurn(platyTurn: lastTrial.platyTurn, potrait: false, showPopup: $lastTrial.showPopup)
                     
                 }
             }

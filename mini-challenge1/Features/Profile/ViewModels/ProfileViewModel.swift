@@ -73,7 +73,7 @@ class ProfileViewModel: ObservableObject{
     
     func levelUp(index: Int){
         print("index \(index) \(savedEntities[0].level) \(index != 6 && savedEntities[0].level == index+1)")
-        if index != 6 && savedEntities[0].level == index+1{
+        if index != 5 && savedEntities[0].level == index+1{
             savedEntities[0].level = Int64(index+2)
             saveData()
         }

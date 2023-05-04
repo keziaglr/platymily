@@ -40,8 +40,8 @@ struct GuessTheWord: View {
     }
 }
 
-//struct GuessTheWord_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GuessTheWord()
-//    }
-//}
+struct GuessTheWord_Previews: PreviewProvider {
+    static var previews: some View {
+        GuessTheWord(mc: MusicController())
+    }
+}

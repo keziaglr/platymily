@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PopUpGameTurn: View {
     @State var platyTurn: Bool
+    @State var potrait: Bool
     @Binding var showPopup: Bool
     var body: some View {
         ZStack{
@@ -38,6 +39,7 @@ struct PopUpGameTurn: View {
                     .font(.custom(AppFont.medium, size: 14))
                     .foregroundColor(AppColor.white)
             }
+            .rotationEffect(potrait ? .degrees(0) : .degrees(270))
             .padding(20)
             .frame(width: 350, height: 350)
             .background(
@@ -56,8 +58,8 @@ struct PopUpGameTurn: View {
     }
 }
 
-//struct PopUpGameTurn_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PopUpGameTurn(platyTurn: true, show)
-//    }
-//}
+struct PopUpGameTurn_Previews: PreviewProvider {
+    static var previews: some View {
+        PopUpGameTurn(platyTurn: true, potrait: false, showPopup: .constant(true))
+    }
+}
