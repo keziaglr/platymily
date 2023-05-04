@@ -12,7 +12,7 @@ struct mini_challenge1App: App {
 
     var body: some Scene {
         WindowGroup {
-            Map()
+            SplashScreen()
         }
     }
 }

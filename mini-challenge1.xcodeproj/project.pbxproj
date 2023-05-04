@@ -47,6 +47,17 @@
 		AC27AE9729F5309A005018D1 /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9629F5309A005018D1 /* GameButton.swift */; };
 		AC27AE9C29F54925005018D1 /* SwimPlatypus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */; };
 		AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AEA029F66F47005018D1 /* CatchGacha.swift */; };
+		AC8772CB2A03538E00C9CC02 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8772CA2A03538E00C9CC02 /* LottieView.swift */; };
+		AC8772CE2A0353BC00C9CC02 /* splashscreen.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8772CD2A0353BC00C9CC02 /* splashscreen.json */; };
+		AC8772D32A03548D00C9CC02 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8772D22A03548D00C9CC02 /* SplashScreen.swift */; };
+		AC8772E02A035A6B00C9CC02 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8772DF2A035A6B00C9CC02 /* Story.swift */; };
+		AC8772E22A035DE700C9CC02 /* BackgroundTextStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8772E12A035DE700C9CC02 /* BackgroundTextStory.swift */; };
+		AC8772E42A0361E400C9CC02 /* CircleIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8772E32A0361E400C9CC02 /* CircleIndicator.swift */; };
+		AC8772EA2A037CB200C9CC02 /* slide4.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8772E52A037CB200C9CC02 /* slide4.json */; };
+		AC8772EB2A037CB200C9CC02 /* slide2.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8772E62A037CB200C9CC02 /* slide2.json */; };
+		AC8772EC2A037CB200C9CC02 /* slide5.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8772E72A037CB200C9CC02 /* slide5.json */; };
+		AC8772ED2A037CB200C9CC02 /* slide1.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8772E82A037CB200C9CC02 /* slide1.json */; };
+		AC8772EE2A037CB200C9CC02 /* slide3.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8772E92A037CB200C9CC02 /* slide3.json */; };
 		ACB47D7829FA1271008F215F /* FloatingLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7729FA1271008F215F /* FloatingLevel.swift */; };
 		ACB47D7A29FA3DCA008F215F /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7929FA3DCA008F215F /* NavBar.swift */; };
 		ACB47D7C29FE7299008F215F /* PopUpGamePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB47D7B29FE7299008F215F /* PopUpGamePreview.swift */; };
@@ -101,6 +112,17 @@
 		AC27AE9629F5309A005018D1 /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimPlatypus.swift; sourceTree = "<group>"; };
 		AC27AEA029F66F47005018D1 /* CatchGacha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchGacha.swift; sourceTree = "<group>"; };
+		AC8772CA2A03538E00C9CC02 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LottieView.swift; path = "mini-challenge1/Core/LottieView.swift"; sourceTree = SOURCE_ROOT; };
+		AC8772CD2A0353BC00C9CC02 /* splashscreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splashscreen.json; sourceTree = "<group>"; };
+		AC8772D22A03548D00C9CC02 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		AC8772DF2A035A6B00C9CC02 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		AC8772E12A035DE700C9CC02 /* BackgroundTextStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTextStory.swift; sourceTree = "<group>"; };
+		AC8772E32A0361E400C9CC02 /* CircleIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIndicator.swift; sourceTree = "<group>"; };
+		AC8772E52A037CB200C9CC02 /* slide4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = slide4.json; sourceTree = "<group>"; };
+		AC8772E62A037CB200C9CC02 /* slide2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = slide2.json; sourceTree = "<group>"; };
+		AC8772E72A037CB200C9CC02 /* slide5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = slide5.json; sourceTree = "<group>"; };
+		AC8772E82A037CB200C9CC02 /* slide1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = slide1.json; sourceTree = "<group>"; };
+		AC8772E92A037CB200C9CC02 /* slide3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = slide3.json; sourceTree = "<group>"; };
 		ACB47D7729FA1271008F215F /* FloatingLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLevel.swift; sourceTree = "<group>"; };
 		ACB47D7929FA3DCA008F215F /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		ACB47D7B29FE7299008F215F /* PopUpGamePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpGamePreview.swift; sourceTree = "<group>"; };
@@ -260,6 +282,7 @@
 		AC0532EB29F24089004AD470 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AC8772CF2A03544E00C9CC02 /* SplashScreen */,
 				683757232A01FA75001F499A /* Gacha */,
 				ACEE61D92A00CB4E00A41E6A /* Profile */,
 				AC27AE9029F52806005018D1 /* Map */,
@@ -334,6 +357,7 @@
 		AC0532F529F2420C004AD470 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AC8772CC2A0353B300C9CC02 /* Lottie */,
 				AC27AE7D29F516AA005018D1 /* Font */,
 				AC0532DA29F23F0E004AD470 /* Assets.xcassets */,
 			);
@@ -360,6 +384,7 @@
 		AC0532FF29F242D3004AD470 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AC8772CA2A03538E00C9CC02 /* LottieView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -588,6 +613,54 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AC8772CC2A0353B300C9CC02 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				AC8772E82A037CB200C9CC02 /* slide1.json */,
+				AC8772E62A037CB200C9CC02 /* slide2.json */,
+				AC8772E92A037CB200C9CC02 /* slide3.json */,
+				AC8772E52A037CB200C9CC02 /* slide4.json */,
+				AC8772E72A037CB200C9CC02 /* slide5.json */,
+				AC8772CD2A0353BC00C9CC02 /* splashscreen.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		AC8772CF2A03544E00C9CC02 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AC8772D02A03545800C9CC02 /* Presenters */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		AC8772D02A03545800C9CC02 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				AC8772DE2A035A4C00C9CC02 /* Components */,
+				AC8772D12A03546100C9CC02 /* Views */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		AC8772D12A03546100C9CC02 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC8772D22A03548D00C9CC02 /* SplashScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AC8772DE2A035A4C00C9CC02 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AC8772DF2A035A6B00C9CC02 /* Story.swift */,
+				AC8772E12A035DE700C9CC02 /* BackgroundTextStory.swift */,
+				AC8772E32A0361E400C9CC02 /* CircleIndicator.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		ACB47D7D29FE7E38008F215F /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,12 +785,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC27AE8529F51731005018D1 /* Quicksand-Light.ttf in Resources */,
+				AC8772EC2A037CB200C9CC02 /* slide5.json in Resources */,
+				AC8772EE2A037CB200C9CC02 /* slide3.json in Resources */,
 				AC27AE8829F51731005018D1 /* Quicksand-Bold.ttf in Resources */,
 				AC27AE8929F51731005018D1 /* Quicksand-Medium.ttf in Resources */,
 				AC27AE8729F51731005018D1 /* Quicksand-SemiBold.ttf in Resources */,
+				AC8772CE2A0353BC00C9CC02 /* splashscreen.json in Resources */,
+				AC8772ED2A037CB200C9CC02 /* slide1.json in Resources */,
 				AC0532DE29F23F0E004AD470 /* Preview Assets.xcassets in Resources */,
+				AC8772EA2A037CB200C9CC02 /* slide4.json in Resources */,
 				AC0532DB29F23F0E004AD470 /* Assets.xcassets in Resources */,
 				AC27AE8629F51731005018D1 /* Quicksand-Regular.ttf in Resources */,
+				AC8772EB2A037CB200C9CC02 /* slide2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,6 +810,7 @@
 				AC27AE7C29F5143F005018D1 /* Prologue.swift in Sources */,
 				683757302A01FA8E001F499A /* TheLastTrial.swift in Sources */,
 				AC05330329F24311004AD470 /* NetworkManager.swift in Sources */,
+				AC8772E42A0361E400C9CC02 /* CircleIndicator.swift in Sources */,
 				ACB47D7A29FA3DCA008F215F /* NavBar.swift in Sources */,
 				AC05332129F2A3E4004AD470 /* TruthLieSentence.swift in Sources */,
 				AC27AE9729F5309A005018D1 /* GameButton.swift in Sources */,
@@ -744,6 +824,7 @@
 				AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */,
 				683757372A01FAAD001F499A /* GameView.swift in Sources */,
 				ACE95CD329FF58D5009B0C33 /* PopUpReadySetGo.swift in Sources */,
+				AC8772E22A035DE700C9CC02 /* BackgroundTextStory.swift in Sources */,
 				ACEE61E02A0161B100A41E6A /* GameViewModel.swift in Sources */,
 				AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */,
 				683757382A01FAAD001F499A /* ChooseView.swift in Sources */,
@@ -756,12 +837,14 @@
 				AC05332729F2AB18004AD470 /* SelectSentence.swift in Sources */,
 				AC05331E29F2A02C004AD470 /* TwoTruthsOneLie.swift in Sources */,
 				AC05331C29F29F7B004AD470 /* InputSentences.swift in Sources */,
+				AC8772D32A03548D00C9CC02 /* SplashScreen.swift in Sources */,
 				AC16009529FEDC97009E5D59 /* GameResultView.swift in Sources */,
 				AC05331329F24AB6004AD470 /* CustomButton.swift in Sources */,
 				6837572B2A01FA75001F499A /* GachaResult.swift in Sources */,
 				AC27AE8D29F51A17005018D1 /* AppFont.swift in Sources */,
 				AC27AE9529F52C27005018D1 /* Map.swift in Sources */,
 				AC05330729F24385004AD470 /* CoreDataManager.swift in Sources */,
+				AC8772CB2A03538E00C9CC02 /* LottieView.swift in Sources */,
 				ACB47D7829FA1271008F215F /* FloatingLevel.swift in Sources */,
 				683757392A01FAAD001F499A /* GuessTheWord.swift in Sources */,
 				AC0532FC29F242AE004AD470 /* Error.swift in Sources */,
@@ -770,6 +853,7 @@
 				AC27AE9C29F54925005018D1 /* SwimPlatypus.swift in Sources */,
 				6837572A2A01FA75001F499A /* GachaObtained.swift in Sources */,
 				ACB47D8029FE7E59008F215F /* PopUpGameTurn.swift in Sources */,
+				AC8772E02A035A6B00C9CC02 /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

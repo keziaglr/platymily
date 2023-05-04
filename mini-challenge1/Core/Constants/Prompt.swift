@@ -142,9 +142,14 @@ extension Prompt{
     }
     
     struct Platycoin{
-        static let congrats = "Congrats"
+        static let congrats = "Congrats!"
         static let given = "You have been given"
         static let platycoin = "PlatyCoin"
         static let tap = "Tap anywhere to continue"
+    }
+    
+    struct Story{
+        static let texts = ["In a magical world filled with wonder and magic called Adeyca,  a small family of Platypus that lusted for adventure lived their happy story together. Platypus the parent and Puggle the child would spend their days exploring dungeons and learning new things as their bond grew stronger with each passing day.", "But one day, as they explore the deep sea of Atlantis, they came across a cursed artifact that has a majestic look at the bottom of the ocean. As the child grabbed it, a blinding light flashed and in a glimpse of an eye, their fate changed.", "The parents and child started to argue with each other constantly, making their once-strong bond strained and found themselves at odds with each other -- at every opportunity.", "They later discovered that the dungeon  was the work of Platywiz, the Great Platypus Wizard, and he is the one who created the artificat. After countless days of adventure, they found the wizard and begged him to lift the curse. ", "The wizard, moved by their sheer determination, gave the family a set of challenges. The family accepted those requests and set out to another adventure in hope of breaking the curse."]
+        static let animations = ["slide1", "slide2", "slide3", "slide4", "slide5"]
     }
 }
