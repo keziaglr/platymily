@@ -9,54 +9,83 @@ import SwiftUI
 
 struct SplashScreen: View {
     
-    @State var splashScreen = false
-    @State var showStory = 1.0
+    @State var splashScreen = true
+    @State var showStory = 0.0
+    @StateObject var pvm = ProfileViewModel()
+    @StateObject var mvm = MapViewModel()
+    @StateObject var mc = MusicController()
     var body: some View {
-        NavigationView {
-            ZStack {
+        if mvm.savedEntities.isEmpty {
+            NavigationView {
+                ZStack {
+                    if splashScreen {
+                        LottieView(lottieFile: "splashscreen", animationSpeed: 0.8, transform: CGAffineTransform(scaleX: 1.2, y: 2.4))
+                            .onAppear(){
+                                mc.playMapMusic()
+                            }
+                    }else{
+                        VStack {
+                            HStack {
+                                Spacer()
+                                HStack {
+                                    NavigationLink {
+                                        Map(mc: mc)
+                                    } label: {
+                                        HStack {
+                                            Text("Skip")
+                                                .foregroundColor(.white)
+                                                .font(.custom(AppFont.semibold, size: 16))
+                                            Image("NextButton")
+                                                .resizable()
+                                                .frame(width: 16, height: 16)
+                                        }
+                                    }
+                                    
+                                }
+                                .offset(y: 35)
+                                .padding(.trailing, 30)
+                            }.opacity(showStory)
+                            Story(mc: mc)
+                                .opacity(showStory)
+                        }
+
+                    }
+                }.background(
+                    Image("Background")
+                        .resizable()
+                        .ignoresSafeArea()
+                ).onAppear(){
+                    Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
+                        withAnimation(.easeOut(duration: 1)) {
+                            self.splashScreen = false
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                        withAnimation(.easeIn(duration: 1)) {
+                            self.showStory = 1.0
+                        }
+                    }
+                }
+            }
+        }else{
+            ZStack{
                 if splashScreen {
                     LottieView(lottieFile: "splashscreen", animationSpeed: 0.8, transform: CGAffineTransform(scaleX: 1.2, y: 2.4))
-                }else{
-                    VStack {
-                        HStack {
-                            Spacer()
-                            HStack {
-                                NavigationLink {
-                                    Map()
-                                } label: {
-                                    HStack {
-                                        Text("Skip")
-                                            .foregroundColor(.white)
-                                            .font(.custom(AppFont.semibold, size: 16))
-                                        Image("NextButton")
-                                            .resizable()
-                                            .frame(width: 16, height: 16)
-                                    }
-                                }
-                                
-                            }
-                            .offset(y: 35)
-                            .padding(.trailing, 30)
+                        .onAppear(){
+                            mc.playMapMusic()
                         }
-                        Story()
-                            .opacity(showStory)
-                    }
-
+                        .background(
+                            Image("Background")
+                                .resizable()
+                                .ignoresSafeArea()
+                        )
+                }else{
+                    Map(mc: mc)
                 }
-            }.background(
-                Image("Background")
-                    .resizable()
-                    .ignoresSafeArea()
-            ).onAppear(){
+            }.onAppear(){
                 Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
                     withAnimation(.easeOut(duration: 1)) {
                         self.splashScreen = false
-                    }
-                }
-                
-                Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
-                    withAnimation(.easeIn(duration: 1)) {
-                        self.showStory = 1.0
                     }
                 }
             }
@@ -64,8 +93,8 @@ struct SplashScreen: View {
     }
 }
 
-struct SplashScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        SplashScreen()
-    }
-}
+//struct SplashScreen_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SplashScreen()
+//    }
+//}

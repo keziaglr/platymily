@@ -12,6 +12,7 @@ struct Story: View {
     @State var indicator : Int = 0
     @State var text : String = Prompt.Story.texts[0]
     @State private var offset: CGFloat = 0
+    @ObservedObject var mc : MusicController
     var body: some View {
         VStack{
             switch index {
@@ -40,14 +41,16 @@ struct Story: View {
             }
             BackgroundTextStory(text: $text)
                 .onChange(of: index, perform: { newValue in
-                    text = Prompt.Story.texts[index]
+                    withAnimation(.easeInOut(duration: 1)) {
+                        text = Prompt.Story.texts[index]
+                    }
                 })
                 
             StoryIndicator(index: $index)
                 .padding(.top, 10)
                 .padding(.bottom, 20)
             NavigationLink {
-                Map()
+                Map(mc: mc)
             } label: {
                 RoundedButton(text: Prompt.Button.continueBtn)
             }
@@ -73,8 +76,8 @@ struct Story: View {
     }
 }
 
-struct Story_Previews: PreviewProvider {
-    static var previews: some View {
-        Story()
-    }
-}
+//struct Story_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Story()
+//    }
+//}

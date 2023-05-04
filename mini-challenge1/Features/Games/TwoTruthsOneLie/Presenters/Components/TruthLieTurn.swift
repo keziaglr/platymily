@@ -14,7 +14,7 @@ struct TruthLieTurn: View {
         if role == Prompt.Role.platy{
             VStack {
                 HStack {
-                    Image(Prompt.Role.platy)
+                    Image("Profile_Platy")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 35, height: 35)
@@ -41,7 +41,7 @@ struct TruthLieTurn: View {
                             .foregroundColor(AppColor.white)
                         .font(.custom(AppFont.regular, size: 14))
                     }
-                    Image(Prompt.Role.puggle)
+                    Image("Profile_Puggle")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 35, height: 35)

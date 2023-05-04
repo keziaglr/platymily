@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct GuessTheWord: View {
+    @ObservedObject var mc: MusicController
     
     var body: some View {
         NavigationView {
             ZStack{
                 VStack {
                     
-                    NavigationLink(destination: ChooseView()){
+                    NavigationLink(destination: ChooseView(mc: mc)){
                         Image("Play_Button")
                     }
                     .rotationEffect(.degrees(360))
@@ -29,6 +30,9 @@ struct GuessTheWord: View {
                 .frame(width: 900, height: 500)
                 .aspectRatio(contentMode: .fill)
             )
+            .onAppear{
+                mc.playGameMusic()
+            }
             .ignoresSafeArea()
             .rotationEffect(.degrees(270))
         }
@@ -36,8 +40,8 @@ struct GuessTheWord: View {
     }
 }
 
-struct GuessTheWord_Previews: PreviewProvider {
-    static var previews: some View {
-        GuessTheWord()
-    }
-}
+//struct GuessTheWord_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GuessTheWord()
+//    }
+//}

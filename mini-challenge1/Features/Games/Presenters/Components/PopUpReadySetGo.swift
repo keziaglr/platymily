@@ -24,6 +24,9 @@ struct PopUpReadySetGo: View {
                     .fill(AppColor.black)
                     .ignoresSafeArea()
                     .opacity(0.5)
+                    .onTapGesture {
+                        self.start = true
+                    }
                 VStack(spacing:20) {
                     Text("READY")
                         .font(.custom(AppFont.bold, size: 50))
@@ -39,8 +42,8 @@ struct PopUpReadySetGo: View {
                         .opacity(goOpacity)
                 }.rotationEffect(.degrees(potrait ? 0 : 270))
                 .onAppear {
-                    self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                        withAnimation(Animation.easeInOut(duration: 0.5)) {
+                    self.timer = Timer.scheduledTimer(withTimeInterval: 0.8, repeats: true) { _ in
+                        withAnimation(Animation.easeInOut(duration: 0.3)) {
                             if self.readyOpacity == 0.2 {
                                 self.readyOpacity = 1.0
                             } else if self.setOpacity == 0.2 {
@@ -63,6 +66,9 @@ struct PopUpReadySetGo: View {
                     .fill(AppColor.black)
                     .ignoresSafeArea()
                     .opacity(0.5)
+                    .onTapGesture {
+                        self.start = true
+                    }
                 VStack {
                     if showRotate {
                         VStack(spacing:20){
@@ -97,34 +103,37 @@ struct PopUpReadySetGo: View {
                     }
                 }
                 .onAppear {
-                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         withAnimation(Animation.easeInOut(duration: 2.0)) {
                             rotatePhone = true
                         }
                     }
-                    Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true) { _ in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                         withAnimation(Animation.easeInOut(duration: 0.5)) {
                             showRotate = false
                         }
                     }
-                    Timer.scheduledTimer(withTimeInterval: 6.0, repeats: true) { _ in
-                        withAnimation(Animation.easeInOut(duration: 0.2)) {
-                            if self.readyOpacity == 0.2 {
-                                self.readyOpacity = 1.0
-                            } else if self.setOpacity == 0.2 {
-                                self.readyOpacity = 0.1
-                                self.setOpacity = 1.0
-                            } else if self.goOpacity == 0.2 {
-                                self.setOpacity = 0.1
-                                self.readyOpacity = 0.1
-                                self.goOpacity = 1.0
-                                self.timer?.invalidate()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                    self.start = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
+                        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: true) { _ in
+                            withAnimation(Animation.easeInOut(duration: 0.3)) {
+                                if self.readyOpacity == 0.2 {
+                                    self.readyOpacity = 1.0
+                                } else if self.setOpacity == 0.2 {
+                                    self.readyOpacity = 0.1
+                                    self.setOpacity = 1.0
+                                } else if self.goOpacity == 0.2 {
+                                    self.setOpacity = 0.1
+                                    self.readyOpacity = 0.1
+                                    self.goOpacity = 1.0
+                                    self.timer?.invalidate()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                        self.start = true
+                                    }
                                 }
                             }
                         }
                     }
+                    
                 }
             }
         }

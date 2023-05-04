@@ -43,18 +43,19 @@
 		AC16009229FECA16009E5D59 /* TruthLieTurn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16009129FECA16009E5D59 /* TruthLieTurn.swift */; };
 		AC16009529FEDC97009E5D59 /* GameResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16009429FEDC97009E5D59 /* GameResultView.swift */; };
 		AC16009729FEDEFA009E5D59 /* ProgressBarWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16009629FEDEFA009E5D59 /* ProgressBarWin.swift */; };
-		AC27AE7C29F5143F005018D1 /* Prologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE7B29F5143F005018D1 /* Prologue.swift */; };
+		AC2164BC2A03B7FA00A68014 /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2164BB2A03B7FA00A68014 /* MusicController.swift */; };
 		AC27AE8529F51731005018D1 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8029F51731005018D1 /* Quicksand-Light.ttf */; };
 		AC27AE8629F51731005018D1 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8129F51731005018D1 /* Quicksand-Regular.ttf */; };
 		AC27AE8729F51731005018D1 /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8229F51731005018D1 /* Quicksand-SemiBold.ttf */; };
 		AC27AE8829F51731005018D1 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8329F51731005018D1 /* Quicksand-Bold.ttf */; };
 		AC27AE8929F51731005018D1 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC27AE8429F51731005018D1 /* Quicksand-Medium.ttf */; };
 		AC27AE8D29F51A17005018D1 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE8C29F51A17005018D1 /* AppFont.swift */; };
-		AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE8E29F51BAE005018D1 /* TextPrologue.swift */; };
 		AC27AE9529F52C27005018D1 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9429F52C27005018D1 /* Map.swift */; };
 		AC27AE9729F5309A005018D1 /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9629F5309A005018D1 /* GameButton.swift */; };
 		AC27AE9C29F54925005018D1 /* SwimPlatypus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */; };
 		AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AEA029F66F47005018D1 /* CatchGacha.swift */; };
+		AC79B0FF2A03AA1B0012610A /* Map.mpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC79B0FE2A03AA1B0012610A /* Map.mpeg */; };
+		AC79B1012A03AC2D0012610A /* Game.mpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC79B1002A03AC2D0012610A /* Game.mpeg */; };
 		AC8772CB2A03538E00C9CC02 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8772CA2A03538E00C9CC02 /* LottieView.swift */; };
 		AC8772CE2A0353BC00C9CC02 /* splashscreen.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8772CD2A0353BC00C9CC02 /* splashscreen.json */; };
 		AC8772D32A03548D00C9CC02 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8772D22A03548D00C9CC02 /* SplashScreen.swift */; };
@@ -115,7 +116,7 @@
 		AC16009129FECA16009E5D59 /* TruthLieTurn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruthLieTurn.swift; sourceTree = "<group>"; };
 		AC16009429FEDC97009E5D59 /* GameResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultView.swift; sourceTree = "<group>"; };
 		AC16009629FEDEFA009E5D59 /* ProgressBarWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarWin.swift; sourceTree = "<group>"; };
-		AC27AE7B29F5143F005018D1 /* Prologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prologue.swift; sourceTree = "<group>"; };
+		AC2164BB2A03B7FA00A68014 /* MusicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
 		AC27AE8029F51731005018D1 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
 		AC27AE8129F51731005018D1 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
 		AC27AE8229F51731005018D1 /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -123,11 +124,12 @@
 		AC27AE8429F51731005018D1 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Medium.ttf"; sourceTree = "<group>"; };
 		AC27AE8A29F5192F005018D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AC27AE8C29F51A17005018D1 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
-		AC27AE8E29F51BAE005018D1 /* TextPrologue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPrologue.swift; sourceTree = "<group>"; };
 		AC27AE9429F52C27005018D1 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		AC27AE9629F5309A005018D1 /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimPlatypus.swift; sourceTree = "<group>"; };
 		AC27AEA029F66F47005018D1 /* CatchGacha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchGacha.swift; sourceTree = "<group>"; };
+		AC79B0FE2A03AA1B0012610A /* Map.mpeg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; path = Map.mpeg; sourceTree = "<group>"; };
+		AC79B1002A03AC2D0012610A /* Game.mpeg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; path = Game.mpeg; sourceTree = "<group>"; };
 		AC8772CA2A03538E00C9CC02 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LottieView.swift; path = "mini-challenge1/Core/LottieView.swift"; sourceTree = SOURCE_ROOT; };
 		AC8772CD2A0353BC00C9CC02 /* splashscreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splashscreen.json; sourceTree = "<group>"; };
 		AC8772D22A03548D00C9CC02 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -340,7 +342,6 @@
 				683757232A01FA75001F499A /* Gacha */,
 				ACEE61D92A00CB4E00A41E6A /* Profile */,
 				AC27AE9029F52806005018D1 /* Map */,
-				AC27AE7329F510D8005018D1 /* Prologue */,
 				AC05330A29F24545004AD470 /* Games */,
 			);
 			path = Features;
@@ -411,6 +412,7 @@
 		AC0532F529F2420C004AD470 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AC79B0FD2A03AA0C0012610A /* Music */,
 				AC8772CC2A0353B300C9CC02 /* Lottie */,
 				AC27AE7D29F516AA005018D1 /* Font */,
 				AC0532DA29F23F0E004AD470 /* Assets.xcassets */,
@@ -530,39 +532,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		AC27AE7329F510D8005018D1 /* Prologue */ = {
-			isa = PBXGroup;
-			children = (
-				AC27AE7429F5128A005018D1 /* Presenters */,
-			);
-			path = Prologue;
-			sourceTree = "<group>";
-		};
-		AC27AE7429F5128A005018D1 /* Presenters */ = {
-			isa = PBXGroup;
-			children = (
-				AC27AE7729F512AC005018D1 /* Components */,
-				AC27AE7629F512A6005018D1 /* Views */,
-			);
-			path = Presenters;
-			sourceTree = "<group>";
-		};
-		AC27AE7629F512A6005018D1 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AC27AE7B29F5143F005018D1 /* Prologue.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		AC27AE7729F512AC005018D1 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				AC27AE8E29F51BAE005018D1 /* TextPrologue.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		AC27AE7D29F516AA005018D1 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,6 +637,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AC79B0FD2A03AA0C0012610A /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				AC79B1002A03AC2D0012610A /* Game.mpeg */,
+				AC79B0FE2A03AA1B0012610A /* Map.mpeg */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
 		AC8772CC2A0353B300C9CC02 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,6 +718,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE95CD829FFA9C4009B0C33 /* MapViewModel.swift */,
+				AC2164BB2A03B7FA00A68014 /* MusicController.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -849,6 +828,8 @@
 				AC27AE8729F51731005018D1 /* Quicksand-SemiBold.ttf in Resources */,
 				AC8772CE2A0353BC00C9CC02 /* splashscreen.json in Resources */,
 				AC8772ED2A037CB200C9CC02 /* slide1.json in Resources */,
+				AC79B0FF2A03AA1B0012610A /* Map.mpeg in Resources */,
+				AC79B1012A03AC2D0012610A /* Game.mpeg in Resources */,
 				AC0532DE29F23F0E004AD470 /* Preview Assets.xcassets in Resources */,
 				AC8772EA2A037CB200C9CC02 /* slide4.json in Resources */,
 				AC0532DB29F23F0E004AD470 /* Assets.xcassets in Resources */,
@@ -864,7 +845,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC27AE7C29F5143F005018D1 /* Prologue.swift in Sources */,
 				683757302A01FA8E001F499A /* TheLastTrial.swift in Sources */,
 				AC05330329F24311004AD470 /* NetworkManager.swift in Sources */,
 				AC8772E42A0361E400C9CC02 /* CircleIndicator.swift in Sources */,
@@ -878,7 +858,6 @@
 				AC05331129F24692004AD470 /* CustomTextField.swift in Sources */,
 				AC05332929F2B20B004AD470 /* TruthLieSentenceRepository.swift in Sources */,
 				ACE95CD929FFA9C4009B0C33 /* MapViewModel.swift in Sources */,
-				AC27AE8F29F51BAE005018D1 /* TextPrologue.swift in Sources */,
 				683757372A01FAAD001F499A /* GameView.swift in Sources */,
 				ACE95CD329FF58D5009B0C33 /* PopUpReadySetGo.swift in Sources */,
 				AC8772E22A035DE700C9CC02 /* BackgroundTextStory.swift in Sources */,
@@ -918,6 +897,7 @@
 				6837572A2A01FA75001F499A /* GachaObtained.swift in Sources */,
 				ACB47D8029FE7E59008F215F /* PopUpGameTurn.swift in Sources */,
 				AC8772E02A035A6B00C9CC02 /* Story.swift in Sources */,
+				AC2164BC2A03B7FA00A68014 /* MusicController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,6 +21,7 @@ class CatchGachaScene: SKScene, SKPhysicsContactDelegate {
     let player2Texture = SKTexture(imageNamed: "Puggle_Basket")
     let hearthTexture = SKTexture(imageNamed: "Platypus")
     let hearth2Texture = SKTexture(imageNamed: "Puggle")
+    
     var player: SKSpriteNode!
     var player2: SKSpriteNode!
     var ground: SKSpriteNode!
@@ -323,12 +324,16 @@ class CatchGachaOO: ObservableObject {
 
 struct CatchGacha: View {
     @StateObject var catchGacha = CatchGachaOO()
+    @ObservedObject var mc: MusicController
     var body: some View {
         ZStack {
             if !catchGacha.gameOver {
                 ZStack{
                     GeometryReader { geometry in
                         SpriteView(scene: CatchGachaScene(size: CGSize(width: geometry.size.width, height: geometry.size.height), catchGachaOO: catchGacha), options: [.allowsTransparency])
+                            .onAppear{
+                                mc.playGameMusic()
+                            }
                     }
                     .edgesIgnoringSafeArea(.all)
                     PopUpReadySetGo(start: $catchGacha.startGame, potrait: false)
@@ -352,15 +357,15 @@ struct CatchGacha: View {
                     }
                 }
             }else{
-                GameResultView(scorePlaty: catchGacha.scorePlaty, scorePuggle: catchGacha.scorePuggle, playAgain: AnyView(CatchGacha()), game: 3)
+                GameResultView(scorePlaty: catchGacha.scorePlaty, scorePuggle: catchGacha.scorePuggle, playAgain: AnyView(CatchGacha(mc: mc)), game: 3, mc: mc)
             }
         }
     }
 }
 
 
-struct CatchGacha_Previews: PreviewProvider {
-    static var previews: some View {
-        CatchGacha()
-    }
-}
+//struct CatchGacha_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CatchGacha()
+//    }
+//}

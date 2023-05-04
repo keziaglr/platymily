@@ -141,7 +141,7 @@ struct UserProfile: View {
             .background(.cyan)
             
             Spacer()
-            NavBar()
+            NavBar(mc: MusicController())
                 .ignoresSafeArea()
             
         }

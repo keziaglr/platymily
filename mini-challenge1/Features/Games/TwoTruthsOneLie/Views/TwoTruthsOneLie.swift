@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TwoTruthsOneLie: View {
     @ObservedObject var truthLieSentenceViewModel: TruthLieSentenceViewModel
+    @ObservedObject var mc: MusicController
     @State var movePage = 1
     @State var platyTurn : Bool = true
     @State var showPopup : Bool = true
@@ -20,6 +21,9 @@ struct TwoTruthsOneLie: View {
                     Image("Background")
                         .resizable()
                         .ignoresSafeArea()
+                        .onAppear{
+                            mc.playGameMusic()
+                        }
                     VStack{
                         TitleGame(title: Prompt.TwoTruthsOneLie.title)
                         .padding(.bottom, 30)
@@ -40,7 +44,7 @@ struct TwoTruthsOneLie: View {
                                 .frame(minWidth: 300)
                         }
                         Spacer()
-                        NavBar()
+//                        NavBar()
                         
                         
                     }
@@ -49,14 +53,14 @@ struct TwoTruthsOneLie: View {
                     }
                 }
             }else{
-                GameResultView(scorePlaty: truthLieSentenceViewModel.pointPlaty, scorePuggle: truthLieSentenceViewModel.pointPuggle, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())), game: 4)
+                GameResultView(scorePlaty: truthLieSentenceViewModel.pointPlaty, scorePuggle: truthLieSentenceViewModel.pointPuggle, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel(), mc: mc)), game: 4, mc: mc)
             }
         }.navigationBarBackButtonHidden(true)
     }
 }
 
-struct TwoTruthsOneLie_Previews: PreviewProvider {
-    static var previews: some View {
-        TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())
-    }
-}
+//struct TwoTruthsOneLie_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())
+//    }
+//}

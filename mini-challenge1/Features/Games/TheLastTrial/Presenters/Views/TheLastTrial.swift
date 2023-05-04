@@ -396,11 +396,15 @@ class LastTrial00: ObservableObject{
 
 struct TheLastTrial: View {
     @StateObject var lastTrial = LastTrial00()
+    @ObservedObject var mc : MusicController
     var body: some View {
         if !lastTrial.gameOver {
             ZStack{
                 GeometryReader { geometry in
                     SpriteView(scene: TheLastTrialScene(size: CGSize(width: geometry.size.width, height: geometry.size.height), lastTrial00: lastTrial), options: [.allowsTransparency])
+                        .onAppear{
+                            mc.playGameMusic()
+                        }
                 }
                 .edgesIgnoringSafeArea(.all)
                 PopUpReadySetGo(goOpacity: 0.2, start: $lastTrial.startGame, potrait: false)
@@ -426,14 +430,14 @@ struct TheLastTrial: View {
             }
             .navigationBarBackButtonHidden(true)
         } else{
-            GameResultView(scorePlaty: lastTrial.scorePlaty, scorePuggle: lastTrial.scorePuggle, playAgain: AnyView(TheLastTrial()), game: 1)
+            GameResultView(scorePlaty: lastTrial.scorePlaty, scorePuggle: lastTrial.scorePuggle, playAgain: AnyView(TheLastTrial(mc: mc)), game: 5, mc: mc)
         }
     }
 }
 
-struct TheLastTrial_Previews: PreviewProvider {
-    static var previews: some View {
-        TheLastTrial()
-    }
-}
+//struct TheLastTrial_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TheLastTrial()
+//    }
+//}
 

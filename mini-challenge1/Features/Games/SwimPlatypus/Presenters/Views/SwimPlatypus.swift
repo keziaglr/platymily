@@ -337,12 +337,16 @@ class SwimPlatyOO: ObservableObject {
 
 struct SwimPlatypusView: View {
     @StateObject var swimPlatyOO = SwimPlatyOO()
+    @ObservedObject var mc: MusicController
     var body: some View {
         ZStack {
             if !swimPlatyOO.gameOver {
                 ZStack{
                     GeometryReader { geometry in
                         SpriteView(scene: SwimPlatypusScene(size: CGSize(width: geometry.size.width, height: geometry.size.height), swimPlatyOO: swimPlatyOO), options: [.allowsTransparency])
+                            .onAppear{
+                                mc.playGameMusic()
+                            }
                     }
                     .edgesIgnoringSafeArea(.all)
                     if swimPlatyOO.startGame && !swimPlatyOO.firstTap{
@@ -384,15 +388,15 @@ struct SwimPlatypusView: View {
                         .opacity($swimPlatyOO.startGame.wrappedValue ? 0.0 : 1.0)
                 }
             }else{
-                GameResultView(scorePlaty: swimPlatyOO.scorePlaty, scorePuggle: swimPlatyOO.scorePuggle, playAgain: AnyView(SwimPlatypusView()), game: 0)
+                GameResultView(scorePlaty: swimPlatyOO.scorePlaty, scorePuggle: swimPlatyOO.scorePuggle, playAgain: AnyView(SwimPlatypusView(mc: mc)), game: 0, mc: mc)
             }
         }
     }
 }
 
-
-struct SwimPlatypus_Previews: PreviewProvider {
-    static var previews: some View {
-        SwimPlatypusView()
-    }
-}
+//
+//struct SwimPlatypus_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SwimPlatypusView()
+//    }
+//}

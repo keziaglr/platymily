@@ -25,6 +25,7 @@ struct GameView: View {
     @State private var guessText = ""
     @State private var wordIndex = 0
     @State private var guessedWordsCount = 0
+    @ObservedObject var mc: MusicController
     
     let words = ["PLATYPUS", "PUGGLE", "SNAIL", "SNAKE", "CORAL", "Kak Octa", "SwiftUI"]
     
@@ -100,7 +101,7 @@ struct GameView: View {
             }
             .navigationBarBackButtonHidden(true)
         } else{
-            GameResultView(scorePlaty: guessWord.scorePlaty, scorePuggle: guessWord.scorePuggle, playAgain: AnyView(GuessTheWord()), game: 1)
+            GameResultView(scorePlaty: guessWord.scorePlaty, scorePuggle: guessWord.scorePuggle, playAgain: AnyView(GuessTheWord(mc: mc)), game: 1, mc: mc)
         }
         
     }
@@ -172,8 +173,8 @@ struct GameView: View {
 }
 
 
-struct GameView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameView()
-    }
-}
+//struct GameView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GameView()
+//    }
+//}

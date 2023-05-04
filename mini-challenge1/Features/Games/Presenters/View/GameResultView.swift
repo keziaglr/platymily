@@ -14,6 +14,7 @@ struct GameResultView: View {
     @State var game: Int
     @StateObject var gvm = GameViewModel()
     @StateObject var mvm = MapViewModel()
+    @ObservedObject var mc : MusicController
     @StateObject var pvm = ProfileViewModel()
     var body: some View {
         NavigationView {
@@ -21,10 +22,13 @@ struct GameResultView: View {
                 Image("Background")
                     .resizable()
                     .ignoresSafeArea()
+                    .onAppear{
+                        mc.playMapMusic()
+                    }
                     
                 VStack {
                     Spacer()
-                    NavBar()
+                    NavBar(mc: mc)
                 }.ignoresSafeArea()
                 if scorePlaty != scorePuggle {
                     VStack{
@@ -86,7 +90,7 @@ struct GameResultView: View {
                     PopUpPlatyCoin(coinAmount: gvm.coin, gvm: gvm)
                 }
             }.onAppear{
-                if scorePlaty != 0 || scorePuggle != 0{
+                if scorePlaty != 0 && scorePuggle != 0{
                     pvm.levelUp(index: game)
                     mvm.updateData(index: game, scorePlaty: scorePlaty, scorePuggle: scorePuggle)
                 }
@@ -100,8 +104,8 @@ struct GameResultView: View {
 
 }
 
-struct GameResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameResultView(scorePlaty: 2, scorePuggle: 5, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())), game: 1)
-    }
-}
+//struct GameResultView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GameResultView(scorePlaty: 2, scorePuggle: 5, playAgain: AnyView(TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel())), game: 1)
+//    }
+//}

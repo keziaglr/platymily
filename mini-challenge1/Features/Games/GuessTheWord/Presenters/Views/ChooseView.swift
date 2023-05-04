@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChooseView: View {
+    @ObservedObject var mc: MusicController
     var body: some View {
         NavigationView {
             VStack{
@@ -16,7 +17,7 @@ struct ChooseView: View {
                     .fontWeight(.bold)
                     .font(.system(size: 25))
                 
-                NavigationLink(destination: GameView()) {
+                NavigationLink(destination: GameView(mc: mc)) {
                     Text("PLATYPUS")
                         .padding(10)
                         .padding(.leading, 70)
@@ -32,7 +33,7 @@ struct ChooseView: View {
                     }
                 }
                 
-                NavigationLink(destination: GameView()) {
+                NavigationLink(destination: GameView(mc:mc)) {
                     Text("PUGGLE")
                         .padding(10)
                         .padding(.leading, 85)
@@ -58,8 +59,8 @@ struct ChooseView: View {
     }
 }
 
-struct ChooseView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChooseView()
-    }
-}
+//struct ChooseView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChooseView()
+//    }
+//}

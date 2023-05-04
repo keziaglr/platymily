@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct NavBar: View {
+    @ObservedObject var mc : MusicController
     var body: some View {
             ZStack(alignment: .leading) {
                 HStack{
                     NavigationLink {
-                        Map()
+                        Map(mc: mc)
                     }label: {
                         IconNavBar(title: Prompt.Navbar.map, image: "Icon_Map")
                     }
@@ -56,8 +57,8 @@ struct IconNavBar: View{
     }
 }
 
-struct NavBar_Previews: PreviewProvider {
-    static var previews: some View {
-        NavBar()
-    }
-}
+//struct NavBar_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavBar()
+//    }
+//}

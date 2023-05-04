@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import AVFoundation
 
 class MapViewModel: ObservableObject{
     let container: NSPersistentContainer
@@ -24,6 +25,7 @@ class MapViewModel: ObservableObject{
             seedMap()
         }
     }
+    
     
     func seedMap(){
         addData(name: Prompt.Games.game1.title, winner: "", status: true, rules: Prompt.Games.game1.rules, lockImage: "1_Locked", image: "1")

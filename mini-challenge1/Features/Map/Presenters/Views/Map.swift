@@ -12,6 +12,7 @@ struct Map: View {
     @State var game = "Game Name"
     @State var rules = "Rules"
     @State var image = "1"
+    @ObservedObject var mc : MusicController
     @StateObject var vm = MapViewModel()
     var body: some View {
         
@@ -40,7 +41,7 @@ struct Map: View {
                             
                             LineBetweenTwoPoints(
                                 start:CGPoint(x: 130, y: 55),
-                                end: CGPoint(x: 260, y: 90),
+                                end: CGPoint(x: 265, y: 100),
                                 control1: CGPoint(x: 180, y: 110),
                                 control2: CGPoint(x: 240, y: 65))
                             .opacity(vm.savedEntities[3].status ? 1.0 : 0)
@@ -80,17 +81,19 @@ struct Map: View {
                 }.edgesIgnoringSafeArea(.all)
                 
                     
+                
+                VStack{
+                    Spacer()
+                    NavBar(mc: mc)
+                }.ignoresSafeArea()
+                
                 VStack{
                     FloatingLevel()
-                        .padding(.top, 20)
+                        .padding(.top, 60)
                     Spacer()
-                }
-                VStack{
-                    Spacer()
-                    NavBar()
                 }.ignoresSafeArea()
                 if showPopup{
-                    PopUpGamePreview(title: $game, rules: rules, image: image, showPopup: $showPopup)
+                    PopUpGamePreview(title: $game, rules: rules, image: image, showPopup: $showPopup, mc: mc)
                 }
                     
             }
@@ -105,7 +108,8 @@ struct LineBetweenTwoPoints: View {
     var control2: CGPoint
     var color: Color = AppColor.navy
     var width: CGFloat = 3
-    
+    @State private var trimStart: CGFloat = 0
+    @State private var trimEnd: CGFloat = 0
     var body: some View {
         Path { path in
             path.move(to: start)
@@ -114,8 +118,14 @@ struct LineBetweenTwoPoints: View {
                     control1: control1,
                     control2: control2)
         }
+        .trim(from: trimStart, to: trimEnd)
         .stroke(style: StrokeStyle(lineWidth: width, lineCap: .round, dash: [8]))
         .foregroundColor(color)
+        .onAppear {
+            withAnimation(Animation.easeInOut(duration: 2).delay(0.5)) {
+                self.trimEnd = 1
+            }
+        }
         
     }
 }
@@ -129,6 +139,6 @@ extension CGPoint {
 
 struct Map_Previews: PreviewProvider {
     static var previews: some View {
-        Map()
+        Map(mc: MusicController())
     }
 }

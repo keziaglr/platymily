@@ -15,7 +15,7 @@ struct ProgressBarWin: View {
     @ObservedObject var gvm : GameViewModel
     var body: some View {
         HStack{
-            Image(platy ? Prompt.Role.platy : Prompt.Role.puggle)
+            Image(platy ? "Profile_Platy" : "Profile_Puggle")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 60, height: 60)
@@ -91,11 +91,11 @@ struct ProgressBarWin: View {
     }
 }
 
-//struct ProgressBarWin_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VStack {
-////            ProgressBarWin(score: 5, maxScore: 5, platy: true)
-//            ProgressBarWin(score: 0, maxScore: 0, platy: false)
-//        }
-//    }
-//}
+struct ProgressBarWin_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+//            ProgressBarWin(score: 5, maxScore: 5, platy: true)
+            ProgressBarWin(score: 0, maxScore: 0, platy: false, gvm: GameViewModel())
+        }
+    }
+}

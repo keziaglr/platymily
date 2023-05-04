@@ -12,6 +12,7 @@ struct PopUpGamePreview: View {
     @State var rules : String
     @State var image : String
     @Binding var showPopup : Bool
+    @ObservedObject var mc : MusicController
     var body: some View {
         
         ZStack {
@@ -42,17 +43,18 @@ struct PopUpGamePreview: View {
                 }.padding(.vertical, 5)
                 NavigationLink {
                     if title == Prompt.Games.game1.title {
-                        SwimPlatypusView()
+                        SwimPlatypusView(mc: mc)
                     }else if title == Prompt.Games.game2.title {
-                        GuessTheWord()
+                        GuessTheWord(mc: mc)
                     }else if title == Prompt.Games.game3.title{
                        //Connect4
+                        GameResultView(scorePlaty: 10, scorePuggle: 20, playAgain: AnyView(GuessTheWord(mc: mc)), game: 2, mc: mc)
                     }else if title == Prompt.Games.game4.title {
-                        CatchGacha()
+                        CatchGacha(mc: mc)
                     }else if title == Prompt.Games.game5.title {
-                        TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel() )
+                        TwoTruthsOneLie(truthLieSentenceViewModel: TruthLieSentenceViewModel(), mc: mc )
                     }else if title == Prompt.Games.game6.title {
-                        TheLastTrial()
+                        TheLastTrial(mc: mc)
                     }
                 } label: {
                     RoundedButton(text: Prompt.Button.startChallenge)
