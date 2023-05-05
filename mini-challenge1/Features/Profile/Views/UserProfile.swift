@@ -15,6 +15,8 @@ class UserProfile00: ObservableObject{
     @Published var gameOver: Bool = false
     @Published var platyTurn: Bool = true
     @Published var showPopup: Bool = true
+    @Published var skinEquip: String = ""
+    @Published var equipped: Bool = false
 }
 
 struct UserProfile: View {
@@ -28,6 +30,8 @@ struct UserProfile: View {
     ]
     
     @State private var platyTurn: Bool = true
+    @State private var obtainedPlatSkins: [String] = []
+    @State private var obtainedPugSkins: [String] = []
 
     
     var body: some View {
@@ -61,13 +65,13 @@ struct UserProfile: View {
                 HStack {
                     
                     TabView(selection: $platyTurn) {
-                        Image("Platypus")
+                        Image(userProfile.equipped ? userProfile.skinEquip : "Platypus")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 200)
                             .offset(y: -20)
                             .tag(true)
-                        Image("Puggle")
+                        Image(userProfile.equipped ? userProfile.skinEquip : "Puggle")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 150)
@@ -104,7 +108,7 @@ struct UserProfile: View {
             .padding(.bottom, 15)
             
             Button{
-                
+                userProfile.equipped = true
             } label: {
                 RoundedButton(text: Prompt.Button.equip)
             }
@@ -113,7 +117,7 @@ struct UserProfile: View {
             HStack(alignment: .top){
                 ScrollView(.horizontal){
                     LazyHGrid(rows: fixedRows, spacing: 10){
-                        ForEach(userProfile.platyTurn ? platypusSkin : puggleSkin, id: \.self){ skinName in
+                        ForEach(userProfile.platyTurn ? obtainedPlatSkins : obtainedPugSkins, id: \.self){ skinName in
                             VStack {
                                 Image(skinName)
                                     .resizable()
@@ -126,6 +130,9 @@ struct UserProfile: View {
                                     .overlay{
                                         RoundedRectangle(cornerRadius: 10)
                                             .stroke(Color.white, lineWidth: 4)
+                                    }
+                                    .onTapGesture {
+                                        userProfile.skinEquip = skinName
                                     }
                                 Text("The Normie") //placeholder
                                     .foregroundColor(.white)

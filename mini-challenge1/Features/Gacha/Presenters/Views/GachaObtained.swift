@@ -12,6 +12,9 @@ struct GachaObtained: View {
     @State private var skinObtained = ""
     @StateObject var mc = MusicController()
     
+    @Binding var obtainedPlatSkins: [String]
+    @Binding var obtainedPugSkins: [String]
+    
     let skinTypes = ["Plat 1", "Plat 2", "Plat 3", "Plat 4", "Plat 5", "Plat 6", "Plat 7", "Plat 8", "Plat 9", "Plat 10", "Plat 11", "Plat 12", "Plat 13", "Plat 14", "Pug 1", "Pug 2", "Pug 3", "Pug 4", "Pug 5", "Pug 6", "Pug 7", "Pug 8", "Pug 9", "Pug 10", "Pug 11", "Pug 12", "Pug 13", "Pug 14"]
     
     var body: some View {
@@ -71,6 +74,11 @@ struct GachaObtained: View {
             .navigationBarBackButtonHidden(true)
             .onAppear{
                 skinResult()
+                if skinObtained.starts(with: "Plat") {
+                    obtainedPlatSkins.append(skinObtained)
+                } else if skinObtained.starts(with: "Pug") {
+                    obtainedPugSkins.append(skinObtained)
+                }
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -83,6 +91,6 @@ struct GachaObtained: View {
 
 struct GachaObtained_Previews: PreviewProvider {
     static var previews: some View {
-        GachaObtained()
+        GachaObtained(obtainedPlatSkins: .constant([]), obtainedPugSkins: .constant([]))
     }
 }

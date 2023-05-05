@@ -16,7 +16,7 @@ struct GachaResult: View {
     
     var body: some View {
         NavigationView {
-            NavigationLink(destination: GachaObtained()) {
+            NavigationLink(destination: GachaObtained(mc: mc, obtainedPlatSkins: .constant([]), obtainedPugSkins: .constant([]))) {
                 VStack{
                     Image(gachaRendered)
                         .resizable()

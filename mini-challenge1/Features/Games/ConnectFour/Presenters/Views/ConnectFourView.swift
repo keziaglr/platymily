@@ -19,16 +19,23 @@ struct ConnectFourViewController: UIViewControllerRepresentable {
 
 struct ConnectFourView: View {
     
-    @ObservedObject var ViewControllerModel: ViewController
+    @StateObject var viewControllerModel = ConnectFour00()
+    @ObservedObject var mc : MusicController
     
     var body: some View {
-        if !ViewControllerModel.gameOver{
+        if !viewControllerModel.gameOver{
+            Text("hi")
+                .onTapGesture {
+                    print("ConnectFourView \(viewControllerModel.gameOver) Score Platy \(viewControllerModel.scorePlaty)")
+                }
             NavigationView{
                 ConnectFourViewController()
+                    .environmentObject(viewControllerModel)
+
             }
             .navigationBarBackButtonHidden(true)
         } else{
-//            GameResultView(scorePlaty: ViewControllerModel.scorePlaty, scorePuggle: ViewControllerModel.scorePuggle, playAgain: AnyView(ConnectFourView(ViewControllerModel: ViewController())), game: 3)
+            GameResultView(scorePlaty: viewControllerModel.scorePlaty, scorePuggle: viewControllerModel.scorePuggle, playAgain: AnyView(ConnectFourView(viewControllerModel: ConnectFour00(), mc: mc)), game: 3, mc: mc)
         }
         
     }
@@ -36,6 +43,6 @@ struct ConnectFourView: View {
 
 struct ConnectFourView_Previews: PreviewProvider {
     static var previews: some View {
-        ConnectFourView(ViewControllerModel: ViewController())
+        ConnectFourView(viewControllerModel: ConnectFour00(), mc: MusicController())
     }
 }

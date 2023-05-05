@@ -130,7 +130,7 @@ struct GameButtonAction: View {
             GameButton(type: getType(), title: getChallenge() , desc: vm.savedEntities[index].winner != "" ? "Winner: \(String( vm.savedEntities[index].winner!))" : "Locked", locked: !vm.savedEntities[index].status, image: vm.savedEntities[index].image ?? "1", imageLocked: vm.savedEntities[index].lockImage ?? "1_Locked")
         }.position(CGPoint(x: 200, y: getYPos()))
             .opacity(vm.savedEntities[index].status ? 1.0 : 0.5)
-            .disabled(!vm.savedEntities[index].status)
+//            .disabled(!vm.savedEntities[index].status)
     }
     
     

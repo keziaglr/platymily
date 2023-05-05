@@ -14,6 +14,7 @@ struct SplashScreen: View {
     @StateObject var pvm = ProfileViewModel()
     @StateObject var mvm = MapViewModel()
     @StateObject var mc = MusicController()
+    @StateObject var svm = SetViewModel()
     var body: some View {
         if mvm.savedEntities.isEmpty {
             NavigationView {

@@ -1,25 +1,7 @@
 import UIKit
 import SwiftUI
 
-//class ConnectFour00: ObservableObject{
-//    @Published var startGame: Bool = false
-//    @Published var firstTap: Bool = false
-//    @Published var scorePlaty: Int = 0
-//    @Published var scorePuggle: Int = 0
-//    @Published var gameOver: Bool = false
-//    @Published var platyTurn: Bool = true
-//    @Published var showPopup: Bool = true
-//}
-
-
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ObservableObject
-{
-	@IBOutlet weak var collectionView: UICollectionView!
-	@IBOutlet weak var turnImage: UIImageView!
-    
-	var redScore = 0
-	var yellowScore = 0
-    
+class ConnectFour00: ObservableObject{
     @Published var startGame: Bool = false
     @Published var firstTap: Bool = false
     @Published var scorePlaty: Int = 0
@@ -27,6 +9,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @Published var gameOver: Bool = false
     @Published var platyTurn: Bool = true
     @Published var showPopup: Bool = true
+}
+
+
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+	@IBOutlet weak var collectionView: UICollectionView!
+	@IBOutlet weak var turnImage: UIImageView!
+    
+	var redScore = 0
+	var yellowScore = 0
+    
+//    @Published var startGame: Bool = false
+//    @Published var firstTap: Bool = false
+//    @Published var scorePlaty: Int = 0
+//    @Published var scorePuggle: Int = 0
+//    @Published var gameOver: Bool = false
+//    @Published var platyTurn: Bool = true
+//    @Published var showPopup: Bool = true
+//    @ObservedObject var connectFour = ConnectFour00()
+    private var connectFour = ConnectFour00()
     
     private var winner = ""
     private var gameEnded = false
@@ -35,12 +36,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 	{
 		super.viewDidLoad()
         
+        
+        
+        
         collectionView.backgroundColor = .clear
         
         let backgroundImage = UIImage(named: "Background")?.resizableImage(withCapInsets: .zero, resizingMode: .stretch)
-//        let backgroundView = UIImageView(image: backgroundImage)
-//        backgroundView.contentMode = .scaleAspectFill
-//        view.addSubview(backgroundView)
         let backgroundColor = UIColor(patternImage: backgroundImage!)
         view.backgroundColor = backgroundColor
         
@@ -92,20 +93,36 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 				{
 					if yellowTurn()
 					{
-                        scorePuggle += 10
+                        connectFour.scorePuggle += 10
+                        
+//                        gameOver = true
                         
 					}
 					
 					if redTurn()
 					{
-                        scorePlaty += 10
+                        connectFour.scorePlaty += 10
+//                        gameOver = true
+                        
                        
 					}
-                
-					resultAlert(currentTurnVictoryMessage())
-                    
-                    gameOver = true
-                    
+                    connectFour.gameOver = true
+                    let nextView =  GameResultView(scorePlaty: connectFour.scorePlaty, scorePuggle: connectFour.scorePuggle, playAgain: AnyView(ConnectFourView(viewControllerModel: ConnectFour00(), mc: MusicController() )), game: 3, mc: MusicController())
+                    let hostingController = UIHostingController(rootView: nextView)
+                    addChild(hostingController)
+                    hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+                    view.addSubview(hostingController.view)
+                    hostingController.didMove(toParent: self)
+                    NSLayoutConstraint.activate([
+                        hostingController.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2),
+                        hostingController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 2),
+                        hostingController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                        hostingController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+                    ])
+//                    self.present(hostingController, animated: true, completion: nil)
+//					resultAlert(currentTurnVictoryMessage())
+                    print("red game over \(connectFour.gameOver)")
+                    print("yellow game over \(connectFour.gameOver)")
 				}
 				
 				if boardIsFull()
@@ -122,16 +139,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 	
 	func resultAlert(_ title: String)
 	{
-		let message = "\nPlatypus: " + String(scorePlaty) + "\n\nPuggle: " + String(scorePuggle)
+        let message = "\nPlatypus: " + String(connectFour.scorePlaty) + "\n\nPuggle: " + String(connectFour.scorePuggle)
 		let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
 		ac.addAction(UIAlertAction(title: "Next Round", style: .default, handler: {
 			[self] (_) in
-			resetBoard()
-			self.resetCells()
+//			resetBoard()
+//			self.resetCells()
             
-//            let nextView =  GameResultView(scorePlaty: scorePlaty, scorePuggle: scorePuggle, playAgain: AnyView(ConnectFourView(ViewControllerModel: ViewController() )), game: 3)
-//            let hostingController = UIHostingController(rootView: nextView)
-//            self.present(hostingController, animated: true, completion: nil)
+            let nextView =  GameResultView(scorePlaty: connectFour.scorePlaty, scorePuggle: connectFour.scorePuggle, playAgain: AnyView(ConnectFourView(viewControllerModel: ConnectFour00(), mc: MusicController() )), game: 3, mc: MusicController())
+            let hostingController = UIHostingController(rootView: nextView)
+            self.present(hostingController, animated: true, completion: nil)
 		}))
 		self.present(ac, animated: true)
 	}
