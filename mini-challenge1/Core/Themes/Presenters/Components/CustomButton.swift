@@ -26,6 +26,26 @@ struct RoundedButton: View {
     }
 }
 
+struct RoundedButton2: View {
+    @State var text: String
+    @State var isActive: Bool
+    var body: some View {
+        ZStack(alignment: .leading) {
+            Text(text)
+                .padding(.vertical,10)
+                .padding(.horizontal, 70)
+                .foregroundColor(AppColor.white)
+                .fontWeight(.bold)
+                .font(.custom(AppFont.medium, size: 18))
+                .background(
+                    RoundedRectangle(cornerRadius: 30)
+                        .fill(isActive ? AppColor.orange : .gray)
+                        .shadow(radius: 3)
+                )
+        }
+    }
+}
+
 struct RectangleButton: View {
     @State var text: String
     @Binding var selected: Bool
@@ -76,8 +96,6 @@ struct TruthLieButton: View {
 
 //struct CustomButton_Previews: PreviewProvider {
 //    static var previews: some View {
-//        RectangleButton(text: Prompt.Button.confirm, action: {
-//            print("Button tapped")
-//        }, selected: false)
+//        RoundedButton2(text: Prompt.Button.confirm)
 //    }
 //}

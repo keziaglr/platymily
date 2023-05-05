@@ -18,22 +18,23 @@ struct Gacha: View {
     var body: some View {
         NavigationView {
             VStack{
+                Spacer()
                 Text("Platyroll")
                     .foregroundColor(.white)
-                    .font(.system(size: 32))
-                    .fontWeight(.bold)
+                    .font(.custom(AppFont.bold, size: 32))
                 Image("GachaMachine")
                     .resizable()
                     .scaledToFit()
                 
                 NavigationLink(destination: GachaResult(mc: mc)){
-                    RoundedButton(text: Prompt.Button.gachaRoll)
-                }
-//                .disabled(pvm.savedEntities[0].coin <= 0 ? true : false)
-//                    .opacity(pvm.savedEntities[0].coin <= 0 ? 0.5 : 1.0)
+                    RoundedButton2(text: Prompt.Button.gachaRoll, isActive: pvm.savedEntities[0].coin > 0)
+                }.disabled(pvm.savedEntities[0].coin <= 0 ? true : false)
+                    .opacity(pvm.savedEntities[0].coin <= 0 ? 0.5 : 1.0)
+                    
                 
                 Text("Platycoin owned: \(pvm.savedEntities[0].coin)") //placeholder
                     .foregroundColor(.white)
+                    .font(.custom(AppFont.medium, size: 14))
                 
                 //navbar
                 Spacer()
