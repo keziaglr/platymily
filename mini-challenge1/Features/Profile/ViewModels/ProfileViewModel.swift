@@ -61,18 +61,15 @@ class ProfileViewModel: ObservableObject{
         saveData()
     }
     
-    func buyGacha(coin: Int64) -> Bool{
+    func buyGacha(coin: Int64) {
         
         if savedEntities[0].coin >= coin {
             savedEntities[0].coin -= coin
             saveData()
-            return true 
         }
-        return false //cannot buy
     }
     
     func levelUp(index: Int){
-        print("index \(index) \(savedEntities[0].level) \(index != 6 && savedEntities[0].level == index+1)")
         if index != 5 && savedEntities[0].level == index+1{
             savedEntities[0].level = Int64(index+2)
             saveData()

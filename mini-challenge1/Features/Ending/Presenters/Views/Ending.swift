@@ -18,19 +18,19 @@ struct Ending: View {
             switch index {
             case 0:
                 LottieView(lottieFile: Prompt.Ending.animations[0], animationSpeed: 1, transform: CGAffineTransform(scaleX: 1, y: 1))
-                    .padding(.horizontal,40)
+                    .padding(.horizontal,20)
                     .padding(.top, 50)
             case 1:
                 LottieView(lottieFile: Prompt.Ending.animations[1], animationSpeed: 1, transform: CGAffineTransform(scaleX: 1, y: 1))
-                    .padding(.horizontal,40)
+                    .padding(.horizontal,20)
                     .padding(.top, 50)
             case 2:
                 LottieView(lottieFile: Prompt.Ending.animations[2], animationSpeed: 1, transform: CGAffineTransform(scaleX: 1, y: 1))
-                    .padding(.horizontal,40)
+                    .padding(.horizontal,20)
                     .padding(.top, 50)
             case 3:
                 LottieView(lottieFile: Prompt.Ending.animations[3], animationSpeed: 1, transform: CGAffineTransform(scaleX: 1, y: 1))
-                    .padding(.horizontal,40)
+                    .padding(.horizontal,20)
                     .padding(.top, 50)
             default:
                 Text("Cannot found")
@@ -41,7 +41,6 @@ struct Ending: View {
                         text = Prompt.Ending.texts[index]
                     }
                 })
-                .offset(y: -30)
                 
             EndingIndicator(index: $index)
                 .padding(.top, 10)
@@ -78,6 +77,7 @@ struct Ending: View {
         .onAppear{
             mc.playMapMusic()
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

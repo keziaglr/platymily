@@ -38,6 +38,7 @@ struct PopUpGameTurn: View {
                     .offset(CGSize(width: 0, height: 50))
                     .font(.custom(AppFont.medium, size: 14))
                     .foregroundColor(AppColor.white)
+                    .opacity(potrait ? 1.0 : 0.0)
             }
             .rotationEffect(potrait ? .degrees(0) : .degrees(270))
             .padding(20)

@@ -18,15 +18,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 	var redScore = 0
 	var yellowScore = 0
-    
-//    @Published var startGame: Bool = false
-//    @Published var firstTap: Bool = false
-//    @Published var scorePlaty: Int = 0
-//    @Published var scorePuggle: Int = 0
-//    @Published var gameOver: Bool = false
-//    @Published var platyTurn: Bool = true
-//    @Published var showPopup: Bool = true
-//    @ObservedObject var connectFour = ConnectFour00()
     private var connectFour = ConnectFour00()
     
     private var winner = ""
@@ -94,42 +85,32 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 					if yellowTurn()
 					{
                         connectFour.scorePuggle += 10
-                        
-//                        gameOver = true
-                        
 					}
 					
 					if redTurn()
 					{
                         connectFour.scorePlaty += 10
-//                        gameOver = true
-                        
-                       
 					}
                     connectFour.gameOver = true
-                    let nextView =  GameResultView(scorePlaty: connectFour.scorePlaty, scorePuggle: connectFour.scorePuggle, playAgain: AnyView(ConnectFourView(viewControllerModel: ConnectFour00(), mc: MusicController() )), game: 3, mc: MusicController())
+                    let nextView =  GameResultView(scorePlaty: connectFour.scorePlaty, scorePuggle: connectFour.scorePuggle, playAgain: AnyView(ConnectFourView(viewControllerModel: ConnectFour00(), mc: MusicController() )), game: 2, mc: MusicController())
                     let hostingController = UIHostingController(rootView: nextView)
                     self.navigationController?.pushViewController(hostingController, animated: true)
-//                    self.present(hostingController, animated: true, completion: nil)
-//                    addChild(hostingController)
-//                    hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-//                    view.addSubview(hostingController.view)
-//                    hostingController.didMove(toParent: self)
-//                    NSLayoutConstraint.activate([
-//                        hostingController.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2),
-//                        hostingController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 2),
-//                        hostingController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//                        hostingController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-//                    ])
-                    
-//					resultAlert(currentTurnVictoryMessage())
-                    print("red game over \(connectFour.gameOver)")
-                    print("yellow game over \(connectFour.gameOver)")
 				}
 				
 				if boardIsFull()
 				{
-					resultAlert("Draw")
+                    if yellowTurn()
+                    {
+                        connectFour.scorePuggle = 0
+                    }
+                    
+                    if redTurn()
+                    {
+                        connectFour.scorePlaty = 0
+                    }
+                    let nextView =  GameResultView(scorePlaty: connectFour.scorePlaty, scorePuggle: connectFour.scorePuggle, playAgain: AnyView(ConnectFourView(viewControllerModel: ConnectFour00(), mc: MusicController() )), game: 3, mc: MusicController())
+                    let hostingController = UIHostingController(rootView: nextView)
+                    self.navigationController?.pushViewController(hostingController, animated: true)
 				}
                 
                 

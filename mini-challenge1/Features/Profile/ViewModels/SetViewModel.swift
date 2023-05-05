@@ -59,18 +59,11 @@ class SetViewModel: ObservableObject{
     }
     
     func unlockSet(entity: EntitySet){
-//        savedEntities.forEach { element in
-//            if element == entity{
-//                element.locked = false
-//            }
-//        }
-//        print("HI \(entity.platy)")
         entity.locked = false
         if entity.platy{
             platySet.forEach { element in
                 if element.id == entity.id{
                     element.locked = false
-                    print("Platy Set \(element.name) \(element.locked)")
                 }
             }
         }else{
@@ -82,12 +75,6 @@ class SetViewModel: ObservableObject{
                 }
             }
         }
-//        savedEntities.forEach { element in
-//            if element.image == image{
-//                element.isEquip = false
-//            }
-//        }
-//        entity.locked = false
         saveData()
         
     }
@@ -168,7 +155,6 @@ class SetViewModel: ObservableObject{
         }
         savedEntities.forEach { element in
             if element.platy{
-                print("SEED Array \(element.locked) \(element.name)")
                 platySet.append(element)
             }else{
                 puggleSet.append(element)

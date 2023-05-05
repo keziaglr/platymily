@@ -23,7 +23,7 @@ struct PopUpReadySetGo: View {
                 Rectangle()
                     .fill(AppColor.black)
                     .ignoresSafeArea()
-                    .opacity(0.5)
+                    .opacity(0.85)
                     .onTapGesture {
                         self.start = true
                     }
@@ -65,7 +65,7 @@ struct PopUpReadySetGo: View {
                 Rectangle()
                     .fill(AppColor.black)
                     .ignoresSafeArea()
-                    .opacity(0.5)
+                    .opacity(0.85)
                     .onTapGesture {
                         self.start = true
                     }

@@ -47,8 +47,6 @@ struct PopUpGamePreview: View {
                     }else if title == Prompt.Games.game2.title {
                         GuessTheWord(mc: mc)
                     }else if title == Prompt.Games.game3.title{
-                       //Connect4
-//                        GameResultView(scorePlaty: 10, scorePuggle: 20, playAgain: AnyView(GuessTheWord(mc: mc)), game: 2, mc: mc)
                         ConnectFourView(mc: mc)
                     }else if title == Prompt.Games.game4.title {
                         CatchGacha(mc: mc)

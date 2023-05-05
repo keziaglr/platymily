@@ -15,6 +15,7 @@ struct AppColor {
     static let black = Color.black
     static let white = Color.white
     static let blue = Color(red: 174.0/255.0, green: 228.0/255.0, blue: 241.0/255.0)
+    static let darkBlue = Color(red: 131/255.0, green: 196/255.0, blue: 212/255.0)
 
     private init() {}
 }

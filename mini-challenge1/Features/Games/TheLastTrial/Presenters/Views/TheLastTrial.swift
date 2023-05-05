@@ -61,6 +61,7 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
                         lastTrial00.startGame = false
                         lastTrial00.startGame = true
                         lastTrial00.firstTap = false
+                        lastTrial00.showPopup = true
                         characterHealth = 3
                         character.removeFromParent()
                         healthLabel.removeFromParent()
@@ -431,7 +432,6 @@ struct TheLastTrial: View {
                 .edgesIgnoringSafeArea(.all)
                 PopUpReadySetGo(goOpacity: 0.2, start: $lastTrial.startGame, potrait: false)
                     .opacity($lastTrial.startGame.wrappedValue ? 0.0 : 1.0)
-//                    .rotationEffect(.degrees())
                 if lastTrial.startGame && !lastTrial.firstTap{
                     VStack (spacing: 75){
                         Text("Drag Platypus to move")
@@ -445,10 +445,7 @@ struct TheLastTrial: View {
                     .rotationEffect(.degrees(270))
                     .padding(.trailing, 100)
                 }
-                if lastTrial.showPopup{
-                    PopUpGameTurn(platyTurn: lastTrial.platyTurn, potrait: false, showPopup: $lastTrial.showPopup)
-                    
-                }
+                
                 if lastTrial.platyTurn == false{
                     if lastTrial.startGame && !lastTrial.firstTap{
                         VStack (spacing: 75){
@@ -463,6 +460,10 @@ struct TheLastTrial: View {
                         .rotationEffect(.degrees(270))
                         .padding(.trailing, 100)
                     }
+                }
+                if lastTrial.showPopup && lastTrial.startGame {
+                    PopUpGameTurn(platyTurn: lastTrial.platyTurn, potrait: false, showPopup: $lastTrial.showPopup)
+                    
                 }
             }
             .navigationBarBackButtonHidden(true)

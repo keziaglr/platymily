@@ -13,6 +13,7 @@ struct GachaResult: View {
     @StateObject var mc = MusicController()
     @State var gumballAnimate = true
     @State var svm = SetViewModel()
+    @State var pvm = ProfileViewModel()
     @State var skinObtained : EntitySet?
     
     let gachaTypes = ["Gacha", "Gacha 2", "Gacha 3", "Gacha 4", "Gacha 5", "Gacha 6", "Gacha-Puggle"]
@@ -50,9 +51,9 @@ struct GachaResult: View {
                             }
                             Text("Tap to open")
                                 .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .font(.system(size: 30))
+                                .font(.custom(AppFont.bold,fixedSize: 21))
                                 .padding(.top, 50)
+                                .padding(.bottom, 20)
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .onAppear(){
@@ -79,6 +80,7 @@ struct GachaResult: View {
     }
     
     func gachaResult(){
+//        pvm.buyGacha(coin: Int64(1))
         gachaRendered = gachaTypes.randomElement() ?? ""
     }
                                    

@@ -359,7 +359,7 @@ struct CatchGacha: View {
             }else{
                 GameResultView(scorePlaty: catchGacha.scorePlaty, scorePuggle: catchGacha.scorePuggle, playAgain: AnyView(CatchGacha(mc: mc)), game: 3, mc: mc)
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 

@@ -23,7 +23,7 @@ struct NavBar: View {
                         IconNavBar(title: Prompt.Navbar.platyroll, image: "Icon_Platyroll")
                     }
                     NavigationLink {
-                        UserProfile(mc: mc, svm: SetViewModel())
+                        ProfileView(mc: mc)
                     }label: {
                         IconNavBar(title: Prompt.Navbar.profile, image: "Icon_Profile")
                     }

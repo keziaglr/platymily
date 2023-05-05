@@ -52,11 +52,16 @@ struct GachaObtained: View {
                 HStack {
                     Text("Go to")
                         .foregroundColor(.white)
-                    NavigationLink(destination: UserProfile(mc: mc, svm: SetViewModel())){ //destination is supposed to be the profile view
+                        .font(.custom(AppFont.regular, fixedSize: 16))
+                    NavigationLink {
+                        ProfileView(mc: mc)
+                    } label: {
                         Text("Profile")
                             .foregroundColor(.white)
                             .fontWeight(.bold)
+                            .font(.custom(AppFont.bold,fixedSize: 16))
                             .underline()
+                        
                     }
                 }
                 .padding(.top, 10)
@@ -72,17 +77,6 @@ struct GachaObtained: View {
                 .scaledToFill())
             .ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
-            .onAppear{
-//                skinResult()
-//                if skinObtained.starts(with: "Plat") {
-//                    obtainedPlatSkins.append(skinObtained)
-//                } else if skinObtained.starts(with: "Pug") {
-//                    obtainedPugSkins.append(skinObtained)
-//                }
-                print("Skin obtained before \(skinObtained.name) \(skinObtained.locked)")
-                
-                print("Skin obtained after \(skinObtained.locked)")
-            }
         }
         .navigationBarBackButtonHidden(true)
     }

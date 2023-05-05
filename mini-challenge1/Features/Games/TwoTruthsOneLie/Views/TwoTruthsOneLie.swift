@@ -47,7 +47,7 @@ struct TwoTruthsOneLie: View {
                         
                     }
                     if showPopup{
-                        PopUpGameTurn(platyTurn: platyTurn, potrait: false, showPopup: $showPopup)
+                        PopUpGameTurn(platyTurn: platyTurn, potrait: true, showPopup: $showPopup)
                     }
                 }
             }else{

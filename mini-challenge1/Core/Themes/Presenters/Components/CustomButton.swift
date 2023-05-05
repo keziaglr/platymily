@@ -40,7 +40,7 @@ struct RoundedButton2: View {
                 .background(
                     RoundedRectangle(cornerRadius: 30)
                         .fill(isActive ? AppColor.orange : .gray)
-                        .shadow(radius: 3)
+                        .shadow(radius: isActive ? 3 : 0)
                 )
         }
     }

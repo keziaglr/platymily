@@ -67,7 +67,7 @@ struct GameView: View {
                             Text("Wrong")
                                 .padding()
                                 .foregroundColor(.white)
-                                .background(Color.red)
+                                .background(AppColor.red)
                                 .cornerRadius(10)
                         }
                         .padding(.trailing)
@@ -78,7 +78,7 @@ struct GameView: View {
                             Text("Correct")
                                 .padding()
                                 .foregroundColor(.white)
-                                .background(Color.green)
+                                .background(AppColor.green)
                                 .cornerRadius(10)
                         }
                         .padding(.leading)

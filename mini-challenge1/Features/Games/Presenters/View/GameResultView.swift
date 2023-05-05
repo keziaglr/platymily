@@ -46,9 +46,17 @@ struct GameResultView: View {
                         ProgressBarWin(score: scorePlaty, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game),platy: true, gvm: gvm)
                         ProgressBarWin(score: scorePuggle, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game), platy: false, gvm: gvm)
                         NavigationLink {
-                            playAgain
+                            if game == 5{
+                                Ending(mc: mc)
+                            }else{
+                                playAgain
+                            }
                         } label: {
-                            RoundedButton(text: Prompt.Button.playAgain)
+                            if game == 5{
+                                RoundedButton(text: Prompt.Button.continueBtn)
+                            }else{
+                                RoundedButton(text: Prompt.Button.playAgain)
+                            }
                         }
                         .padding(.top, 20)
 
@@ -77,11 +85,20 @@ struct GameResultView: View {
                         ProgressBarWin(score: scorePlaty, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game),platy: true, gvm: gvm)
                         ProgressBarWin(score: scorePuggle, maxScore: gvm.getHigherScore(scorePlaty: scorePlaty, scorePuggle: scorePuggle, game: game), platy: false, gvm: gvm)
                         NavigationLink {
-                            playAgain
+                            if game == 5{
+                                Ending(mc: mc)
+                            }else{
+                                playAgain
+                            }
                         } label: {
-                            RoundedButton(text: Prompt.Button.playAgain)
+                            if game == 5{
+                                RoundedButton(text: Prompt.Button.continueBtn)
+                            }else{
+                                RoundedButton(text: Prompt.Button.playAgain)
+                            }
                         }
                         .padding(.top, 20)
+                        
 
                     }.padding(.bottom, 100)
                 }
@@ -90,7 +107,7 @@ struct GameResultView: View {
                     PopUpPlatyCoin(coinAmount: gvm.coin, gvm: gvm)
                 }
             }.onAppear{
-                if scorePlaty != 0 && scorePuggle != 0{
+                if scorePlaty != 0 || scorePuggle != 0{
                     pvm.levelUp(index: game)
                     mvm.updateData(index: game, scorePlaty: scorePlaty, scorePuggle: scorePuggle)
                 }

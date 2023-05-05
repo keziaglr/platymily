@@ -30,11 +30,14 @@ struct Gacha: View {
                     RoundedButton2(text: Prompt.Button.gachaRoll, isActive: pvm.savedEntities[0].coin > 0)
                 }.disabled(pvm.savedEntities[0].coin <= 0 ? true : false)
                     .opacity(pvm.savedEntities[0].coin <= 0 ? 0.5 : 1.0)
+                    .simultaneousGesture(TapGesture().onEnded{
+                        pvm.buyGacha(coin: Int64(1))
+                    })
                     
                 
                 Text("Platycoin owned: \(pvm.savedEntities[0].coin)") //placeholder
                     .foregroundColor(.white)
-                    .font(.custom(AppFont.medium, size: 14))
+                    .font(.custom(AppFont.medium, size: 16))
                 
                 //navbar
                 Spacer()
