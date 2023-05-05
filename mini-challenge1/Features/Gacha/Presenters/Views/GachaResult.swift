@@ -35,6 +35,7 @@ struct GachaResult: View {
                     .scaledToFill())
                 .ignoresSafeArea()
                 .onAppear(){
+                    
                     gachaResult()
                 }
             }

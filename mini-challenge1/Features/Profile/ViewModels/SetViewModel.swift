@@ -10,7 +10,7 @@ import CoreData
 
 class SetViewModel: ObservableObject{
     let container: NSPersistentContainer
-    private var savedEntities: [EntitySet] = []
+    var savedEntities: [EntitySet] = []
     var platySet: [EntitySet] = []
     var puggleSet: [EntitySet] = []
     

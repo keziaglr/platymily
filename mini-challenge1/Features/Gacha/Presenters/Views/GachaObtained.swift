@@ -9,8 +9,9 @@ import SwiftUI
 
 struct GachaObtained: View {
     
-    @State private var skinObtained = ""
+    @State private var skinObtained : EntitySet? = nil
     @StateObject var mc = MusicController()
+    @StateObject var svm = SetViewModel()
     
     @Binding var obtainedPlatSkins: [String]
     @Binding var obtainedPugSkins: [String]
@@ -20,7 +21,7 @@ struct GachaObtained: View {
     var body: some View {
         NavigationView {
             VStack{
-                Text("\t  THE \nBAGUETTE") //placeholder for gacha result title
+                Text(skinObtained?.name ?? "") //placeholder for gacha result title
                     .padding(10)
                     .padding(.leading, 70)
                     .padding(.trailing, 70)
@@ -34,7 +35,7 @@ struct GachaObtained: View {
                             .stroke(Color.white, lineWidth: 2)
                     }
                 
-                Image(skinObtained)
+                Image(skinObtained?.image ?? "")
                     .resizable()
                     .scaledToFit()
                 
@@ -73,19 +74,20 @@ struct GachaObtained: View {
             .ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
             .onAppear{
-                skinResult()
-                if skinObtained.starts(with: "Plat") {
-                    obtainedPlatSkins.append(skinObtained)
-                } else if skinObtained.starts(with: "Pug") {
-                    obtainedPugSkins.append(skinObtained)
-                }
+//                skinResult()
+//                if skinObtained.starts(with: "Plat") {
+//                    obtainedPlatSkins.append(skinObtained)
+//                } else if skinObtained.starts(with: "Pug") {
+//                    obtainedPugSkins.append(skinObtained)
+//                }
+                svm.unlockSet(entity: skinObtained!)
             }
         }
         .navigationBarBackButtonHidden(true)
     }
     
-    private func skinResult(){
-        skinObtained = skinTypes.randomElement() ?? ""
+    private func skinResult() {
+        skinObtained = svm.savedEntities.randomElement()!
     }
 }
 
