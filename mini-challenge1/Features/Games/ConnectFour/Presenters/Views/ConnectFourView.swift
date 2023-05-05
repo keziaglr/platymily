@@ -24,10 +24,6 @@ struct ConnectFourView: View {
     
     var body: some View {
         if !viewControllerModel.gameOver{
-            Text("hi")
-                .onTapGesture {
-                    print("ConnectFourView \(viewControllerModel.gameOver) Score Platy \(viewControllerModel.scorePlaty)")
-                }
             NavigationView{
                 ConnectFourViewController()
                     .environmentObject(viewControllerModel)

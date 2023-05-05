@@ -109,17 +109,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     connectFour.gameOver = true
                     let nextView =  GameResultView(scorePlaty: connectFour.scorePlaty, scorePuggle: connectFour.scorePuggle, playAgain: AnyView(ConnectFourView(viewControllerModel: ConnectFour00(), mc: MusicController() )), game: 3, mc: MusicController())
                     let hostingController = UIHostingController(rootView: nextView)
-                    addChild(hostingController)
-                    hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-                    view.addSubview(hostingController.view)
-                    hostingController.didMove(toParent: self)
-                    NSLayoutConstraint.activate([
-                        hostingController.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2),
-                        hostingController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 2),
-                        hostingController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                        hostingController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-                    ])
+                    self.navigationController?.pushViewController(hostingController, animated: true)
 //                    self.present(hostingController, animated: true, completion: nil)
+//                    addChild(hostingController)
+//                    hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+//                    view.addSubview(hostingController.view)
+//                    hostingController.didMove(toParent: self)
+//                    NSLayoutConstraint.activate([
+//                        hostingController.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2),
+//                        hostingController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 2),
+//                        hostingController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//                        hostingController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//                    ])
+                    
 //					resultAlert(currentTurnVictoryMessage())
                     print("red game over \(connectFour.gameOver)")
                     print("yellow game over \(connectFour.gameOver)")

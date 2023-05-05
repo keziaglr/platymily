@@ -58,7 +58,9 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
                 if characterHealth == 0{
                     if lastTrial00.platyTurn == true{
                         lastTrial00.platyTurn = false
-                        lastTrial00.showPopup = true
+                        lastTrial00.startGame = false
+                        lastTrial00.startGame = true
+                        lastTrial00.firstTap = false
                         characterHealth = 3
                         character.removeFromParent()
                         healthLabel.removeFromParent()
@@ -134,7 +136,7 @@ class TheLastTrialScene: SKScene, SKPhysicsContactDelegate {
     func createCharacter(){
         // Create and add the character node to the scene
         
-        character = SKSpriteNode(texture: lastTrial00.platyTurn ? characterTexture : character2Texture, size: CGSize(width: 100, height: 100))
+        character = SKSpriteNode(texture: lastTrial00.platyTurn ? characterTexture : character2Texture, size: lastTrial00.platyTurn ? CGSize(width: 100, height: 100) : CGSize(width: 100, height: 50))
         character.position = CGPoint(x: frame.midX, y: frame.midY)
         character.zRotation = CGFloat.pi/2
         character.physicsBody = SKPhysicsBody(texture: character.texture!, size: character.size)
@@ -446,6 +448,21 @@ struct TheLastTrial: View {
                 if lastTrial.showPopup{
                     PopUpGameTurn(platyTurn: lastTrial.platyTurn, potrait: false, showPopup: $lastTrial.showPopup)
                     
+                }
+                if lastTrial.platyTurn == false{
+                    if lastTrial.startGame && !lastTrial.firstTap{
+                        VStack (spacing: 75){
+                            Text("Drag Platypus to move")
+                                .font(.custom(AppFont.bold, size: 16))
+                                .foregroundColor(AppColor.navy)
+                                .multilineTextAlignment(.center)
+                                .allowsHitTesting(false)
+                                .frame(width: 120)
+
+                        }
+                        .rotationEffect(.degrees(270))
+                        .padding(.trailing, 100)
+                    }
                 }
             }
             .navigationBarBackButtonHidden(true)

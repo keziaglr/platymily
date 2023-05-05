@@ -24,6 +24,14 @@
 		6837578F2A037873001F499A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6837578E2A037873001F499A /* SceneDelegate.swift */; };
 		68385A432A03A4FC00CEC6B5 /* ConnectFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68385A422A03A4FB00CEC6B5 /* ConnectFourView.swift */; };
 		68385A522A04969200CEC6B5 /* SetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68385A512A04969200CEC6B5 /* SetViewModel.swift */; };
+		68385A5B2A04B20300CEC6B5 /* gumballmachine.json in Resources */ = {isa = PBXBuildFile; fileRef = 68385A532A04B20300CEC6B5 /* gumballmachine.json */; };
+		68385A5C2A04B20300CEC6B5 /* gacha_puggle.json in Resources */ = {isa = PBXBuildFile; fileRef = 68385A542A04B20300CEC6B5 /* gacha_puggle.json */; };
+		68385A5D2A04B20300CEC6B5 /* gacha_platy.json in Resources */ = {isa = PBXBuildFile; fileRef = 68385A552A04B20300CEC6B5 /* gacha_platy.json */; };
+		68385A5E2A04B20300CEC6B5 /* gacha_purple.json in Resources */ = {isa = PBXBuildFile; fileRef = 68385A562A04B20300CEC6B5 /* gacha_purple.json */; };
+		68385A5F2A04B20300CEC6B5 /* gacha_yellow.json in Resources */ = {isa = PBXBuildFile; fileRef = 68385A572A04B20300CEC6B5 /* gacha_yellow.json */; };
+		68385A602A04B20300CEC6B5 /* gacha_pink.json in Resources */ = {isa = PBXBuildFile; fileRef = 68385A582A04B20300CEC6B5 /* gacha_pink.json */; };
+		68385A612A04B20300CEC6B5 /* gacha_orange.json in Resources */ = {isa = PBXBuildFile; fileRef = 68385A592A04B20300CEC6B5 /* gacha_orange.json */; };
+		68385A622A04B20300CEC6B5 /* gacha_green.json in Resources */ = {isa = PBXBuildFile; fileRef = 68385A5A2A04B20300CEC6B5 /* gacha_green.json */; };
 		AC0532D729F23F0D004AD470 /* mini_challenge1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0532D629F23F0D004AD470 /* mini_challenge1App.swift */; };
 		AC0532DB29F23F0E004AD470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0532DA29F23F0E004AD470 /* Assets.xcassets */; };
 		AC0532DE29F23F0E004AD470 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0532DD29F23F0E004AD470 /* Preview Assets.xcassets */; };
@@ -97,6 +105,14 @@
 		6837578E2A037873001F499A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		68385A422A03A4FB00CEC6B5 /* ConnectFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourView.swift; sourceTree = "<group>"; };
 		68385A512A04969200CEC6B5 /* SetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewModel.swift; sourceTree = "<group>"; };
+		68385A532A04B20300CEC6B5 /* gumballmachine.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gumballmachine.json; sourceTree = "<group>"; };
+		68385A542A04B20300CEC6B5 /* gacha_puggle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_puggle.json; sourceTree = "<group>"; };
+		68385A552A04B20300CEC6B5 /* gacha_platy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_platy.json; sourceTree = "<group>"; };
+		68385A562A04B20300CEC6B5 /* gacha_purple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_purple.json; sourceTree = "<group>"; };
+		68385A572A04B20300CEC6B5 /* gacha_yellow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_yellow.json; sourceTree = "<group>"; };
+		68385A582A04B20300CEC6B5 /* gacha_pink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_pink.json; sourceTree = "<group>"; };
+		68385A592A04B20300CEC6B5 /* gacha_orange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_orange.json; sourceTree = "<group>"; };
+		68385A5A2A04B20300CEC6B5 /* gacha_green.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_green.json; sourceTree = "<group>"; };
 		AC0532D329F23F0D004AD470 /* mini-challenge1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mini-challenge1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0532D629F23F0D004AD470 /* mini_challenge1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mini_challenge1App.swift; sourceTree = "<group>"; };
 		AC0532DA29F23F0E004AD470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -651,6 +667,14 @@
 		AC8772CC2A0353B300C9CC02 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				68385A5A2A04B20300CEC6B5 /* gacha_green.json */,
+				68385A592A04B20300CEC6B5 /* gacha_orange.json */,
+				68385A582A04B20300CEC6B5 /* gacha_pink.json */,
+				68385A552A04B20300CEC6B5 /* gacha_platy.json */,
+				68385A542A04B20300CEC6B5 /* gacha_puggle.json */,
+				68385A562A04B20300CEC6B5 /* gacha_purple.json */,
+				68385A572A04B20300CEC6B5 /* gacha_yellow.json */,
+				68385A532A04B20300CEC6B5 /* gumballmachine.json */,
 				AC8772E82A037CB200C9CC02 /* slide1.json */,
 				AC8772E62A037CB200C9CC02 /* slide2.json */,
 				AC8772E92A037CB200C9CC02 /* slide3.json */,
@@ -822,10 +846,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68385A5E2A04B20300CEC6B5 /* gacha_purple.json in Resources */,
+				68385A5B2A04B20300CEC6B5 /* gumballmachine.json in Resources */,
+				68385A612A04B20300CEC6B5 /* gacha_orange.json in Resources */,
 				AC27AE8529F51731005018D1 /* Quicksand-Light.ttf in Resources */,
+				68385A622A04B20300CEC6B5 /* gacha_green.json in Resources */,
 				AC8772EC2A037CB200C9CC02 /* slide5.json in Resources */,
 				AC8772EE2A037CB200C9CC02 /* slide3.json in Resources */,
+				68385A5C2A04B20300CEC6B5 /* gacha_puggle.json in Resources */,
 				AC27AE8829F51731005018D1 /* Quicksand-Bold.ttf in Resources */,
+				68385A5F2A04B20300CEC6B5 /* gacha_yellow.json in Resources */,
 				AC27AE8929F51731005018D1 /* Quicksand-Medium.ttf in Resources */,
 				683757832A037847001F499A /* ConnectFour.storyboard in Resources */,
 				AC27AE8729F51731005018D1 /* Quicksand-SemiBold.ttf in Resources */,
@@ -834,8 +864,10 @@
 				AC79B0FF2A03AA1B0012610A /* Map.mpeg in Resources */,
 				AC79B1012A03AC2D0012610A /* Game.mpeg in Resources */,
 				AC0532DE29F23F0E004AD470 /* Preview Assets.xcassets in Resources */,
+				68385A602A04B20300CEC6B5 /* gacha_pink.json in Resources */,
 				AC8772EA2A037CB200C9CC02 /* slide4.json in Resources */,
 				AC0532DB29F23F0E004AD470 /* Assets.xcassets in Resources */,
+				68385A5D2A04B20300CEC6B5 /* gacha_platy.json in Resources */,
 				AC27AE8629F51731005018D1 /* Quicksand-Regular.ttf in Resources */,
 				AC8772EB2A037CB200C9CC02 /* slide2.json in Resources */,
 			);
