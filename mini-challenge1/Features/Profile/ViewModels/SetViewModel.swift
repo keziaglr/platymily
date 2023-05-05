@@ -22,6 +22,7 @@ class SetViewModel: ObservableObject{
             }
         }
         fetchSet()
+        seedArray()
         if savedEntities.isEmpty {
             seedData()
         }
@@ -36,7 +37,6 @@ class SetViewModel: ObservableObject{
         } catch let error {
             print("Error fetching. \(error)")
         }
-        seedArray()
     }
     
     func addSet(name: String, image: String, platy: Bool, isEqup: Bool, locked: Bool){
@@ -59,8 +59,37 @@ class SetViewModel: ObservableObject{
     }
     
     func unlockSet(entity: EntitySet){
-        entity.locked = true
+//        savedEntities.forEach { element in
+//            if element == entity{
+//                element.locked = false
+//            }
+//        }
+//        print("HI \(entity.platy)")
+        entity.locked = false
+        if entity.platy{
+            platySet.forEach { element in
+                if element.id == entity.id{
+                    element.locked = false
+                    print("Platy Set \(element.name) \(element.locked)")
+                }
+            }
+        }else{
+            puggleSet.forEach { element in
+                if element.id == entity.id{
+                    element.locked = false
+                    saveData()
+                    print("Puggle Set \(element.name) \(element.locked)")
+                }
+            }
+        }
+//        savedEntities.forEach { element in
+//            if element.image == image{
+//                element.isEquip = false
+//            }
+//        }
+//        entity.locked = false
         saveData()
+        
     }
     
     func equipSet(entity: EntitySet){
@@ -127,12 +156,19 @@ class SetViewModel: ObservableObject{
         addSet(name: "The Wizard", image: "Pug 14", platy: false, isEqup: false, locked: true)
         addSet(name: "The Teacher", image: "Pug 15", platy: false, isEqup: false, locked: true)
         addSet(name: "The Detective", image: "Pug 16", platy: false, isEqup: false, locked: true)
-//        addSet(name: "The Sleeper", image: "Pug 17", platy: false, isEqup: false, locked: true)
+        addSet(name: "The Sleeper", image: "Pug 17", platy: false, isEqup: false, locked: true)
     }
     
     func seedArray(){
+        if platySet.isEmpty == false{
+            platySet.removeAll()
+        }
+        if puggleSet.isEmpty == false{
+            puggleSet.removeAll()
+        }
         savedEntities.forEach { element in
             if element.platy{
+                print("SEED Array \(element.locked) \(element.name)")
                 platySet.append(element)
             }else{
                 puggleSet.append(element)

@@ -21,7 +21,7 @@ class UserProfile00: ObservableObject{
 
 struct UserProfile: View {
     @ObservedObject var mc : MusicController
-    @State var svm = SetViewModel()
+    @State var svm : SetViewModel
     @State var currEntity : EntitySet? = nil
     @StateObject var userProfile = UserProfile00()
     @State private var equipPlatyImageName = "Platypus"
@@ -32,9 +32,11 @@ struct UserProfile: View {
     ]
     
     @State private var platyTurn: Bool = true
-    @State private var obtainedPlatSkins: [String] = []
-    @State private var obtainedPugSkins: [String] = []
-
+    @State private var obtainedPlatSkins: [EntitySet] = []
+    @State private var obtainedPugSkins: [EntitySet] = []
+    
+    let bubble_text = ["This looks\n    great!", "Puggle\n likes it!", "Platypus\n likes it", "OwO", "> w <"]
+    @State private var textRendered = ""
     
     var body: some View {
         VStack {
@@ -64,6 +66,9 @@ struct UserProfile: View {
                     .scaledToFit()
                     .frame(width: 300)
                     .offset(x: 0, y: 70)
+                    .onAppear{
+                        svm.seedArray()
+                    }
                 HStack {
                     
                     TabView(selection: $platyTurn) {
@@ -90,12 +95,13 @@ struct UserProfile: View {
                                 equipPuggleImageName = svm.getEquipSet(isPlaty: false)?.image! ?? "Puggle"
                             })
                             .tag(false)
+
                     }
+
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .onChange(of: platyTurn) { newValue in
                         userProfile.platyTurn = newValue
                     }
-                    
                     
                     ZStack {
                         Image("Text_Bubble")
@@ -103,11 +109,15 @@ struct UserProfile: View {
                             .scaledToFit()
                             .frame(width: 155)
                             .offset(y: -80)
-                        Text("This Looks\n    Great!")
+                        Text(textRendered)
                             .font(.custom(AppFont.regular, size: 17))
                             .foregroundColor(.cyan)
                             .offset(y: -90)
                     }
+                    .onAppear(){
+                        textGenerate()
+                    }
+                    
                 }
             }
             
@@ -138,8 +148,8 @@ struct UserProfile: View {
             HStack(alignment: .top){
                 ScrollView(.horizontal){
                     LazyHGrid(rows: fixedRows, spacing: 10){
-                        ForEach(userProfile.platyTurn ? svm.platySet : svm.puggleSet, id: \.self){ setEntity in
-                            if !setEntity.locked {
+                        ForEach(userProfile.platyTurn ? obtainedPlatSkins : obtainedPugSkins, id: \.self){ setEntity in
+                            if setEntity.locked == false {
                                 VStack {
                                     Image(setEntity.image ?? "Platypus")
                                         .resizable()
@@ -178,11 +188,13 @@ struct UserProfile: View {
                                                     .stroke(Color.white, lineWidth: 4)
                                             }
                                             
-                                        Text(setEntity.name ?? "The Normie") //placeholder
+                                        Text(setEntity.name ?? "The Normie")
+                                            .font(.custom(AppFont.light, size: 18))
                                             .foregroundColor(.white)
-                                            .fontWeight(.bold)
-                                            .font(.system(size: 23))
                                     }.opacity(0.5)
+                                        .onAppear{
+                                            print("\(setEntity.locked) nama \(setEntity.name)")
+                                        }
                                     Image(systemName: "lock.fill")
                                         .resizable()
                                         .foregroundColor(.white)
@@ -193,11 +205,16 @@ struct UserProfile: View {
                             }
                         }
                         .padding(.leading, 15)
+                    }.onAppear(){
+                        obtainedPugSkins = svm.puggleSet
+                        obtainedPlatSkins = svm.platySet
+                        print("test \(svm.puggleSet) \(svm.platySet)")
                     }
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: 190)
-            .background(.cyan)
+            .frame(maxWidth: .infinity, maxHeight: 160)
+            .background(AppColor.blue
+                .shadow(radius: 3))
             
             Spacer()
             NavBar(mc: mc)
@@ -210,6 +227,11 @@ struct UserProfile: View {
             .scaledToFill())
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
+        
+    }
+    
+    func textGenerate(){
+        textRendered = bubble_text.randomElement() ?? ""
     }
 }
 

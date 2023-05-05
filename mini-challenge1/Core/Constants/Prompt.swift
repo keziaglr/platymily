@@ -106,6 +106,8 @@ extension Prompt {
         static let equip = "Equip set"
         static let continueBtn = "Continue"
         static let claimPlatycoin = "Claim Platycoin"
+        static let gachaRoll = "1x Roll"
+        static let gachaRollAgain = "Roll again"
         
         private init() {}
     }
