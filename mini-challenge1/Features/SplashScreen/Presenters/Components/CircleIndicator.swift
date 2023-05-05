@@ -39,6 +39,27 @@ struct StoryIndicator: View{
     }
 }
 
+struct EndingIndicator: View{
+    @Binding var index : Int
+    var body: some View{
+        HStack {
+            ForEach(0..<4) { i in
+                if index == i {
+                    CircleIndicator(isActive: true)
+                        .onTapGesture {
+                            index = i
+                        }
+                }else{
+                    CircleIndicator(isActive: false)
+                        .onTapGesture {
+                            index = i
+                        }
+                }
+            }
+        }
+    }
+}
+
 
 //struct CircleIndicator_Previews: PreviewProvider {
 //    static var previews: some View {

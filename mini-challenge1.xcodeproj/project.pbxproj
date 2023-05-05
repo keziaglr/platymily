@@ -63,6 +63,11 @@
 		AC27AE9729F5309A005018D1 /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9629F5309A005018D1 /* GameButton.swift */; };
 		AC27AE9C29F54925005018D1 /* SwimPlatypus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */; };
 		AC27AEA129F66F47005018D1 /* CatchGacha.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27AEA029F66F47005018D1 /* CatchGacha.swift */; };
+		AC2856F02A04BE3600DD9EF0 /* Ending.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2856EF2A04BE3600DD9EF0 /* Ending.swift */; };
+		AC2856F52A04BFDD00DD9EF0 /* end3.json in Resources */ = {isa = PBXBuildFile; fileRef = AC2856F12A04BFDD00DD9EF0 /* end3.json */; };
+		AC2856F62A04BFDD00DD9EF0 /* end2.json in Resources */ = {isa = PBXBuildFile; fileRef = AC2856F22A04BFDD00DD9EF0 /* end2.json */; };
+		AC2856F72A04BFDD00DD9EF0 /* end1.json in Resources */ = {isa = PBXBuildFile; fileRef = AC2856F32A04BFDD00DD9EF0 /* end1.json */; };
+		AC2856F82A04BFDD00DD9EF0 /* end4.json in Resources */ = {isa = PBXBuildFile; fileRef = AC2856F42A04BFDD00DD9EF0 /* end4.json */; };
 		AC79B0FF2A03AA1B0012610A /* Map.mpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC79B0FE2A03AA1B0012610A /* Map.mpeg */; };
 		AC79B1012A03AC2D0012610A /* Game.mpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC79B1002A03AC2D0012610A /* Game.mpeg */; };
 		AC8772CB2A03538E00C9CC02 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8772CA2A03538E00C9CC02 /* LottieView.swift */; };
@@ -146,6 +151,11 @@
 		AC27AE9629F5309A005018D1 /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		AC27AE9B29F54925005018D1 /* SwimPlatypus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimPlatypus.swift; sourceTree = "<group>"; };
 		AC27AEA029F66F47005018D1 /* CatchGacha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchGacha.swift; sourceTree = "<group>"; };
+		AC2856EF2A04BE3600DD9EF0 /* Ending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ending.swift; sourceTree = "<group>"; };
+		AC2856F12A04BFDD00DD9EF0 /* end3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = end3.json; sourceTree = "<group>"; };
+		AC2856F22A04BFDD00DD9EF0 /* end2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = end2.json; sourceTree = "<group>"; };
+		AC2856F32A04BFDD00DD9EF0 /* end1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = end1.json; sourceTree = "<group>"; };
+		AC2856F42A04BFDD00DD9EF0 /* end4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = end4.json; sourceTree = "<group>"; };
 		AC79B0FE2A03AA1B0012610A /* Map.mpeg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; path = Map.mpeg; sourceTree = "<group>"; };
 		AC79B1002A03AC2D0012610A /* Game.mpeg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; path = Game.mpeg; sourceTree = "<group>"; };
 		AC8772CA2A03538E00C9CC02 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LottieView.swift; path = "mini-challenge1/Core/LottieView.swift"; sourceTree = SOURCE_ROOT; };
@@ -356,6 +366,7 @@
 		AC0532EB29F24089004AD470 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AC2856EC2A04BE3600DD9EF0 /* Ending */,
 				AC8772CF2A03544E00C9CC02 /* SplashScreen */,
 				683757232A01FA75001F499A /* Gacha */,
 				ACEE61D92A00CB4E00A41E6A /* Profile */,
@@ -655,6 +666,30 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AC2856EC2A04BE3600DD9EF0 /* Ending */ = {
+			isa = PBXGroup;
+			children = (
+				AC2856ED2A04BE3600DD9EF0 /* Presenters */,
+			);
+			path = Ending;
+			sourceTree = "<group>";
+		};
+		AC2856ED2A04BE3600DD9EF0 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				AC2856EE2A04BE3600DD9EF0 /* Views */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		AC2856EE2A04BE3600DD9EF0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC2856EF2A04BE3600DD9EF0 /* Ending.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		AC79B0FD2A03AA0C0012610A /* Music */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +702,10 @@
 		AC8772CC2A0353B300C9CC02 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				AC2856F32A04BFDD00DD9EF0 /* end1.json */,
+				AC2856F22A04BFDD00DD9EF0 /* end2.json */,
+				AC2856F12A04BFDD00DD9EF0 /* end3.json */,
+				AC2856F42A04BFDD00DD9EF0 /* end4.json */,
 				68385A5A2A04B20300CEC6B5 /* gacha_green.json */,
 				68385A592A04B20300CEC6B5 /* gacha_orange.json */,
 				68385A582A04B20300CEC6B5 /* gacha_pink.json */,
@@ -851,6 +890,7 @@
 				68385A612A04B20300CEC6B5 /* gacha_orange.json in Resources */,
 				AC27AE8529F51731005018D1 /* Quicksand-Light.ttf in Resources */,
 				68385A622A04B20300CEC6B5 /* gacha_green.json in Resources */,
+				AC2856F72A04BFDD00DD9EF0 /* end1.json in Resources */,
 				AC8772EC2A037CB200C9CC02 /* slide5.json in Resources */,
 				AC8772EE2A037CB200C9CC02 /* slide3.json in Resources */,
 				68385A5C2A04B20300CEC6B5 /* gacha_puggle.json in Resources */,
@@ -861,8 +901,11 @@
 				AC27AE8729F51731005018D1 /* Quicksand-SemiBold.ttf in Resources */,
 				AC8772CE2A0353BC00C9CC02 /* splashscreen.json in Resources */,
 				AC8772ED2A037CB200C9CC02 /* slide1.json in Resources */,
+				AC2856F82A04BFDD00DD9EF0 /* end4.json in Resources */,
+				AC2856F52A04BFDD00DD9EF0 /* end3.json in Resources */,
 				AC79B0FF2A03AA1B0012610A /* Map.mpeg in Resources */,
 				AC79B1012A03AC2D0012610A /* Game.mpeg in Resources */,
+				AC2856F62A04BFDD00DD9EF0 /* end2.json in Resources */,
 				AC0532DE29F23F0E004AD470 /* Preview Assets.xcassets in Resources */,
 				68385A602A04B20300CEC6B5 /* gacha_pink.json in Resources */,
 				AC8772EA2A037CB200C9CC02 /* slide4.json in Resources */,
@@ -894,6 +937,7 @@
 				AC05332929F2B20B004AD470 /* TruthLieSentenceRepository.swift in Sources */,
 				68385A432A03A4FC00CEC6B5 /* ConnectFourView.swift in Sources */,
 				ACE95CD929FFA9C4009B0C33 /* MapViewModel.swift in Sources */,
+				AC2856F02A04BE3600DD9EF0 /* Ending.swift in Sources */,
 				683757372A01FAAD001F499A /* GameView.swift in Sources */,
 				ACE95CD329FF58D5009B0C33 /* PopUpReadySetGo.swift in Sources */,
 				AC8772E22A035DE700C9CC02 /* BackgroundTextStory.swift in Sources */,

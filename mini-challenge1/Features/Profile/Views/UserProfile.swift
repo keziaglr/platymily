@@ -21,10 +21,12 @@ class UserProfile00: ObservableObject{
 
 struct UserProfile: View {
     @ObservedObject var mc : MusicController
+    @State var svm = SetViewModel()
+    @State var currEntity : EntitySet? = nil
     @StateObject var userProfile = UserProfile00()
+    @State private var equipPlatyImageName = "Platypus"
+    @State private var equipPuggleImageName = "Puggle"
     var data: [Int] = Array(1...14)
-    let platypusSkin = ["Plat 1", "Plat 2", "Plat 3", "Plat 4", "Plat 5", "Plat 6", "Plat 7", "Plat 8", "Plat 9", "Plat 10", "Plat 11", "Plat 12", "Plat 13", "Plat 14"]
-    let puggleSkin = ["Pug 1", "Pug 2", "Pug 3", "Pug 4", "Pug 5", "Pug 6", "Pug 7", "Pug 8", "Pug 9", "Pug 10", "Pug 11", "Pug 12", "Pug 13", "Pug 14"]
     let fixedRows = [
         GridItem(.fixed(90)),
     ]
@@ -65,16 +67,28 @@ struct UserProfile: View {
                 HStack {
                     
                     TabView(selection: $platyTurn) {
-                        Image(userProfile.equipped ? userProfile.skinEquip : "Platypus")
+                        Image(equipPlatyImageName)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 200)
                             .offset(y: -20)
+                            .onAppear{
+                                equipPlatyImageName = svm.getEquipSet(isPlaty: true)?.image! ?? "Platypus"
+                            }
+                            .onChange(of: equipPlatyImageName, perform: { newValue in
+                                equipPlatyImageName = svm.getEquipSet(isPlaty: true)?.image! ?? "Platypus"
+                            })
                             .tag(true)
-                        Image(userProfile.equipped ? userProfile.skinEquip : "Puggle")
+                        Image(equipPuggleImageName)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 150)
+                            .onAppear{
+                                equipPuggleImageName = svm.getEquipSet(isPlaty: false)?.image! ?? "Puggle"
+                            }
+                            .onChange(of: equipPuggleImageName, perform: { newValue in
+                                equipPuggleImageName = svm.getEquipSet(isPlaty: false)?.image! ?? "Puggle"
+                            })
                             .tag(false)
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -108,7 +122,14 @@ struct UserProfile: View {
             .padding(.bottom, 15)
             
             Button{
-                userProfile.equipped = true
+                if currEntity != nil {
+                    if currEntity?.platy == true {
+                        equipPlatyImageName = currEntity!.image!
+                    }else{
+                        equipPuggleImageName = currEntity!.image!
+                    }
+                    svm.equipSet(entity: currEntity!)
+                }
             } label: {
                 RoundedButton(text: Prompt.Button.equip)
             }
@@ -117,27 +138,58 @@ struct UserProfile: View {
             HStack(alignment: .top){
                 ScrollView(.horizontal){
                     LazyHGrid(rows: fixedRows, spacing: 10){
-                        ForEach(userProfile.platyTurn ? obtainedPlatSkins : obtainedPugSkins, id: \.self){ skinName in
-                            VStack {
-                                Image(skinName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 90, height: 90)
-                                    .background(Image("Background")
+                        ForEach(userProfile.platyTurn ? svm.platySet : svm.puggleSet, id: \.self){ setEntity in
+                            if !setEntity.locked {
+                                VStack {
+                                    Image(setEntity.image ?? "Platypus")
                                         .resizable()
-                                        .scaledToFill())
-                                    .cornerRadius(10)
-                                    .overlay{
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.white, lineWidth: 4)
-                                    }
-                                    .onTapGesture {
-                                        userProfile.skinEquip = skinName
-                                    }
-                                Text("The Normie") //placeholder
-                                    .foregroundColor(.white)
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 23))
+                                        .scaledToFit()
+                                        .frame(width: 90, height: 90)
+                                        .background(Image("Background")
+                                            .resizable()
+                                            .scaledToFill())
+                                        .cornerRadius(10)
+                                        .overlay{
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(Color.white, lineWidth: 4)
+                                        }
+                                        .onTapGesture {
+                                            currEntity = setEntity
+                                            print(currEntity!.name)
+                                        }
+                                    Text(setEntity.name ?? "The Normie") //placeholder
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                        .font(.system(size: 23))
+                                }
+                            }else{
+                                ZStack {
+                                    VStack {
+                                        Image(setEntity.image ?? "Platypus")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 90, height: 90)
+                                            .background(Image("Background")
+                                                .resizable()
+                                                .scaledToFill())
+                                            .cornerRadius(10)
+                                            .overlay{
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .stroke(Color.white, lineWidth: 4)
+                                            }
+                                            
+                                        Text(setEntity.name ?? "The Normie") //placeholder
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 23))
+                                    }.opacity(0.5)
+                                    Image(systemName: "lock.fill")
+                                        .resizable()
+                                        .foregroundColor(.white)
+                                        .scaledToFit()
+                                        .opacity(0.7)
+                                    .frame(width: 30, height: 30)
+                                }
                             }
                         }
                         .padding(.leading, 15)
@@ -161,8 +213,8 @@ struct UserProfile: View {
     }
 }
 
-struct UserProfile_Previews: PreviewProvider {
-    static var previews: some View {
-        UserProfile(mc: MusicController())
-    }
-}
+//struct UserProfile_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UserProfile(mc: MusicController())
+//    }
+//}
