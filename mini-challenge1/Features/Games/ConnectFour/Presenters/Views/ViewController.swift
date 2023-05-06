@@ -27,14 +27,35 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 	{
 		super.viewDidLoad()
         
-        
-        
+        let imageView = UIImageView(image: UIImage(named: "ConnectFour_title"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(imageView)
+
+        // Add constraints to position and size the image view
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 1),
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 200),
+            imageView.heightAnchor.constraint(equalToConstant: 200)
+        ])
         
         collectionView.backgroundColor = .clear
         
-        let backgroundImage = UIImage(named: "Background")?.resizableImage(withCapInsets: .zero, resizingMode: .stretch)
-        let backgroundColor = UIColor(patternImage: backgroundImage!)
-        view.backgroundColor = backgroundColor
+        let backgroundImage = UIImage(named: "Background")
+        let backgroundImageView = UIImageView(image: backgroundImage)
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.insertSubview(backgroundImageView, at: 0) // add the image view to the back of the view hierarchy
+
+        NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundImageView.widthAnchor.constraint(equalTo: view.widthAnchor), // set the width to match the view
+            backgroundImageView.heightAnchor.constraint(equalTo: view.heightAnchor) // set the height to match the view
+        ])
         
 		resetBoard()
 		setCellWidthHeight()
