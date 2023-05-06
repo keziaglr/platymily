@@ -43,8 +43,7 @@ struct GameView: View {
                 
                 VStack {
                     Text("0:\(timeRemaining)")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                        .font(.custom(AppFont.bold, size: 28))
                         .foregroundColor(.white)
                         .onAppear(){
                             startTimer()
@@ -55,9 +54,8 @@ struct GameView: View {
                 
                 VStack {
                     Text(guessText)
-                        .font(.system(size: 40))
                         .foregroundColor(.white)
-                        .fontWeight(.bold)
+                        .font(.custom(AppFont.bold, size: 40))
                         .padding(.top, 150)
                     
                     HStack {

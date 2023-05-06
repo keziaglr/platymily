@@ -22,7 +22,7 @@ struct CustomTextField: View {
                 }
                 TextField("", text: $text)
                     .foregroundColor(AppColor.orange)
-                    .fontWeight(.bold)
+                    .font(.custom(AppFont.bold, size: 16))
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
