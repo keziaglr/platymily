@@ -80,7 +80,6 @@ struct GachaResult: View {
     }
     
     func gachaResult(){
-//        pvm.buyGacha(coin: Int64(1))
         gachaRendered = gachaTypes.randomElement() ?? ""
     }
                                    

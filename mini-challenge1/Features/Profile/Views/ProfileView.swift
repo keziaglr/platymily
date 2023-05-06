@@ -164,7 +164,7 @@ struct ProfileView: View {
                                                         .stroke(Color.white, lineWidth: 4)
                                                 }
                                                 .onTapGesture {
-                                                    withAnimation(.easeInOut(duration: 1.0)) {
+                                                    withAnimation(.easeInOut(duration: 0.5)) {
                                                         currEntity = setEntity
                                                                     }
                                                     

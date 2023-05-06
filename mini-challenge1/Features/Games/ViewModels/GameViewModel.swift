@@ -25,7 +25,7 @@ class GameViewModel: ObservableObject {
         let rand = Double.random(in: 0..<1)
         var coin = 0
             if rand < 0.5 {
-                coin = 1 // 50% chance
+                coin = 0 // 50% chance
             } else if rand < 0.85 {
                 coin = 1 // 35% chance
             } else if rand < 0.95 {
@@ -38,7 +38,7 @@ class GameViewModel: ObservableObject {
     
     
     func checkChance(scorePlaty: Int, scorePuggle: Int) -> Bool{
-        if scorePlaty != 0 || scorePuggle != 0 || coin != 0{
+        if scorePlaty != 0 && scorePuggle != 0 && coin != 0{
             showPopup = true
             return true
         }else {

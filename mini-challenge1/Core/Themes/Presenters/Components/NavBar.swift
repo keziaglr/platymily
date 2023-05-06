@@ -11,31 +11,31 @@ struct NavBar: View {
     @ObservedObject var mc : MusicController
     var body: some View {
             ZStack(alignment: .leading) {
-                HStack{
-                    NavigationLink {
-                        Map(mc: mc)
-                    }label: {
-                        IconNavBar(title: Prompt.Navbar.map, image: "Icon_Map")
+                    HStack{
+                        NavigationLink {
+                            Map(mc: mc)
+                        }label: {
+                            IconNavBar(title: Prompt.Navbar.map, image: "Icon_Map")
+                        }
+                        NavigationLink {
+                            Gacha(mc: mc)
+                        }label: {
+                            IconNavBar(title: Prompt.Navbar.platyroll, image: "Icon_Platyroll")
+                        }
+                        NavigationLink {
+                            ProfileView(mc: mc)
+                        }label: {
+                            IconNavBar(title: Prompt.Navbar.profile, image: "Icon_Profile")
+                        }
                     }
-                    NavigationLink {
-                        Gacha(mc: mc)
-                    }label: {
-                        IconNavBar(title: Prompt.Navbar.platyroll, image: "Icon_Platyroll")
-                    }
-                    NavigationLink {
-                        ProfileView(mc: mc)
-                    }label: {
-                        IconNavBar(title: Prompt.Navbar.profile, image: "Icon_Profile")
-                    }
-                }
-                    
-            }.padding(.bottom, 20)
-            .background(
-                Rectangle()
-                    .fill(AppColor.orange)
-                    .shadow(radius: 3)
-                    .frame(width: UIScreen.main.bounds.width)
-                )
+                        
+                }.padding(.bottom, 20)
+                .background(
+                    Rectangle()
+                        .fill(AppColor.orange)
+                        .shadow(radius: 3)
+                        .frame(width: UIScreen.main.bounds.width)
+            )
     }
 }
 

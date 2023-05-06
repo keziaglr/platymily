@@ -12,6 +12,7 @@ struct GachaObtained: View {
     @StateObject var mc = MusicController()
     @State var skinObtained : EntitySet
     @StateObject var svm = SetViewModel()
+    @StateObject var pvm = ProfileViewModel()
     
     var body: some View {
         NavigationView {
@@ -35,20 +36,10 @@ struct GachaObtained: View {
                     .scaledToFit()
                 
                 NavigationLink(destination: GachaResult(mc: mc)) {
-//                    Text("Roll again")
-//                        .padding(10)
-//                        .padding(.leading, 50)
-//                        .padding(.trailing, 50)
-//                        .font(.system(size: 22))
-//                        .foregroundColor(.white)
-//                        .background(.orange)
-//                        .cornerRadius(30)
-//                        .overlay{
-//                            RoundedRectangle(cornerRadius: 30)
-//                                .stroke(Color.white, lineWidth: 2)
-//                        }
                     RoundedButton(text: Prompt.Button.gachaRollAgain)
-                }
+                }.simultaneousGesture(TapGesture().onEnded{
+                    pvm.buyGacha(coin: Int64(1))
+                })
                 HStack {
                     Text("Go to")
                         .foregroundColor(.white)
