@@ -63,7 +63,7 @@ extension Prompt {
 extension Prompt {
     struct GuessTheWord {
         static let title = "Guess the Word"
-        static let rules = "1. Each Player will be given a word randomly by the system.\n2. Player would put the phone on their forehead and guess the given word by asking questions to the other Player.\n3. Other Player would have to answer with only Yes, No, and Might Be.\n4. If the Player guess it right, the Player will get 10+ points.\n5. The first Player to achieve 30 points will be nominated as the winner."
+        static let rules = "1. Each Player will be given a word randomly by the system.\n2. Player would put the phone on their forehead and guess the given word by asking questions to the other Player.\n3. Each player can only do 3 wrong guesses.\n4. Other Player would have to answer with only Yes, No, and Might Be.\n5. If the Player guess it right, the Player will get 10+ points.\n6. The Player with the most points will be nominated as the winner."
         private init() {}
     }
 }
@@ -71,7 +71,7 @@ extension Prompt {
 extension Prompt {
     struct ConnectFOUR {
         static let title = "Connect FOUR"
-        static let rules = "1. Each Player will be given a different color circle.\n2. Each Player can only set a circle once every round and the round continues until a 4 in row is made.\n3. The row can be made vertically/horizontally/or diagonally.\n4. Player can block other Player’s circle from getting 4 in a row.\n5. If the Player connect 4 of same colored discs in a row, the Player will get 10+ points.\n6. The first Player to achieve 30 points will be nominated as the winner."
+        static let rules = "1. Each Player will be given a different color circle.\n2. Each Player can only set a circle once every round and the round continues until a 4 in row is made.\n3. The row can be made vertically/horizontally/or diagonally.\n4. Player can block other Player’s circle from getting 4 in a row.\n5. The first Player that make a connect 4 will be nominated as the winner."
         
         private init() {}
     }
@@ -80,7 +80,7 @@ extension Prompt {
 extension Prompt {
     struct TheLastTrial {
         static let title = "The Last Trial"
-        static let rules = "1. Player will face Sneky - The Devourer of Platypus.\n2. Player will be given 3 lives and shoot Bubble every once a while to attack Sneky.\n3. Sneky will unleash poison attack and if Player is hit by the attack, Player lose 1 life.\n4. Buffs will randomly appear and might give double attacks or additional life for a limited time.\n5. Each time Sneky is defeated, Player will get 10+ points and Sneky can revive up to 3 times.\n6. The fastest Player to achieve 30 points will be nominated as the winner."
+        static let rules = "1. Player will face Sneky - The Devourer of Platypus.\n2. Player will be given 3 lives and shoot Bubble every once a while to attack Sneky.\n3. Sneky will unleash poison attack and if Player is hit by the attack, Player lose 1 life.\n4. Each time Sneky is hit, Player will get 10+ points and Sneky will have more and faster poison attack.\n5. The Player with the highest points will be nominated as the winner."
         
         private init() {}
     }

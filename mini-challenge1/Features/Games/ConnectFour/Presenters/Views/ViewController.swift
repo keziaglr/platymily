@@ -129,7 +129,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     {
                         connectFour.scorePlaty = 0
                     }
-                    let nextView =  GameResultView(scorePlaty: connectFour.scorePlaty, scorePuggle: connectFour.scorePuggle, playAgain: AnyView(ConnectFourView(viewControllerModel: ConnectFour00(), mc: MusicController() )), game: 3, mc: MusicController())
+                    let nextView =  GameResultView(scorePlaty: connectFour.scorePlaty, scorePuggle: connectFour.scorePuggle, playAgain: AnyView(ConnectFourView(viewControllerModel: ConnectFour00(), mc: MusicController() )), game: 2, mc: MusicController())
                     let hostingController = UIHostingController(rootView: nextView)
                     self.navigationController?.pushViewController(hostingController, animated: true)
 				}
