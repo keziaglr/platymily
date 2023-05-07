@@ -35,11 +35,13 @@ struct GachaObtained: View {
                     .resizable()
                     .scaledToFit()
                 
-                NavigationLink(destination: GachaResult(mc: mc)) {
-                    RoundedButton(text: Prompt.Button.gachaRollAgain)
-                }.simultaneousGesture(TapGesture().onEnded{
-                    pvm.buyGacha(coin: Int64(1))
-                })
+                NavigationLink(destination: GachaResult(mc: mc)){
+                    RoundedButton2(text: Prompt.Button.gachaRollAgain, isActive: pvm.savedEntities[0].coin > 0)
+                }.disabled(pvm.savedEntities[0].coin <= 0 ? true : false)
+                    .opacity(pvm.savedEntities[0].coin <= 0 ? 0.5 : 1.0)
+                    .simultaneousGesture(TapGesture().onEnded{
+                        pvm.buyGacha(coin: Int64(1))
+                    })
                 HStack {
                     Text("Go to")
                         .foregroundColor(.white)

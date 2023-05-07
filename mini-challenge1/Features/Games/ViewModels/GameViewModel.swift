@@ -38,7 +38,7 @@ class GameViewModel: ObservableObject {
     
     
     func checkChance(scorePlaty: Int, scorePuggle: Int) -> Bool{
-        if scorePlaty != 0 && scorePuggle != 0 && coin != 0{
+        if (scorePlaty != 0 || scorePuggle != 0 ) && coin != 0{
             showPopup = true
             return true
         }else {
