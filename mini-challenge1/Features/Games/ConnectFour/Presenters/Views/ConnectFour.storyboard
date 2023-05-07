@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="99m-X4-AKb">
-                                <rect key="frame" x="20" y="428.5" width="374" height="413.5"/>
+                                <rect key="frame" x="10" y="428.5" width="394" height="413.5"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iug-RE-ayf">
                                     <size key="itemSize" width="128" height="128"/>
@@ -76,9 +76,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="99m-X4-AKb" secondAttribute="trailing" constant="20" id="AGP-3B-Xmf"/>
+                            <constraint firstAttribute="trailing" secondItem="99m-X4-AKb" secondAttribute="trailing" constant="10" id="AGP-3B-Xmf"/>
                             <constraint firstItem="T6Q-yp-Pbn" firstAttribute="top" secondItem="BNn-8K-BTO" secondAttribute="bottom" constant="10" id="P8c-lD-H4h"/>
-                            <constraint firstItem="99m-X4-AKb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="U3d-LX-AYg"/>
+                            <constraint firstItem="99m-X4-AKb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="U3d-LX-AYg"/>
                             <constraint firstItem="BNn-8K-BTO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="VYD-iV-re2"/>
                             <constraint firstItem="T6Q-yp-Pbn" firstAttribute="centerX" secondItem="BNn-8K-BTO" secondAttribute="centerX" id="i5t-dI-Yyf"/>
                             <constraint firstItem="BNn-8K-BTO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="nyK-dd-EbC"/>
